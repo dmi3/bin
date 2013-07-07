@@ -1,0 +1,37 @@
+#!/bin/bash
+
+#Decrtiption
+#===========
+#Script to control audio volume from console, hotkeys, e.t.c. Also shows nice buble with current volume value
+
+#Requirements
+#============
+#pulseaudio notify-osd
+
+#Usage
+#=====
+#volume (up|down|mute)
+
+
+icon=notification-audio-volume-medium
+volume=$(pactl list sinks | grep Volume |cut -d" " -f4)
+if [[ $* == "down" ]]; then
+  #amixer set PCM 5%-
+  #amixer -q set Master 5- unmute
+  pactl -- set-sink-volume 0 "-2%" &
+  volume=$(pactl list sinks | grep Volume |cut -d" " -f4)
+elif [[ $* == "up" ]]; then
+  #amixer set PCM 5%+
+  #amixer -q set Master 5+ unmute
+  pactl -- set-sink-volume 0 "+2%" &
+  volume=$(pactl list sinks | grep Volume |cut -d" " -f4)
+elif [[ $* == "mute" ]]; then
+  toggle=$((pactl list sinks | grep -q Mute:.no && echo 1) || echo 0)
+  pactl set-sink-mute 0 $toggle
+  if [[ $toggle == 1 ]]; then
+    icon=notification-audio-volume-muted
+    volume=0
+  fi 
+fi
+notify-send --hint string:x-canonical-private-synchronous:true "Volume" -i $icon -h int:value:$volume
+

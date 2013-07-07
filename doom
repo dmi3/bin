@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+
+#Decrtiption
+#===========
+#Script to run gzdoom with various configurations/wads. Selectable via dmenu
+
+#Requirements
+#============
+#sudo apt-get install gzdoom dmenu python3 python3-setuptools
+#sudo easy_install3 sh
+
+#Usage
+#=====
+#doom
+
+MAP_DIR = "/media/archive/games/doom/wads/maps/"
+MOD_DIR = "/media/archive/games/doom/wads/mods/"
+MODS = {
+  "vanilla":"",
+  "russian_overkill":"hires.pk3 ketchuptest4.pk3 RO_pb.pk3 Moldova_pb_v1.1.pk3 regeneration2.wad",
+  "brutal_doom":"hires.pk3 brutalv018a.pk3 regeneration2.wad",
+}
+
+from sh import ls,dmenu,gzdoom,glob,echo,touch
+
+mod=dmenu(echo("\n".join(MODS.keys())))
+mods=MODS[str(mod)].replace(" "," "+MOD_DIR)
+wad=MAP_DIR+str(dmenu(ls(MAP_DIR,"-1","-t")))
+
+cmd="-file "+mods+" "+wad
+print(cmd)
+touch(wad) #because we sort by last modified = first in menu
+gzdoom(cmd)

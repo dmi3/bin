@@ -1,11 +1,18 @@
 #!/usr/bin/env python
 
-#Decrtiption
-#===========
-#Script to run append Notify OSD messages as shown on http://thexnews.com/uploads/notify.gif
-#Since x-canonical-append is broken in notify-send for example in Skype you will wait forever untill all messages are shown
-#This script makes new messages readable in same notification window
-#Readme in russian: http://thexnews.com/p/554
+#  Decription
+#  ===========
+#  Script to run append Notify OSD messages as shown on http://thexnews.com/uploads/notify.gif
+#  Since x-canonical-append is broken in notify-send for example in Skype you will wait forever untill all messages are shown
+#  This script makes new messages readable in same notification window
+#  Readme in russian: http://thexnews.com/p/554
+
+#  Author: Dmitry (http://dmi3.net)
+#  Source: https://github.com/dima2/bin
+
+#  Usage
+#  =====
+#  notify-append title name [icon]
 
 
 import gtk,dbus,dbus.service,dbus.glib,sys

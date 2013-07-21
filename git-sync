@@ -1,17 +1,20 @@
 #!/bin/bash
 
-#Decrtiption
-#===========
-#Script to simply sync all changes into git repository with one line command. For example publish local changes to github.
+#  Decription
+#  ===========
+#  Script to simply sync all changes into git repository with one line command. For example publish local changes to github.
 
-#Requirements
-#============
-#sudo apt-get install git
+#  Author: Dmitry (http://dmi3.net)
+#  Source: https://github.com/dima2/bin
 
-#Usage
-#=====
-#cd folder-with-your-project
-#git-sync
+#  Requirements
+#  ============
+#  sudo apt-get install git
+
+#  Usage
+#  =====
+#  cd folder-with-your-project
+#  git-sync
 
 git pull
 git add *

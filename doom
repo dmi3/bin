@@ -1,17 +1,20 @@
 #!/usr/bin/python3
 
-#Decrtiption
-#===========
-#Script to run gzdoom with various configurations/wads. Selectable via dmenu
+#  Decription
+#  ===========
+#  Script to run gzdoom with various configurations/wads. Selectable via dmenu
 
-#Requirements
-#============
-#sudo apt-get install gzdoom dmenu python3 python3-setuptools
-#sudo easy_install3 sh
+#  Author: Dmitry (http://dmi3.net)
+#  Source: https://github.com/dima2/bin
 
-#Usage
-#=====
-#doom
+#  Requirements
+#  ============
+#  sudo apt-get install gzdoom dmenu python3 python3-setuptools
+#  sudo easy_install3 sh
+
+#  Usage
+#  =====
+#  doom
 
 MAP_DIR = "/media/archive/games/doom/wads/maps/"
 MOD_DIR = "/media/archive/games/doom/wads/mods/"

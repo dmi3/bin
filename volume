@@ -1,16 +1,19 @@
 #!/bin/bash
 
-#Decrtiption
-#===========
-#Script to control audio volume from console, hotkeys, e.t.c. Also shows nice buble with current volume value
+#  Decription
+#  ===========
+#  Script to control audio volume from console, hotkeys, e.t.c. Also shows nice Notify OSD buble with current volume value
 
-#Requirements
-#============
-#pulseaudio notify-osd
-
-#Usage
-#=====
-#volume (up|down|mute)
+#  Author: Dmitry (http://dmi3.net)
+#  Source: https://github.com/dima2/bin
+  
+#  Requirements
+#  ============
+#  sudo apt-get install pulseaudio notify-osd
+  
+#  Usage
+#  =====
+#  volume (up|down|mute)
 
 
 icon=notification-audio-volume-medium

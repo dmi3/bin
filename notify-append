@@ -13,7 +13,7 @@
 
 usage = """Usage:
 notify-append title name [icon] [-r]
-  -r  - replace previos message sent with same title instead of appending to it
+  -r  - replace previous message instead of appending to it
 """
 
 
@@ -43,11 +43,9 @@ class NotifyAppendService(dbus.service.Object):
     self.previous_id = notify.Notify(app_name, id_num_to_replace, icon, title, text, actions_list, hint, time)
         
 if __name__ == "__main__":
-    if "-r" in sys.argv:
-      replace = True
+    replace = "-r" in sys.argv
+    if replace:
       sys.argv.remove("-r")
-    else:
-      replace = False
 
     if len(sys.argv)==3:
       sys.argv.append("")

@@ -4,7 +4,7 @@
 #  ===========
 #  Script to run append Notify OSD messages as shown on http://thexnews.com/uploads/notify.gif
 #  Since x-canonical-append is broken in notify-send for example in Skype you will wait forever untill all messages are shown
-#  This script makes new messages readable in same notification window
+#  This script makes new messages shown in same notification window bellow the already shown
 #  Created as addition to notify-send. Use notify-send when you want to send notification and notify-append when you want append or replace it.
 #  Readme in russian: http://thexnews.com/p/554
 
@@ -16,15 +16,14 @@ notify-append title name [icon] [-r]
   -r  - replace previous message instead of appending to it
 """
 
-
 import gtk,dbus,dbus.service,dbus.glib,sys
 
 class NotifyAppendService(dbus.service.Object):
   previous_id = 0
 
   def __init__(self):
-      bus_name = dbus.service.BusName('net.dmi3.Notify', bus = dbus.SessionBus())
-      dbus.service.Object.__init__(self, bus_name, '/net/dmi3/Notify')
+    bus_name = dbus.service.BusName('net.dmi3.Notify', bus = dbus.SessionBus())
+    dbus.service.Object.__init__(self, bus_name, '/net/dmi3/Notify')
 
   @dbus.service.method(dbus_interface='net.dmi3.Notify')
   def notify(self, title, text, icon = "", replace = False):
@@ -35,7 +34,7 @@ class NotifyAppendService(dbus.service.Object):
     id_num_to_replace = self.previous_id if replace else 0
     actions_list      = ''
     hint              = {"x-canonical-append":"allowed"}
-    time              = 1000   # Use seconds x 1000
+    time              = 1000   # Doesn't matter
     
     bus = dbus.SessionBus()
     notif = bus.get_object(item, path)
@@ -43,20 +42,20 @@ class NotifyAppendService(dbus.service.Object):
     self.previous_id = notify.Notify(app_name, id_num_to_replace, icon, title, text, actions_list, hint, time)
         
 if __name__ == "__main__":
-    replace = "-r" in sys.argv
-    if replace:
-      sys.argv.remove("-r")
+  replace = "-r" in sys.argv
+  if replace:
+    sys.argv.remove("-r")
 
-    if len(sys.argv)==3:
-      sys.argv.append("")
-    elif len(sys.argv)<3:
-      print(usage)
-      sys.exit()
+  if len(sys.argv)==3:
+    sys.argv.append("")
+  elif len(sys.argv)<3:
+    print(usage)
+    sys.exit()
 
-    if dbus.SessionBus().request_name("net.dmi3.Notify") != dbus.bus.REQUEST_NAME_REPLY_PRIMARY_OWNER:
-        notify = dbus.SessionBus().get_object("net.dmi3.Notify", "/net/dmi3/Notify").get_dbus_method("notify")
-        notify(sys.argv[1],sys.argv[2],sys.argv[3],replace)
-    else:
-        service = NotifyAppendService()
-        service.notify(sys.argv[1],sys.argv[2],sys.argv[3],replace)
-        gtk.main() #to keep script running
+  if dbus.SessionBus().request_name("net.dmi3.Notify") != dbus.bus.REQUEST_NAME_REPLY_PRIMARY_OWNER:
+    notify = dbus.SessionBus().get_object("net.dmi3.Notify", "/net/dmi3/Notify").get_dbus_method("notify")
+    notify(sys.argv[1],sys.argv[2],sys.argv[3],replace)
+  else:
+    service = NotifyAppendService()
+    service.notify(sys.argv[1],sys.argv[2],sys.argv[3],replace)
+    gtk.main() #to keep script running

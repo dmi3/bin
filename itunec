@@ -15,20 +15,30 @@
 #  Usage
 #  =====
 #  set LABEL to label of your player filesystem (for example `SANSA CLIP` to find label type `ls -l /dev/disk/by-label/`)
+#  set GPODDER_DIR to directory where gpodder download podcasts
 #  run `itunec` when you want to sync
 #  or
 #  gpodder -> Podcasts -> Prefences -> Devices; set  Device type to `Filesystem-based` and `Mountpoint` path where device is mounted by default
 #  gpodder -> Podcasts -> Prefences -> Edit config -> cmd_all_download_complete -> itunec
 
 LABEL = "AUDIOS"
+GPODDER_DIR = "/media/archive/incoming/gpodder/"
 
-from sh import ls,Command,udisks,ErrorReturnCode_1,traceback,gpo,zenity
+import sys
+from sh import ls,Command,udisks,ErrorReturnCode_1,traceback,gpo,zenity,find
 
-notifyAppend=Command("notify-append")
+notify_append=Command("notify-append")
 def notify(text):
-	notifyAppend("Itunec",text)
+	notify_append("Itunec",text)
+
+def gpodder_has_new_episodes():
+	return not find(GPODDER_DIR,"-name","*.mp3")==""
 
 try:
+	if not gpodder_has_new_episodes():
+		notify("No new episodes")
+		sys.exit()
+
 	#Find device by LABEL
 	devices = ls("-l","/dev/disk/by-label/")
 	device = next(x for x in devices if LABEL in x)
@@ -59,6 +69,6 @@ except StopIteration:
 	notify("Unable to find device "+LABEL)
 except ErrorReturnCode_1:
 	notify("Unable to mount device "+LABEL)
-except:
+except Exception:
 	notify("Unknown problem during sync")
 	traceback.print_exc()

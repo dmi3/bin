@@ -24,7 +24,7 @@
 LABEL = "AUDIOS"
 GPODDER_DIR = "/media/archive/incoming/gpodder/"
 
-import sys
+import sys,time
 from sh import ls,Command,udisks,ErrorReturnCode_1,traceback,gpo,zenity,find
 
 notify_append=Command("notify-append")
@@ -53,6 +53,8 @@ try:
 
 	notify("Starting synchronization")
 	gpo("sync")
+
+	time.sleep(3)
 	
 	#Umount device
 	if not wasmnt:

@@ -25,9 +25,8 @@ LABEL = "AUDIOS"
 GPODDER_DIR = "/media/archive/incoming/gpodder/"
 
 import sys,time
-from sh import ls,Command,udisks,ErrorReturnCode_1,traceback,gpo,zenity,find
+from sh import ls,udisks,ErrorReturnCode_1,traceback,gpo,zenity,find,notify_append
 
-notify_append=Command("notify-append")
 def notify(text):
 	notify_append("Itunec",text)
 

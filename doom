@@ -16,6 +16,8 @@
 #  =====
 #  doom
 
+#  Settings
+#  ========
 MAP_DIR = "/media/archive/games/doom/wads/maps/"
 MOD_DIR = "/media/archive/games/doom/wads/mods/"
 MODS = {
@@ -23,8 +25,11 @@ MODS = {
   "russian_overkill":"hires.pk3 bdlitev13gzdoomV2.pk3 RO_pb_2.1b.pk3 Moldova_pb_v1.1.pk3 regeneration2.wad",
   "brutal_doom":"hires.pk3 brutalv018a.pk3 regeneration2.wad",
 }
-TIMELIMIT=20*60 #set 0 to play infinitely! 
+PARAMS = "+set sv_jump 2 +set sv_crouch 2"
+TIMELIMIT=20 #(minutes) set 0 to play infinitely! 
 
+#  Code
+#  ====
 from sh import ls,dmenu,gzdoom,echo,touch,killall,notify_send
 from time import sleep
 
@@ -33,13 +38,13 @@ mod=dmenu(echo("\n".join(MODS.keys())))
 mods=MODS[str(mod)].replace(" "," "+MOD_DIR)
 wad=MAP_DIR+str(dmenu(ls(MAP_DIR,"-1","-t")))
 
-cmd="-file "+mods+" "+wad
+cmd=PARAMS+" -file "+mods+" "+wad
 print(cmd)
 touch(wad) #because we sort by last modified = first in menu
 
 gzdoom(cmd, _bg=True)
 if TIMELIMIT>0:
-  sleep(TIMELIMIT)
+  sleep(TIMELIMIT*60)
   notify_send("You have 10 seconds to save!")
   sleep(10)
   killall("gzdoom")

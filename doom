@@ -24,6 +24,7 @@ MODS = {
   "russian_overkill":"hires.pk3 bdlitev13gzdoomV2.pk3 RO_pb_2.1b.pk3 Moldova_pb_v1.1.pk3 regeneration2.wad",
   "brutal_doom":"hires.pk3 brutalv018a.pk3 regeneration2.wad",
 }
+PARAMS = "+set sv_jump 2 +set sv_crouch 2"
 TIMELIMIT_MIN=20 #set 0 to play infinitely! 
 
 from sh import ls,dmenu,echo,touch,kill,notify_send,Command
@@ -35,7 +36,7 @@ mod=dmenu(echo("\n".join(MODS.keys())))
 mods=MODS[str(mod)].replace(" "," "+MOD_DIR)
 wad=MAP_DIR+str(dmenu(ls(MAP_DIR,"-1","-t")))
 
-cmd="-file "+mods+" "+wad
+cmd=PARAMS+" -file "+mods+" "+wad
 print(cmd)
 touch(wad) #because we sort by last modified = first in menu
 

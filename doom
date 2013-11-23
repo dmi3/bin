@@ -24,7 +24,7 @@ MODS = {
   "russian_overkill":"hires.pk3 bdlitev13gzdoomV2.pk3 RO_pb_2.1b.pk3 Moldova_pb_v1.1.pk3 regeneration2.wad",
   "brutal_doom":"hires.pk3 brutalv018a.pk3 regeneration2.wad",
 }
-TIMELIMIT_SEC=20*60 #set 0 to play infinitely! 
+TIMELIMIT_MIN=20 #set 0 to play infinitely! 
 
 from sh import ls,dmenu,echo,touch,kill,notify_send,Command
 from time import sleep
@@ -41,8 +41,8 @@ touch(wad) #because we sort by last modified = first in menu
 
 pid=doom(cmd, _bg=True).pid
 
-if TIMELIMIT_SEC>0:
-  sleep(TIMELIMIT_SEC)
+if TIMELIMIT_MIN>0:
+  sleep(TIMELIMIT_MIN)
   if path.isdir("/proc/"+str(pid)):
     notify_send("You have 10 seconds to save!")
     sleep(10)

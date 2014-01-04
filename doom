@@ -22,7 +22,7 @@ DOOM_BIN = "/usr/bin/gzdoom"
 MODS = {
   "vanilla":"",
   "russian_overkill":"hires.pk3 bdlitev13gzdoomV2.pk3 RO_pb_2.1b.pk3 Moldova_pb_v1.1.pk3 regeneration2.wad",
-  "brutal_doom":"hires.pk3 brutalv018a.pk3 regeneration2.wad",
+  "brutal_doom":"hires.pk3 brutal19.pk3 regeneration2.wad",
 }
 PARAMS = "+set sv_jump 2 +set sv_crouch 2"
 TIMELIMIT_MIN=20 #set 0 to play infinitely! 
@@ -43,7 +43,7 @@ touch(wad) #because we sort by last modified = first in menu
 pid=doom(cmd, _bg=True).pid
 
 if TIMELIMIT_MIN>0:
-  sleep(TIMELIMIT_MIN)
+  sleep(TIMELIMIT_MIN*60)
   if path.isdir("/proc/"+str(pid)):
     notify_send("You have 10 seconds to save!")
     sleep(10)

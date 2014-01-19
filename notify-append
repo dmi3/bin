@@ -9,7 +9,7 @@
 #  Readme in russian: http://thexnews.com/p/554
 
 #  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dima2/bin
+#  Source: https://github.com/dmi3/bin
 
 usage = """Usage:
 notify-append title name [icon] [-r]

@@ -5,12 +5,12 @@
 #  Mounts USB device, syncs new podcast in gpodder then umounts device
 
 #  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dima2/bin
+#  Source: https://github.com/dmi3/bin
 
 #  Requirements
 #  ============
 #  sudo apt-get install python3
-#  wget https://raw.github.com/dima2/bin/master/notify-append -P ~/bin && chmod +x ~/bin/notify-append
+#  wget https://raw.github.com/dmi3/bin/master/notify-append -P ~/bin && chmod +x ~/bin/notify-append
 
 #  Usage
 #  =====

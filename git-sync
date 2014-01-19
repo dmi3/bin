@@ -5,7 +5,7 @@
 #  Script to simply sync all changes into git repository with one line command. For example publish local changes to github.
 
 #  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dima2/bin
+#  Source: https://github.com/dmi3/bin
 
 #  Requirements
 #  ============

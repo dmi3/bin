@@ -5,7 +5,7 @@
 #  Script to run gzdoom with various configurations/wads. Selectable via dmenu
 
 #  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dima2/bin
+#  Source: https://github.com/dmi3/bin
 
 #  Requirements
 #  ============

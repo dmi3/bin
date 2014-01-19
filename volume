@@ -5,7 +5,7 @@
 #  Script to control audio volume from console, hotkeys, e.t.c. Also shows nice Notify OSD buble with current volume value
 
 #  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dima2/bin
+#  Source: https://github.com/dmi3/bin
   
 #  Requirements
 #  ============

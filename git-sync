@@ -19,6 +19,6 @@
 git pull
 git add *
 echo "Files in changelist:"
-git diff --name-status
+git diff --name-status HEAD
 read -p "Commit message (or Ctrl+Z/Ctrl+C to cancel): " commit_message
 git commit -a -m "$commit_message" && git push origin master

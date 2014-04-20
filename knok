@@ -2,6 +2,8 @@
 
 #  Decription
 #  ===========
+#  Knocks to given ports with 0.5 second delay. Useful when default knockd delay
+#  is to short for server to react. Additionally displays Gun's N' Roses lyrics :)
 
 #  Author: Dmitry (http://dmi3.net)
 #  Source: https://github.com/dmi3/bin

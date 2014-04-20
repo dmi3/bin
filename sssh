@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#  Decription
+#  ===========
+#  Script to change your terminal title to user@host when connecting to ssh and changing it back after exiting
+
+#  Author: Dmitry (http://dmi3.net)
+#  Source: https://github.com/dmi3/bin
+
+#  Requirements
+#  ============
+#  sudo apt-get xdotool
+
+#  Usage
+#  =====
+#  cd folder-with-your-project
+#  sssh hostname
+
+prev_title=`xdotool getwindowfocus getwindowname`
+/usr/bin/ssh -t "$@" 'echo -e "\033]0;$USER@$HOSTNAME\a"; /bin/bash'
+echo -e "\033]0;$prev_title\a"

@@ -25,7 +25,7 @@ MODS = {
   "brutal_doom":"hires.pk3 brutal19.pk3 regeneration2.wad",
 }
 PARAMS = "+set sv_jump 2 +set sv_crouch 2"
-TIMELIMIT_MIN=20 #set 0 to play infinitely! 
+TIMELIMIT_MIN=15 #set 0 to play infinitely! 
 
 from sh import ls,dmenu,echo,touch,kill,notify_send,Command
 from time import sleep

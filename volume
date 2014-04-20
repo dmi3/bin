@@ -36,5 +36,7 @@ elif [[ $* == "mute" ]]; then
     volume=0
   fi 
 fi
+
+echo $volume
 notify-send --hint string:x-canonical-private-synchronous:true "Volume" -i $icon -h int:value:$volume
 

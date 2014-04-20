@@ -1,0 +1,31 @@
+#!/usr/bin/python3
+
+#  Decription
+#  ===========
+
+#  Author: Dmitry (http://dmi3.net)
+#  Source: https://github.com/dmi3/bin
+
+#  Requirements
+#  ============
+#  sudo apt-get install knockd python3 python3-setuptools
+#  sudo easy_install3 sh
+
+#  Usage
+#  =====
+#  knock ip [port,port...]
+
+
+from sh import knock
+from time import sleep
+import sys
+
+ip = sys.argv[1]
+for arg in sys.argv[2:]:
+  sys.stdout.write(" knock")
+  sys.stdout.flush()
+  knock(ip,arg)
+  sleep(0.5)
+print('in on heaven\'s dooor!')
+
+

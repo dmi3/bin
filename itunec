@@ -9,7 +9,7 @@
 
 #  Requirements
 #  ============
-#  sudo apt-get install python3
+#  sudo apt-get install python3 id3v2
 #  wget https://raw.github.com/dmi3/bin/master/notify-append -P ~/bin && chmod +x ~/bin/notify-append
 
 #  Usage
@@ -24,52 +24,73 @@
 LABEL = "AUDIOS"
 GPODDER_DIR = "/media/archive/incoming/gpodder/"
 
-import sys,time
-from sh import ls,udisks,ErrorReturnCode_1,traceback,gpo,zenity,find,notify_append
+import os,sys,time
+from sh import ls,udisks,ErrorReturnCode_1,traceback,gpo,zenity,find,notify_append,id3v2
+
+def fix_tags(dirsa):
+  for root, subFolders, files in os.walk(dirsa):
+    for f in files:
+      if f.count(".mp3")>0 and not is_russian(root):
+        show_title=os.path.basename(root)
+        path=os.path.join(root,f)
+      
+        try:
+          if (id3v2("-l",path).count("TAL") == 0):
+            id3v2("-A",show_title,path)
+        except UnicodeDecodeError:
+          print("Error reading %s" % path)
+
+
+def is_russian(s):
+  for letter in "абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ":
+    if s.count(letter)>0:
+      return True
+  return False
 
 def notify(text):
-	notify_append("Itunec",text)
+  notify_append("Itunec",text)
 
 def gpodder_has_new_episodes():
-	return not find(GPODDER_DIR,"-name","*.mp3")==""
+  return not find(GPODDER_DIR,"-name","*.mp3")==""
 
 try:
-	if not gpodder_has_new_episodes():
-		notify("No new episodes")
-		sys.exit()
+  if not gpodder_has_new_episodes():
+    notify("No new episodes")
+    sys.exit()
 
-	#Find device by LABEL
-	devices = ls("-l","/dev/disk/by-label/")
-	device = next(x for x in devices if LABEL in x)
-	devid = device.split("/")[-1]
-	devpath = "/dev/"+devid.replace("\n","")
+  #Find device by LABEL
+  devices = ls("-l","/dev/disk/by-label/")
+  device = next(x for x in devices if LABEL in x)
+  devid = device.split("/")[-1]
+  devpath = "/dev/"+devid.replace("\n","")
 
-	#Mount device 
-	mntmsg = udisks("--mount",devpath)
-	wasmnt = "is mounted" in mntmsg
-	if not wasmnt:
-		notify(mntmsg)
+  #Mount device 
+  mntmsg = udisks("--mount",devpath)
+  wasmnt = "is mounted" in mntmsg
+  if not wasmnt:
+    notify(mntmsg)
 
-	notify("Starting synchronization")
-	gpo("sync")
+  fix_tags(GPODDER_DIR)
+  notify("Starting synchronization")
+  gpo("sync")
 
-	time.sleep(3)
-	
-	#Umount device
-	if not wasmnt:
-		mntmsg = udisks("--unmount",devpath)
-		if mntmsg == "":
-			zenity("--info","--text","Its now safe to remove "+LABEL)		
-		else:
-			notify(mntmsg)
-	else:
-		zenity("--info","--text","Sync done")
-
-	
+  time.sleep(3)
+  
+  #Umount device
+  if not wasmnt:
+    mntmsg = udisks("--unmount",devpath)
+    if mntmsg == "":
+      zenity("--info","--text","Its now safe to remove "+LABEL)   
+    else:
+      notify(mntmsg)
+  else:
+    zenity("--info","--text","Sync done")
+  
 except StopIteration: 
-	notify("Unable to find device "+LABEL)
+  notify("Unable to find device "+LABEL)
 except ErrorReturnCode_1:
-	notify("Unable to mount device "+LABEL)
+  notify("Unable to mount device "+LABEL)
 except Exception:
-	notify("Unknown problem during sync")
-	traceback.print_exc()
+  notify("Unknown problem during sync")
+  traceback.print_exc()
+

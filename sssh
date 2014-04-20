@@ -9,7 +9,7 @@
 
 #  Requirements
 #  ============
-#  sudo apt-get xdotool
+#  sudo apt-get install xdotool
 
 #  Usage
 #  =====

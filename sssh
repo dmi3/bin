@@ -2,7 +2,8 @@
 
 #  Decription
 #  ===========
-#  Script to change your terminal title to user@host when connecting to ssh and changing it back after exiting
+#  Script to change your terminal title to user@host when connecting to ssh and changing it back after exiting.
+#  Useful for Keepassx.
 
 #  Author: Dmitry (http://dmi3.net)
 #  Source: https://github.com/dmi3/bin

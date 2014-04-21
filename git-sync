@@ -14,17 +14,20 @@
 #  Usage
 #  =====
 #  cd folder-with-your-project
-#  git-sync
-
-if [[ $* == "-u" ]]; then
-  add_arg="-u"
-else
-  add_arg="*"
-fi
+#  git-sync # if you want add sync all files
+#  git-sync -u # if you want add sync files added manually via `git add filename`
 
 git pull
+
+if [[ $* == "-u" ]]; then
+  echo "Ignoring new files"
+  add_arg="-u"
+else
+  add_arg="-A"
+fi
+
 git add $add_arg
 echo "Files in changelist:"
 git diff --name-status HEAD
 read -p "Commit message (or Ctrl+Z/Ctrl+C to cancel): " commit_message
-git commit -a -m "$commit_message" # && git push origin master
+git commit -a -m "$commit_message" && git push origin master

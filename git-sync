@@ -14,8 +14,8 @@
 #  Usage
 #  =====
 #  cd folder-with-your-project
-#  git-sync # if you want add sync all files
-#  git-sync -u # if you want add sync files added manually via `git add filename`
+#  git-sync # if you want sync all files
+#  git-sync -u # if you want only sync files explicitly added via `git add filename`
 
 git pull
 

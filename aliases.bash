@@ -16,6 +16,9 @@
 #  To make bash more usable you probably want to install https://github.com/mrzool/bash-sensible
 #  To make this work across remote machines, you also may want to install https://github.com/Russell91/sshrc 
 
+# Resolve aliases after sudo
+alias sudo='sudo '
+
 # Aliases
 mkcd () {
   mkdir "$1"

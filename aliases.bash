@@ -41,7 +41,7 @@ alias grep='grep -i -E'
 alias mkdir='mkdir -pv'
 
 # Human readable sizes (i.e. Mb, Gb etc)
-alias df='df -H'
+alias df='df -h'
 alias du='du -ch'
 alias free='free -g'
 

@@ -11,7 +11,7 @@
 # If Apple keyboard plugged in, swap left alt and win and put tilde back to left upper corner
 if lsusb | grep Apple  > /dev/null; then
   setxkbmap -option 'altwin:swap_lalt_lwin'
-  modmap -e "keycode 94 = grave asciitilde"
+  xmodmap -e "keycode 94 = grave asciitilde"
 else
   setxkbmap -option -option altwin:left_meta_win
 fi

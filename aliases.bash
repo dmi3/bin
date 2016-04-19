@@ -60,3 +60,14 @@ if [ $UID -ne 0 ]; then
     alias reboot='sudo reboot'
     alias apt-get='sudo apt-get'
 fi
+
+setup-bash() {
+   wget https://raw.githubusercontent.com/mrzool/bash-sensible/master/sensible.bash --no-check-certificate -O ~/bin/sensible.bash
+   /usr/bin/grep -q -F 'source ~/bin/sensible.bash' ~/.bashrc || echo "source ~/bin/sensible.bash" >> ~/.bashrc
+   wget https://raw.githubusercontent.com/dmi3/bin/master/aliases.bash --no-check-certificate -O ~/bin/aliases.bash
+   echo "source ~/bin/aliases.bash" >> ~/bin/sensible.bash
+   # Do not trim long paths in the prompt
+   echo "PROMPT_DIRTRIM=0" >> ~/bin/sensible.bash
+   # Send terminate on Ctrl+Shift+C to free Ctrl+C for copy
+   echo "stty intr \^C" >> ~/bin/sensible.bash
+}

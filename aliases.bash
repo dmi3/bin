@@ -52,13 +52,30 @@ alias free='free -g'
 add-apt-repository() {
     sudo add-apt-repository --yes $*
     sudo apt-get update
-}    
+}   
 
+# Make sudo nano if file is not editable by current user
+nano() {
+  if [ -w "$1" ]
+  then
+    sudo /bin/nano $*
+  else
+    /bin/nano $*
+  fi
+}
+
+# If Sublime Text installed - use it istead of gedit
+if hash subl 2>/dev/null; then
+  alias gedit=subl
+fi
+
+# Add sudo if forgotten
 if [ $UID -ne 0 ]; then
     alias susp='sudo /usr/sbin/pm-suspend'
     alias poweroff='sudo poweroff'
     alias reboot='sudo reboot'
     alias apt-get='sudo apt-get'
+    alias dpkg='sudo dpkg'
 fi
 
 setup-bash() {

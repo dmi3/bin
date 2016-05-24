@@ -76,6 +76,7 @@ if [ $UID -ne 0 ]; then
     alias reboot='sudo reboot'
     alias apt-get='sudo apt-get'
     alias dpkg='sudo dpkg'
+    alias apt='sudo apt'
 fi
 
 setup-bash() {

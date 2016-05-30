@@ -64,7 +64,13 @@ nano() {
   fi
 }
 
-# If Sublime Text installed - use it istead of gedit
+# Make file executable, then run it
+run() {
+  chmod +x "$1"
+  exec "./$1" &
+}
+
+# If Sublime Text installed - use it istead of Gedit
 if hash subl 2>/dev/null; then
   alias gedit=subl
 fi

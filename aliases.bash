@@ -7,7 +7,7 @@
 
 #  Requirements
 #  ============
-#  sudo apt-get install twistd
+#  sudo apt-get install twistd pm-utils
 
 #  Usage
 #  =====

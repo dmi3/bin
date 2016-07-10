@@ -28,7 +28,7 @@ mkcd () {
 # Open file in GUI associated application
 alias open=xdg-open
 
-alias ll='ls -l'
+alias ll='ls -lh'
 
 # Serves current directory on 8080 port
 alias server-here='twistd -no web --path=.'

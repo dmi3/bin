@@ -21,6 +21,8 @@ xmodmap -e "clear lock"
 if lsusb | grep Apple  > /dev/null; then
   setxkbmap -option 'altwin:swap_lalt_lwin'
   xmodmap -e "keycode 94 = grave asciitilde"
+  xmodmap -e "keycode 191 = Print Sys_Req"
+  
 else
   setxkbmap -option -option altwin:left_meta_win
 fi

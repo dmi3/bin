@@ -78,12 +78,13 @@ fi
 # Add sudo if forgotten
 if [ $UID -ne 0 ]; then
     alias susp='sudo /usr/sbin/pm-suspend'
-    alias poweroff='sudo poweroff'
-    alias reboot='sudo reboot'
     alias apt-get='sudo apt-get'
     alias dpkg='sudo dpkg'
     alias apt='sudo apt'
 fi
+
+alias poweroff='shutdown -P now'
+alias reboot='shutdown -r now'
 
 setup-bash() {
    wget https://raw.githubusercontent.com/mrzool/bash-sensible/master/sensible.bash --no-check-certificate -O ~/bin/sensible.bash

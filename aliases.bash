@@ -54,7 +54,7 @@ add-apt-repository() {
     sudo apt-get update
 }   
 
-# Make sudo nano if file is not editable by current user
+# Prepend `sudo` to `nano` command if file is not editable by current user
 nano() {
   if [ -w "$1" ]
   then

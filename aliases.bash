@@ -58,9 +58,9 @@ add-apt-repository() {
 nano() {
   if [ -w "$1" ]
   then
-    sudo /bin/nano $*
-  else
     /bin/nano $*
+  else
+    sudo /bin/nano $*
   fi
 }
 

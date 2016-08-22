@@ -96,5 +96,5 @@ setup-bash() {
    # Send terminate on Ctrl+Shift+C to free Ctrl+C for copy
    echo "stty intr \^C" >> ~/bin/sensible.bash
    # Setup prompt
-   echo "PS1=\"\[\e[0;02m\][\A \w]$ \[\e[0m\]\"" >> ~/bin/sensible.bash
+   echo "PS1=\"\[\e[0;02m\][\w❯ \[\e[0m\]\"" >> ~/bin/sensible.bash
 }

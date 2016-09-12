@@ -1,19 +1,14 @@
-function fzf-history-widget
-    history | fzf --prompt="⌕ " -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort > /tmp/fzf.result
-      and commandline (cat /tmp/fzf.result)
-    commandline -f repaint
-    commandline -f execute
-    rm -f /tmp/fzf.result
-end
-
 function fish_user_key_bindings
-	  # Clear input on Ctrl+U
+    # Clear input on Ctrl+U
     bind \cu 'commandline "";'
     
     # Simulate Ctrl+R in Bash    
     if [ (which fzf)!="" ]
       # Use fzf if installed
       bind \cr fzf-history-widget
+
+      # Fuzzy search & append filename to current commandline
+      bind \ce search
     else
       # Use poor man completion (as up arrow, without search-as-you-type)
       bind \cr history-search-backward
@@ -24,6 +19,9 @@ function fish_user_key_bindings
 end
 
 function fish_prompt
+    # Transfer history between multiple terminals
+    history --merge
+
     set_color 777 --bold
     echo -n [(pwd)❯
     
@@ -57,9 +55,6 @@ alias mkdir='mkdir -pv'
 # Print full file path
 alias path='readlink -e'
 
-# Search files by mask, case insensitive, output with full path
-alias search='find $PWD -iname'
-
 # Human readable sizes (i.e. Mb, Gb etc)
 alias df='df -h'
 alias du='du -ch'
@@ -73,11 +68,35 @@ function mkcd --description "Create and cd to directory"
   and cd $argv
 end
 
-function git-checkout-branch --description "Checkout git branch using fzf"
+alias git-unpushed-commits='git cherry -v' 
+
+# Fzf stuff https://github.com/junegunn/fzf
+
+set -x FZF_DEFAULT_OPTS --prompt="⌕ "
+
+function git-checkout-branch --description "Checkout git branch using fuzzy search"
   git branch | fzf +s +m | sed "s/.* //" > /tmp/fzf.result
   git checkout (cat /tmp/fzf.result)
   rm -f /tmp/fzf.result
 end
+
+function fzf-history-widget
+    history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort > /tmp/fzf.result
+      and commandline (cat /tmp/fzf.result)
+    commandline -f repaint
+    commandline -f execute
+    rm -f /tmp/fzf.result
+end
+
+function search --description "Search files by mask, case insensitive, output with full path"
+  if [ $argv == ""]
+    find $PWD | fzf > /tmp/fzf.result
+    commandline -a (cat /tmp/fzf.result)
+    rm -f /tmp/fzf.result
+  else
+    find $PWD -iname $argv | fzf
+  end    
+end  
 
 function reset_window --description "Reset window size and bring it to main monitor. Useful if DE messes up"
   wmctrl -r $argv -e 0,0,0,800,600
@@ -115,42 +134,3 @@ set fish_color_operator FD971F # AE81FF # the color for parameter expansion oper
 set fish_color_escape 66D9EF # the color used to highlight character escapes like '\n' and '\x70'
 set fish_color_cwd 66D9EF # the color used for the current working directory in the default prompt
 #set fish_color_autosuggestion FD971F
-
-# Additionally, the following variables are available to change the highlighting in the completion pager:
-# set fish_pager_color_prefix F8F8F2 # the color of the prefix string, i.e. the string that is to be completed
-# set fish_pager_color_completion 75715E # the color of the completion itself
-# set fish_pager_color_description 49483E # the color of the completion description
-# set fish_pager_color_progress F8F8F2 # the color of the progress bar at the bottom left corner
-# set fish_pager_color_secondary F8F8F2 # the background color of the every second completion
-
-function fish_reset_colors --description "Reset Fish colors to default"
-    set fish_color_normal normal
-    set fish_color_command 005fd7 purple
-    set fish_color_param 00afff cyan
-    set fish_color_redirection normal
-    set fish_color_comment red
-    set fish_color_error red --bold
-    set fish_color_escape cyan
-    set fish_color_operator cyan
-    set fish_color_quote brown
-    set fish_color_autosuggestion 555 yellow
-    set fish_color_valid_path --underline
-
-    set fish_color_cwd green
-    set fish_color_cwd_root red
-
-    # Background color for matching quotes and parenthesis
-    set fish_color_match cyan
-
-    # Background color for search matches
-    set fish_color_search_match --background=purple
-
-    # Pager colors
-    set fish_pager_color_prefix cyan
-    set fish_pager_color_completion normal
-    set fish_pager_color_description 555 yellow
-    set fish_pager_color_progress cyan
-
-    # Directory history colors
-    set fish_color_history_current cyan
-end

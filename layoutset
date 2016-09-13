@@ -8,8 +8,16 @@
 #  =====
 #  layoutset
 
-# Alt+Ctrl+Backspace restart, no caps lock, toggle via alt+shift
-(setxkbmap lv && sleep 0.1s && setxkbmap -layout 'lv,ru' -option 'grp:alt_shift_toggle' -option 'terminate:ctrl_alt_bksp' -option 'ctrl:nocaps') &
+# Preserve layout for window
+# Requires `sudo apt-get install kbdd`
+if ! pgrep "kbdd" > /dev/null; then
+  if hash kbdd 2>/dev/null; then
+    kbdd
+  fi  
+fi
+
+# Alt+Ctrl+Backspace restart, no caps lock, toggle via alt+shift, blink caps when aliternative layout is on
+(setxkbmap lv && sleep 0.1s && setxkbmap -layout 'lv,ru' -option 'grp:alt_shift_toggle' -option 'terminate:ctrl_alt_bksp' -option 'ctrl:nocaps' -option 'grp_led:caps') &
 
 # Disable insert
 xmodmap -e "keycode 118 ="
@@ -19,10 +27,10 @@ xmodmap -e "clear lock"
 
 # If Apple keyboard plugged in, swap left alt and win and put tilde back to left upper corner
 if lsusb | grep Apple  > /dev/null; then
-  setxkbmap -option 'altwin:swap_lalt_lwin'
+  #setxkbmap -option 'altwin:swap_lalt_lwin'
   xmodmap -e "keycode 94 = grave asciitilde"
   xmodmap -e "keycode 191 = Print Sys_Req"
   
 else
-  setxkbmap -option -option altwin:left_meta_win
+  setxkbmap -option altwin:left_meta_win
 fi

@@ -5,6 +5,7 @@
 #  Script to change your terminal title to user@host when connecting to ssh and changing 
 #  it back after exiting. Additionally sets green prompt on remote host.
 #  Useful for Keepassx and visual distinction to avoid notorious "wrong window" problem.
+#  Also works when connecting Fish → Bash
 
 #  Author: Dmitry (http://dmi3.net)
 #  Source: https://github.com/dmi3/bin

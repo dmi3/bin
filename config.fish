@@ -1,5 +1,5 @@
 function fish_user_key_bindings
-    # Clear input on Ctrl+U
+	  # Clear input on Ctrl+U
     bind \cu 'commandline "";'
     
     # Simulate Ctrl+R in Bash    
@@ -90,26 +90,40 @@ end
 
 function search --description "Search files by mask, case insensitive, output with full path"
   if [ $argv == ""]
-    find $PWD | fzf > /tmp/fzf.result
+    find $PWD 2>/dev/null | fzf > /tmp/fzf.result
     commandline -a (cat /tmp/fzf.result)
     rm -f /tmp/fzf.result
   else
-    find $PWD -iname $argv | fzf
+    find $PWD -iname $argv 2>/dev/null  | fzf
   end    
 end  
 
-function reset_window --description "Reset window size and bring it to main monitor. Useful if DE messes up"
+function reset_window --description  "Reset window size and bring it to main monitor. Useful if DE messes up in multiple monitor configuration"
   wmctrl -r $argv -e 0,0,0,800,600
   wmctrl -a $argv
 end
 
 # Prepend `sudo` to `nano` command if file is not editable by current user
+# Ask if file does no exist
 function nano
+  if not test -e "$argv"
+    read -p "echo 'File $argv does not exist. Ctrl+C to cancel'" -l confirm
+  end
+
   if test -w "$argv"
     /bin/nano -mui $argv
   else
     sudo /bin/nano -mui $argv
   end
+end
+
+function run --description "Make file executable, then run it"
+  chmod +x "$argv"
+  exec "./$argv"
+end
+
+function b --description "Exec command in bash"
+  bash -c "$argv"
 end
 
 # If Sublime Text installed - use it instead of Gedit

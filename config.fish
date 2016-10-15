@@ -1,3 +1,6 @@
+# Instalation
+# wget https://raw.githubusercontent.com/dmi3/bin/master/config.fish -o ~/.config/fish/config.fish
+
 function fish_user_key_bindings
 	  # Clear input on Ctrl+U
     bind \cu 'commandline "";'

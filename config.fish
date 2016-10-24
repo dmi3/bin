@@ -1,4 +1,4 @@
-# Instalation
+# Instalation    
 # wget https://raw.githubusercontent.com/dmi3/bin/master/config.fish -o ~/.config/fish/config.fish
 
 function fish_user_key_bindings
@@ -71,7 +71,7 @@ function mkcd --description "Create and cd to directory"
   and cd $argv
 end
 
-alias git-unpushed-commits='git cherry -v' 
+alias git-show-unpushed-commits='git cherry -v' 
 
 # Fzf stuff https://github.com/junegunn/fzf
 
@@ -111,11 +111,13 @@ end
 function nano
   if not test -e "$argv"
     read -p "echo 'File $argv does not exist. Ctrl+C to cancel'" -l confirm
+    touch "$argv" 2>/dev/null
   end
 
-  if test -w "$argv"
+  if test -w "$argv"    
     /bin/nano -mui $argv
   else
+    echo "Editing $argv requires root permission"
     sudo /bin/nano -mui $argv
   end
 end
@@ -150,4 +152,3 @@ set fish_color_search_match --background=49483E # the color used to highlight hi
 set fish_color_operator FD971F # AE81FF # the color for parameter expansion operators like '*' and '~'
 set fish_color_escape 66D9EF # the color used to highlight character escapes like '\n' and '\x70'
 set fish_color_cwd 66D9EF # the color used for the current working directory in the default prompt
-#set fish_color_autosuggestion FD971F

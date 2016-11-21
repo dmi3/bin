@@ -136,6 +136,18 @@ if [ (which subl)!="" ]
   alias gedit=subl
 end
 
+function subl --description "Starts Sublime Text. Additionally supports piping (i.e. `ls | subl`) and urls (i.e. `subl http://jenkins/logs`)"
+  if [ (expr substr "$argv[1]" 1 4) = "http" ]
+    curl $argv[1] | subl
+  else if not tty >/dev/null
+    set FILENAME (tempfile)
+    cat >"$FILENAME"
+    /opt/sublime_text/sublime_text "$FILENAME" "$argv"
+  else
+    /opt/sublime_text/sublime_text "$argv"
+  end
+end
+
 # https://github.com/benmarten/Monokai_Fish_OSX/blob/master/set_colors.fish
 # https://fishshell.com/docs/current/index.html#variables-color
 

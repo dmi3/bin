@@ -1,5 +1,10 @@
 # Instalation    
-# wget https://raw.githubusercontent.com/dmi3/bin/master/config.fish -o ~/.config/fish/config.fish
+# curl https://raw.githubusercontent.com/dmi3/bin/master/config.fish --create-dirs -o ~/.config/fish/config.fish
+# 
+# bash
+# FZF_VERSION=0.15.9
+# wget -O - https://github.com/junegunn/fzf-bin/releases/download/$FZF_VERSION/fzf-$FZF_VERSION-linux_amd64.tgz | tar -xz -C /tmp/
+# sudo mv /tmp/fzf-$FZF_VERSION-linux_amd64 /usr/bin/fzf
 
 function fish_user_key_bindings
 	  # Clear input on Ctrl+U
@@ -44,15 +49,14 @@ function fish_prompt
     echo (set_color 777)'➤ '
 end
 
-
-
 # Disable greeting
 set -u fish_greeting
 
-# Show next and previous months in cal
+# Show 3 (next and prev) months in cal
+# Start week on monday
 alias cal="ncal -bM3"
 
-# Create missing directories
+# Create missing directories in path
 alias mkdir='mkdir -pv'
 
 # Print full file path
@@ -107,7 +111,7 @@ function reset_window --description  "Reset window size and bring it to main mon
 end
 
 # Prepend `sudo` to `nano` command if file is not editable by current user
-# Ask if file does no exist
+# Warn if file does no exist
 function nano
   if not test -e "$argv"
     read -p "echo 'File $argv does not exist. Ctrl+C to cancel'" -l confirm

@@ -26,7 +26,7 @@ import sys
 
 
 SECRETS = ["anything"] # name of secret i.e. `https://www.protectedtext.com/` → `anything`
-PATH = "/media/backup"
+PATH = "/media/backup/"
 SUCESS_PING_URL = "https://hchk.io/..." # https://healthchecks.io/ url
 SECONDS_IN_DAY = 86400
 

@@ -2,7 +2,7 @@
 
 #  Decription
 #  ===========
-#  Script to simply sync all changes into git repository with one line command. For example publish local changes to github.
+#  Script to simply sync all changes into git repository with one line command. For example publish local changes to Github.
 
 #  Author: Dmitry (http://dmi3.net)
 #  Source: https://github.com/dmi3/bin
@@ -27,7 +27,15 @@ else
 fi
 
 git add $add_arg
-echo "Files in changelist:"
-git diff --name-status HEAD
-read -p "Commit message (or Ctrl+Z/Ctrl+C to cancel): " commit_message
-git commit -a -m "$commit_message" && git push origin master
+
+CHANGED=$(git diff --name-status HEAD)
+if [[ -z $CHANGED ]]; then
+    echo "No changes to commit"
+    exit 0
+fi    
+printf "Files in changelist:\n$CHANGED\n"
+
+read -p "Commit message (or Ctrl+C to cancel): " commit_message
+commit_message=${commit_message:-bump} #default value
+git commit -a -m "$commit_message"
+git push origin master

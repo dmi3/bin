@@ -25,7 +25,6 @@ if [[ $* == "-u" ]]; then
 else
   add_arg="-A"
 fi
-
 git add $add_arg
 
 CHANGED=$(git diff --name-status HEAD)
@@ -36,6 +35,7 @@ fi
 printf "Files in changelist:\n$CHANGED\n"
 
 read -p "Commit message (or Ctrl+C to cancel): " commit_message
-commit_message=${commit_message:-bump} #default value
+commit_message=${commit_message:-bump} #default value if empty
 git commit -a -m "$commit_message"
+
 git push origin master

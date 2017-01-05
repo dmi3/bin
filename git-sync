@@ -14,12 +14,20 @@
 #  Usage
 #  =====
 #  cd folder-with-your-project
+#  git-sync # current dir
+#  git-sync /path/to/repo
 #  git-sync # if you want sync all files
 #  git-sync -u # if you want only sync files explicitly added via `git add filename`
 
+pushd . > /dev/null
+if [ -d $BASH_ARGV ]; then # if last argument is dir
+  echo "Running in dir $BASH_ARGV"
+  cd $BASH_ARGV
+fi
+
 git pull
 
-if [[ $* == "-u" ]]; then
+if [[ $1 == "-u" ]]; then # if  first argument is -u
   echo "Ignoring new files"
   add_arg="-u"
 else
@@ -39,3 +47,5 @@ commit_message=${commit_message:-bump} #default value if empty
 git commit -a -m "$commit_message"
 
 git push origin master
+
+popd

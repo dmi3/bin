@@ -8,6 +8,8 @@
 #  =====
 #  layoutset
 
+udevadm trigger --subsystem-match=input --action=change
+
 # Preserve layout for window
 # Requires `sudo apt-get install kbdd`
 if ! pgrep "kbdd" > /dev/null; then

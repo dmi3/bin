@@ -13,9 +13,8 @@
 
 #  Usage
 #  =====
-#  cd folder-with-your-project
-#  git-sync # current dir
 #  git-sync /path/to/repo
+#  git-sync # current dir
 #  git-sync # if you want sync all files
 #  git-sync -u # if you want only sync files explicitly added via `git add filename`
 
@@ -36,10 +35,10 @@ git add $add_arg
 
 CHANGED=$(git diff --name-status HEAD)
 if [[ -z $CHANGED ]]; then
-    echo "No changes to commit"
+    echo -e "No changes to commit.\nEverything in sync."
     exit 0
 fi    
-printf "Files in changelist:\n$CHANGED\n"
+echo -e "Files in changelist:\n$CHANGED\n"
 
 read -p "Commit message (or Ctrl+C to cancel): " commit_message
 commit_message=${commit_message:-bump} #default value if empty

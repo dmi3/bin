@@ -82,28 +82,26 @@ alias git-show-unpushed-commits='git cherry -v'
 set -x FZF_DEFAULT_OPTS --prompt="⌕ "
 
 function git-checkout-branch --description "Checkout git branch using fuzzy search"
-  git branch | fzf +s +m | sed "s/.* //" > /tmp/fzf.result
-  git checkout (cat /tmp/fzf.result)
-  rm -f /tmp/fzf.result
+  git branch | fzf +s +m | sed "s/.* //" | read -l result; and git checkout $result
 end
 
 function fzf-history-widget
-    history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort > /tmp/fzf.result
-      and commandline (cat /tmp/fzf.result)
+    history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort | read -l result; and commandline $result
     commandline -f repaint
     commandline -f execute
-    rm -f /tmp/fzf.result
 end
 
 function search --description "Search files by mask, case insensitive, output with full path"
   if [ $argv == ""]
-    find $PWD 2>/dev/null | fzf > /tmp/fzf.result
-    commandline -a (cat /tmp/fzf.result)
-    rm -f /tmp/fzf.result
+    find $PWD 2>/dev/null | fzf | read -l result; and commandline -a $result
   else
     find $PWD -iname $argv 2>/dev/null  | fzf
   end    
-end  
+end
+
+function search-gui --description "Search files, and open directory in GUI File Manager. Useful in File Mangagers that lack search-as-you-type"
+  find $PWD 2>/dev/null | fzf | read -l result; and open (dirname $result) &
+end   
 
 function reset_window --description  "Reset window size and bring it to main monitor. Useful if DE messes up in multiple monitor configuration"
   wmctrl -r $argv -e 0,0,0,800,600

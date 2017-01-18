@@ -3,7 +3,7 @@
 # 
 # #!/bin/bash
 # export FZF_VERSION=$(curl -Ls -o /dev/null -w "%{url_effective}" https://github.com/junegunn/fzf-bin/releases/latest | xargs basename)
-# wget -O - https://github.com/junegunn/fzf-bin/releases/download/$FZF_VERSION/fzf-$FZF_VERSION-linux_amd64.tgz | tar -xz -C /tmp/
+# curl -L https://github.com/junegunn/fzf-bin/releases/download/$FZF_VERSION/fzf-$FZF_VERSION-linux_amd64.tgz | tar -xz -C /tmp/
 # sudo mv /tmp/fzf-$FZF_VERSION-linux_amd64 /usr/bin/fzf
 
 function fish_user_key_bindings

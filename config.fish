@@ -11,7 +11,7 @@ function fish_user_key_bindings
     bind \cu 'commandline "";'
     
     # Simulate Ctrl+R in Bash    
-    if [ (which fzf)!="" ]
+    if type -q fzf
       # Use fzf if installed
       bind \cr fzf-history-widget
 
@@ -28,7 +28,7 @@ end
 
 function fish_prompt
     # Transfer history between multiple terminals
-    history --merge
+    history merge
 
     set_color 777 --bold
     echo -n [(pwd)❯
@@ -134,7 +134,7 @@ function b --description "Exec command in bash"
 end
 
 # If Sublime Text installed - use it instead of Gedit
-if [ (which subl)!="" ]
+if type -q subl
   alias gedit=subl
 end
 

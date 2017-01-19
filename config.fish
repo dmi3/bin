@@ -1,10 +1,6 @@
 # Instalation    
 # curl https://raw.githubusercontent.com/dmi3/bin/master/config.fish --create-dirs -o ~/.config/fish/config.fish
-# 
-# #!/bin/bash
-# export FZF_VERSION=$(curl -Ls -o /dev/null -w "%{url_effective}" https://github.com/junegunn/fzf-bin/releases/latest | xargs basename)
-# curl -L https://github.com/junegunn/fzf-bin/releases/download/$FZF_VERSION/fzf-$FZF_VERSION-linux_amd64.tgz | tar -xz -C /tmp/
-# sudo mv /tmp/fzf-$FZF_VERSION-linux_amd64 /usr/bin/fzf
+# fish -c update-fzf
 
 function fish_user_key_bindings
 	  # Clear input on Ctrl+U
@@ -19,6 +15,7 @@ function fish_user_key_bindings
       bind \ce search
     else
       # Use poor man completion (as up arrow, without search-as-you-type)
+      echo "➤ fzf is not installed. To greatly improve Ctrl+R and Ctrl+E type `update-fzf`"
       bind \cr history-search-backward
     end      
 
@@ -126,10 +123,10 @@ end
 
 function run --description "Make file executable, then run it"
   chmod +x "$argv"
-  exec "./$argv"
+  eval "./$argv"
 end
 
-function b --description "Exec command in bash"
+function b --description "Exec command in bash. Useful when copy-pasting commands with fish imcompatible syntax"
   bash -c "$argv"
 end
 
@@ -148,6 +145,12 @@ function subl --description "Starts Sublime Text. Additionally supports piping (
   else
     /opt/sublime_text/sublime_text "$argv"
   end
+end
+
+function update-fzf --description "Installs or updates fzf"
+  set FZF_VERSION (curl -Ls -o /dev/null -w "%{url_effective}" https://github.com/junegunn/fzf-bin/releases/latest | xargs basename)
+  curl -L https://github.com/junegunn/fzf-bin/releases/download/$FZF_VERSION/fzf-$FZF_VERSION-linux_amd64.tgz | tar -xz -C /tmp/
+  sudo -p "Root password to install fzf: " mv /tmp/fzf-$FZF_VERSION-linux_amd64 /usr/bin/fzf
 end
 
 # https://github.com/benmarten/Monokai_Fish_OSX/blob/master/set_colors.fish

@@ -15,11 +15,11 @@ function fish_user_key_bindings
       bind \ce search
     else
       # Use poor man completion (as up arrow, without search-as-you-type)
-      echo "➤ fzf is not installed. To greatly improve Ctrl+R and Ctrl+E type `update-fzf`"
+      echo "⚠ fzf is not installed. To greatly improve Ctrl+R and Ctrl+E type `update-fzf`"
       bind \cr history-search-backward
     end      
 
-    # Send terminate on Ctrl+Shift+C to free Ctrl+C for copy
+    # Send terminate on Ctrl+Shift+C to free Ctrl+C for copy (in terminal settings).
     stty intr \^C
 end
 
@@ -78,10 +78,6 @@ alias git-show-unpushed-commits='git cherry -v'
 
 set -x FZF_DEFAULT_OPTS --prompt="⌕ "
 
-function git-checkout-branch --description "Checkout git branch using fuzzy search"
-  git branch | fzf +s +m | sed "s/.* //" | read -l result; and git checkout $result
-end
-
 function fzf-history-widget
     history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort | read -l result; and commandline $result
     commandline -f repaint
@@ -126,7 +122,7 @@ function run --description "Make file executable, then run it"
   eval "./$argv"
 end
 
-function b --description "Exec command in bash. Useful when copy-pasting commands with fish imcompatible syntax"
+function b --description "Exec command in bash. Useful when copy-pasting commands with imcompatible syntax to fish "
   bash -c "$argv"
 end
 

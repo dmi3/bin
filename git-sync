@@ -42,6 +42,6 @@ echo -e "Files in changelist:\n$CHANGED\n"
 
 read -p "Commit message (or Ctrl+C to cancel): " commit_message
 commit_message=${commit_message:-bump} #default value if empty
-git commit -a -m "$commit_message"
+git commit -a -m "$commit_message" --author=dmi3
 
 git push origin master

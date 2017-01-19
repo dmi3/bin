@@ -1,3 +1,4 @@
+# Fish config with awesome prompt, unicode symbols, better fzf integration and lot of handy functions.
 # Instalation    
 # curl https://raw.githubusercontent.com/dmi3/bin/master/config.fish --create-dirs -o ~/.config/fish/config.fish
 # fish -c update-fzf
@@ -25,7 +26,8 @@ end
 
 function fish_prompt
     # Transfer history between multiple terminals
-    history merge
+    # history save
+    # history merge
 
     set_color 777 --bold
     echo -n [(pwd)❯

@@ -1,7 +1,15 @@
-# Fish config with awesome prompt, unicode symbols, better fzf integration and lot of handy functions.
-# Instalation    
-# curl https://raw.githubusercontent.com/dmi3/bin/master/config.fish --create-dirs -o ~/.config/fish/config.fish
-# fish -c update-fzf
+#  Decription
+#  ----------
+#  Fish config with awesome prompt, unicode symbols, better fzf integration and lot of handy functions.
+
+#  Author: Dmitry (http://dmi3.net)
+#  Source: https://github.com/dmi3/bin
+
+#  Instalation    
+#  ----------
+#  [Install fish](http://fishshell.com/#platform_tabs)
+#  curl https://raw.githubusercontent.com/dmi3/bin/master/config.fish --create-dirs -o ~/.config/fish/config.fish
+#  fish -c update-fzf
 
 function fish_user_key_bindings
 	  # Clear input on Ctrl+U

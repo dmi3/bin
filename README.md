@@ -29,19 +29,17 @@ Run from commandline or add to cron
 <hr/>
 
 # [config.fish](https://github.com/dmi3/bin/blob/master/config.fish)
+Decription
+----------
+Fish config with awesome prompt, unicode symbols, better fzf integration and lot of handy functions.
+Instalation    
+----------
+[Install fish](http://fishshell.com/#platform_tabs)
+curl https://raw.githubusercontent.com/dmi3/bin/master/config.fish --create-dirs -o ~/.config/fish/config.fish
+fish -c update-fzf
 <hr/>
 
-# [doom](https://github.com/dmi3/bin/blob/master/doom)
-Decription
------------
-Script to run gzdoom with various configurations/wads. Selectable via dmenu
-Requirements
-------------
-sudo apt-get install gzdoom dmenu python3 python3-setuptools
-sudo easy_install3 sh
-Usage
------
-doom
+# [generate-readme.fish](https://github.com/dmi3/bin/blob/master/generate-readme.fish)
 <hr/>
 
 # [git-sync](https://github.com/dmi3/bin/blob/master/git-sync)
@@ -98,16 +96,6 @@ Script to set keyboard layout depending if its Apple or regular keyboard + some 
 Usage
 -----
 layoutset
-<hr/>
-
-# [notify-append](https://github.com/dmi3/bin/blob/master/notify-append)
-Decription
------------
-Script to run append Notify OSD messages as shown on http://thexnews.com/uploads/notify.gif
-Since x-canonical-append is broken in notify-send for example in Skype you will wait forever untill all messages are shown
-This script makes new messages shown in same notification window bellow the already shown
-Created as addition to notify-send. Use notify-send when you want to send notification and notify-append when you want append or replace it.
-Readme in russian: http://thexnews.com/p/554
 <hr/>
 
 # [skypenotify](https://github.com/dmi3/bin/blob/master/skypenotify)

@@ -5,7 +5,7 @@
 #  Author: Dmitry (http://dmi3.net)
 #  Source: https://github.com/dmi3/bin
 
-#  Instalation    
+#  Instalation
 #  ----------
 #  [Install fish](http://fishshell.com/#platform_tabs)
 #  curl https://raw.githubusercontent.com/dmi3/bin/master/config.fish --create-dirs -o ~/.config/fish/config.fish

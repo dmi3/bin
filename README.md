@@ -14,15 +14,10 @@ sudo apt-get install twistd pm-utils
 
 Usage
 -----
-
 wget https://raw.githubusercontent.com/dmi3/bin/aliases.bash --no-check-certificate -O ~/bin/aliases.bash
-
 echo "source ~/bin/aliases.bash" >> ~/.bashrc
-
 To make bash more usable you probably want to install https://github.com/mrzool/bash-sensible
-
 To make this work across remote machines, you also may want to install https://github.com/Russell91/sshrc 
-
 <hr/>
 
 # [backup_protectedtext.py](https://github.com/dmi3/bin/blob/master/backup_protectedtext.py)

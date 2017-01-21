@@ -14,10 +14,15 @@ sudo apt-get install twistd pm-utils
 
 Usage
 -----
+
 wget https://raw.githubusercontent.com/dmi3/bin/aliases.bash --no-check-certificate -O ~/bin/aliases.bash
+
 echo "source ~/bin/aliases.bash" >> ~/.bashrc
+
 To make bash more usable you probably want to install https://github.com/mrzool/bash-sensible
+
 To make this work across remote machines, you also may want to install https://github.com/Russell91/sshrc 
+
 <hr/>
 
 # [backup_protectedtext.py](https://github.com/dmi3/bin/blob/master/backup_protectedtext.py)
@@ -67,25 +72,27 @@ fish -c update-fzf
 # [git-sync](https://github.com/dmi3/bin/blob/master/git-sync)
 
 Decription
------------
+----------
 
 Script to simply sync all changes into git repository with one line command. For example publish local changes to Github.
 
 Requirements
-------------
+----------
 
 sudo apt-get install git
+
+[Setup mergetool](https://developer.atlassian.com/blog/2015/12/tips-tools-to-solve-git-conflicts/)
 
 Usage
 -----
 
-git-sync /path/to/repo
+    git-sync /path/to/repo
 
-git-sync # current dir
+    git-sync # current dir
 
-git-sync # if you want sync all files
+    git-sync # if you want sync all files
 
-git-sync -u # if you want only sync files explicitly added via `git add filename`
+    git-sync -u # if you want only sync files explicitly added via `git add filename`
 
 <hr/>
 

@@ -1,24 +1,25 @@
 #!/bin/bash
 
 #  Decription
-#  ===========
+#  ----------
 #  Script to simply sync all changes into git repository with one line command. For example publish local changes to Github.
 
 #  Author: Dmitry (http://dmi3.net)
 #  Source: https://github.com/dmi3/bin
 
 #  Requirements
-#  ============
+#  ----------
 #  sudo apt-get install git
+#  [Setup mergetool](https://developer.atlassian.com/blog/2015/12/tips-tools-to-solve-git-conflicts/)
 
 #  Usage
-#  =====
-#  git-sync /path/to/repo
-#  git-sync # current dir
-#  git-sync # if you want sync all files
-#  git-sync -u # if you want only sync files explicitly added via `git add filename`
+#  -----
+#      git-sync /path/to/repo
+#      git-sync # current dir
+#      git-sync # if you want sync all files
+#      git-sync -u # if you want only sync files explicitly added via `git add filename`
 
-if [ -d $BASH_ARGV ]; then # if last argument is dir
+if [ "$BASH_ARGV" != "" ] && [ -d $BASH_ARGV ]; then # if last argument is dir
   echo "Running in dir $BASH_ARGV"
   cd $BASH_ARGV
 fi
@@ -44,4 +45,7 @@ read -p "Commit message (or Ctrl+C to cancel): " commit_message
 commit_message=${commit_message:-bump} #default value if empty
 git commit -a -m "$commit_message"
 
-git push origin master
+# Try to push, if no sucess run merge and push again
+git push origin master || git pull || git mergetool && git commit -a -m "merging" && git push origin master
+
+

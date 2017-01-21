@@ -236,6 +236,42 @@ timer 6 # i.e. notify after 6 minutes
 
 <hr/>
 
+# [todo](https://github.com/dmi3/bin/blob/master/todo)
+
+Decription
+----------
+
+Wrapper for [wl](https://github.com/robdimsdale/wl/releases) for adding todos with more convenient syntax
+
+[Read More](https://developer.run/15)
+
+Requirements
+------------
+
+⚠ fish shell > 2.3.0
+
+Instalation
+-----------
+
+1. https://developer.wunderlist.com/apps
+
+2. [CREATE APP] (Put https://wunderlist.com to both `APP URL` and `AUTH CALLBACK URL`)
+
+3. Set enviroment variables in this file (line 29)
+
+4. Add more list shortcuts (line 38)
+
+Usage
+-----
+
+     todo buy stuff --life --on next monday
+
+     todo resolve issue --work --star
+
+     todo --work meet customer --on jan 7
+
+<hr/>
+
 # [volume](https://github.com/dmi3/bin/blob/master/volume)
 
 Decription

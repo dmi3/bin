@@ -1,0 +1,53 @@
+#!/usr/bin/fish
+
+#  Decription
+#  ----------
+#  Wrapper for [wl](https://github.com/robdimsdale/wl/releases) for adding todos with more convenient syntax
+#  [Read More](https://developer.run/15)
+
+#  Author: Dmitry (http://dmi3.net)
+#  Source: https://github.com/dmi3/bin
+
+#  Requirements
+#  ------------
+#  ⚠ fish shell > 2.3.0
+
+#  Instalation
+#  -----------
+#  1. https://developer.wunderlist.com/apps
+#  2. [CREATE APP] (Put https://wunderlist.com to both `APP URL` and `AUTH CALLBACK URL`)
+#  3. Set enviroment variables in this file (line 29)
+#  4. Add more list shortcuts (line 38)
+
+
+#  Usage
+#  -----
+#       todo buy stuff --life --on next monday
+#       todo resolve issue --work --star
+#       todo --work meet customer --on jan 7
+
+set -x WL_CLIENT_ID 0000000 # CLIENT ID from https://developer.wunderlist.com/apps
+set -x WL_ACCESS_TOKEN 0000000 # [CREATE ACCESS TOKEN] in https://developer.wunderlist.com/apps
+set LIST 0000000 # Default list (get id by running `wl inbox`)
+
+set STAR false
+set DATEFMT "+%Y-%m-%d"
+set DATE (date $DATEFMT)
+
+contains -- "--life" $argv; and set LIST 0000000 
+contains -- "--work" $argv; and set LIST 0000000 
+# Add more lists here (use `wl lists` to get ids)
+contains -- "--star" $argv; and set STAR true
+contains -- "--tomorrow" $argv; and set DATE (date $DATEFMT --date="tomorrow")
+contains -- "--on" $argv; and set DATE (date $DATEFMT --date=(string replace -r -- ".*--on\s" "" "$argv")) # date --date="next Friday"
+
+set TITLE (string replace -ra "\-\-\w*\s?" "" -- "$argv" | string trim) #remove arguments starting with --
+
+if not type -q wl
+  set WL_VERSION (curl -Ls -o /dev/null -w "%{url_effective}" https://github.com/robdimsdale/wl/releases/latest | xargs basename | string trim -c "v")
+  echo "⚠ wl is not found. Installing $WL_VERSION."
+  curl -L https://github.com/robdimsdale/wl/releases/download/v$WL_VERSION/wl-linux-amd64-$WL_VERSION -o /tmp/wl
+  chmod +x /tmp/wl; sudo -p "Root password to install wl: " mv /tmp/wl /usr/bin/wl; 
+end  
+
+wl create-task --title="$TITLE" --dueDate=$DATE --listID=$LIST --starred=$STAR

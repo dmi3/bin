@@ -65,6 +65,10 @@ fish -c update-fzf
 
 <hr/>
 
+# [config/fish/completions/todo.fish](https://github.com/dmi3/bin/blob/master/config/fish/completions/todo.fish)
+
+<hr/>
+
 # [generate-readme.fish](https://github.com/dmi3/bin/blob/master/generate-readme.fish)
 
 <hr/>
@@ -247,21 +251,24 @@ Decription
 
 Wrapper for [wl](https://github.com/robdimsdale/wl/releases) for adding todos with more convenient syntax
 
-Requirements
-------------
-
-⚠ fish shell > 2.3.0
+[Read More](http://developer.run/15)
 
 Instalation
 -----------
 
-1. https://developer.wunderlist.com/apps
+1. ⚠ Make sure [Fish shell](http://fishshell.com/#platform_tabs) > 2.3.0
 
-2. [CREATE APP] (Put https://wunderlist.com to both `APP URL` and `AUTH CALLBACK URL`)
+2. `curl https://raw.githubusercontent.com/dmi3/bin/master/todo --create-dirs -o ~/bin/todo`
 
-3. Set enviroment variables in this file (line 29)
+3. `curl https://raw.githubusercontent.com/dmi3/bin/master/config/fish/completions/todo.fish --create-dirs -o ~/.config/fish/completions/todo.fish`
 
-4. Add more list shortcuts (line 38)
+4. <https://developer.wunderlist.com/apps>
+
+5. [CREATE APP] (Put https://wunderlist.com to both `APP URL` and `AUTH CALLBACK URL`)
+
+6. Set enviroment variables in this file (line 30)
+
+7. Add more list shortcuts (line 38)
 
 Usage
 -----

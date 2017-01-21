@@ -1,9 +1,11 @@
 #!/usr/bin/fish
 
+#  Wunderlist CLI client
+#  =====================
+
 #  Decription
 #  ----------
 #  Wrapper for [wl](https://github.com/robdimsdale/wl/releases) for adding todos with more convenient syntax
-#  [Read More](https://developer.run/15)
 
 #  Author: Dmitry (http://dmi3.net)
 #  Source: https://github.com/dmi3/bin

@@ -238,12 +238,14 @@ timer 6 # i.e. notify after 6 minutes
 
 # [todo](https://github.com/dmi3/bin/blob/master/todo)
 
+Wunderlist CLI client
+
+---------------------
+
 Decription
 ----------
 
 Wrapper for [wl](https://github.com/robdimsdale/wl/releases) for adding todos with more convenient syntax
-
-[Read More](https://developer.run/15)
 
 Requirements
 ------------

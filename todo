@@ -1,6 +1,6 @@
 #!/usr/bin/fish
 
-#  Wunderlist CLI client
+#  Wunderlist CLI for adding todos
 #  =====================
 
 #  Decription
@@ -17,9 +17,9 @@
 #  2. `curl https://raw.githubusercontent.com/dmi3/bin/master/todo --create-dirs -o ~/bin/todo`
 #  3. `curl https://raw.githubusercontent.com/dmi3/bin/master/config/fish/completions/todo.fish --create-dirs -o ~/.config/fish/completions/todo.fish`
 #  4. <https://developer.wunderlist.com/apps>
-#  5. [CREATE APP] (Put https://wunderlist.com to both `APP URL` and `AUTH CALLBACK URL`)
-#  6. Set enviroment variables in this file (line 30)
-#  7. Add more list shortcuts (line 38)
+#  5. `[CREATE APP]` (Put https://wunderlist.com to both `APP URL` and `AUTH CALLBACK URL`)
+#  6. Set enviroment variables in this script ↓ (line 31)
+#  7. Add more list shortcuts ↓ (line 39)
 
 
 #  Usage

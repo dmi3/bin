@@ -159,6 +159,13 @@ function update-fzf --description "Installs or updates fzf"
   sudo -p "Root password to install fzf: " mv /tmp/fzf-$FZF_VERSION-linux_amd64 /usr/bin/fzf
 end
 
+function generate-password --description "Generate random password" --argument-names 'length'
+  if test -z "$length"
+      set length 13
+  end  
+  head /dev/urandom | tr -dc A-Za-z0-9 | head -c $length | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
+end
+
 # https://github.com/benmarten/Monokai_Fish_OSX/blob/master/set_colors.fish
 # https://fishshell.com/docs/current/index.html#variables-color
 

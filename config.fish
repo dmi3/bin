@@ -167,6 +167,9 @@ end
 # Shows real ip
 alias myip='curl ifconfig.co'
 
+# Like whoami but shows your ip and geolocation
+alias whereami='curl ifconfig.co/json'
+
 # Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
 alias copy='xclip -sel clip'
 

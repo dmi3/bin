@@ -42,7 +42,7 @@ fi
 echo -e "Files in changelist:\n$CHANGED\nCancel and run 'git difftool HEAD'/'git diff HEAD' to review changes."
 
 read -p "Commit message (or Ctrl+C to cancel): " commit_message
-test -z "$commit_message" && commit_message="bump" #default value if empty
+test -n "$commit_message" || commit_message="bump" #default value if empty
 git commit -a -m "$commit_message"
 
 # Try to push, if no sucess run merge and push again

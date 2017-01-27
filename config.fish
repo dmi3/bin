@@ -33,10 +33,6 @@ function fish_user_key_bindings
 end
 
 function fish_prompt
-    # Transfer history between multiple terminals
-    # history save
-    # history merge
-
     set_color 777 --bold
     echo -n [(pwd)❯
     
@@ -160,8 +156,8 @@ function update-fzf --description "Installs or updates fzf"
 end
 
 function generate-password --description "Generate random password" --argument-names 'length'
-  test -z "$length"; and set length 13
-  head /dev/urandom | tr -dc A-Za-z0-9 | head -c $length | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
+  test -n "$length"; or set length 13
+  head /dev/urandom | tr -dc "[:graph:]" | head -c $length | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
 end
 
 # Shows real ip
@@ -172,6 +168,11 @@ alias whereami='curl ifconfig.co/json'
 
 # Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
 alias copy='xclip -sel clip'
+
+function xsh --description "Prepend this to command to explain its syntax in browser i.e. `xsh iptables -vnL --line-numbers`"
+  w3m -o confirm_qq=false "http://explainshell.com/explain?cmd=$argv"
+  # replace open to w3m to view explanation in terminal
+end
 
 # https://github.com/benmarten/Monokai_Fish_OSX/blob/master/set_colors.fish
 # https://fishshell.com/docs/current/index.html#variables-color

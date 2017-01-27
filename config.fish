@@ -160,11 +160,15 @@ function update-fzf --description "Installs or updates fzf"
 end
 
 function generate-password --description "Generate random password" --argument-names 'length'
-  if test -z "$length"
-      set length 13
-  end  
+  test -z "$length"; and set length 13
   head /dev/urandom | tr -dc A-Za-z0-9 | head -c $length | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
 end
+
+# Shows real ip
+alias myip='curl ifconfig.co'
+
+# Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
+alias copy='xclip -sel clip'
 
 # https://github.com/benmarten/Monokai_Fish_OSX/blob/master/set_colors.fish
 # https://fishshell.com/docs/current/index.html#variables-color

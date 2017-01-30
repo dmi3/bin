@@ -160,18 +160,27 @@ function generate-password --description "Generate random password" --argument-n
   head /dev/urandom | tr -dc "[:graph:]" | head -c $length | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
 end
 
-# Shows real ip
+# Shows external ip
 alias myip='curl ifconfig.co'
 
-# Like whoami but shows your ip and geolocation
+# Like whoami but shows your external ip and geolocation
 alias whereami='curl ifconfig.co/json'
 
 # Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
 alias copy='xclip -sel clip'
 
+function weather --description "Show weather"
+  resize -s $LINES 125
+  curl wttr.in/$argv
+end
+
 function xsh --description "Prepend this to command to explain its syntax in browser i.e. `xsh iptables -vnL --line-numbers`"
   w3m -o confirm_qq=false "http://explainshell.com/explain?cmd=$argv"
   # replace open to w3m to view explanation in terminal
+end
+
+function transfer --description "Upload file to transfer.sh"
+  curl --progress-bar --upload-file $argv https://transfer.sh/(basename $argv)   
 end
 
 # https://github.com/benmarten/Monokai_Fish_OSX/blob/master/set_colors.fish

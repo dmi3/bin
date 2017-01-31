@@ -155,10 +155,21 @@ function update-fzf --description "Installs or updates fzf"
   sudo -p "Root password to install fzf: " mv /tmp/fzf-$FZF_VERSION-linux_amd64 /usr/bin/fzf
 end
 
-function generate-password --description "Generate random password" --argument-names 'length'
+function random-password --description "Generate random password" --argument-names 'length'
   test -n "$length"; or set length 13
   head /dev/urandom | tr -dc "[:graph:]" | head -c $length | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
 end
+
+function random-name
+  curl www.pseudorandom.name
+end
+
+function random-email 
+  set email (echo -e "@notmailinator.com\n@veryrealemail.com\n@chammy.info\n@tradermail.info" | shuf -n1)
+  set name (curl -s www.pseudorandom.name | string replace ' ' '')
+  echo "$name$email"
+  echo "https://www.mailinator.com/inbox2.jsp?public_to=$name$email"
+end 
 
 # Shows external ip
 alias myip='curl ifconfig.co'

@@ -71,7 +71,10 @@ alias du='du -ch'
 alias free='free -m'
 
 alias poweroff='shutdown -P now'
-alias reboot='shutdown -r now'  
+alias reboot='shutdown -r now'
+
+# Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
+alias copy='xclip -sel clip'
 
 function mkcd --description "Create and cd to directory"
   mkdir $argv
@@ -96,6 +99,12 @@ function search --description "Search files by mask, case insensitive, output wi
   else
     find $PWD -iname $argv 2>/dev/null  | fzf
   end    
+end
+
+function update-fzf --description "Installs or updates fzf"
+  set FZF_VERSION (curl -Ls -o /dev/null -w "%{url_effective}" https://github.com/junegunn/fzf-bin/releases/latest | xargs basename)
+  curl -L https://github.com/junegunn/fzf-bin/releases/download/$FZF_VERSION/fzf-$FZF_VERSION-linux_amd64.tgz | tar -xz -C /tmp/
+  sudo -p "Root password to install fzf: " mv /tmp/fzf-$FZF_VERSION-linux_amd64 /usr/bin/fzf
 end
 
 function search-gui --description "Search files, and open directory in GUI File Manager. Useful in File Mangagers that lack search-as-you-type"
@@ -149,36 +158,29 @@ function subl --description "Starts Sublime Text. Additionally supports piping (
   end
 end
 
-function update-fzf --description "Installs or updates fzf"
-  set FZF_VERSION (curl -Ls -o /dev/null -w "%{url_effective}" https://github.com/junegunn/fzf-bin/releases/latest | xargs basename)
-  curl -L https://github.com/junegunn/fzf-bin/releases/download/$FZF_VERSION/fzf-$FZF_VERSION-linux_amd64.tgz | tar -xz -C /tmp/
-  sudo -p "Root password to install fzf: " mv /tmp/fzf-$FZF_VERSION-linux_amd64 /usr/bin/fzf
-end
-
-function random-password --description "Generate random password" --argument-names 'length'
-  test -n "$length"; or set length 13
-  head /dev/urandom | tr -dc "[:graph:]" | head -c $length | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
-end
-
-function random-name
-  curl www.pseudorandom.name
-end
-
-function random-email 
-  set email (echo -e "@notmailinator.com\n@veryrealemail.com\n@chammy.info\n@tradermail.info" | shuf -n1)
-  set name (curl -s www.pseudorandom.name | string replace ' ' '')
-  echo "$name$email"
-  echo "https://www.mailinator.com/inbox2.jsp?public_to=$name$email"
-end 
-
 # Shows external ip
 alias myip='curl ifconfig.co'
 
 # Like whoami but shows your external ip and geolocation
 alias whereami='curl ifconfig.co/json'
 
-# Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
-alias copy='xclip -sel clip'
+# Web services
+
+function random-name
+  curl www.pseudorandom.name
+end
+
+function random-email 
+  set domain (echo -e "notmailinator.com\veryrealemail.com\nchammy.info\ntradermail.info\nmailinater.com\nsuremail.info\nreconmail.com" | shuf -n1)
+  set email (curl -s www.pseudorandom.name | string replace ' ' '')@$domain
+  printf "$email" | tee /dev/tty | xclip -sel clip
+  echo -e "\ncopied to clipboard\nhttps://www.mailinator.com/inbox2.jsp?public_to=$email"
+end 
+
+function random-password --description "Generate random password" --argument-names 'length'
+  test -n "$length"; or set length 13
+  head /dev/urandom | tr -dc "[:graph:]" | head -c $length | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
+end
 
 function weather --description "Show weather"
   resize -s $LINES 125
@@ -193,6 +195,8 @@ end
 function transfer --description "Upload file to transfer.sh"
   curl --progress-bar --upload-file $argv https://transfer.sh/(basename $argv)   
 end
+
+# Colors
 
 # https://github.com/benmarten/Monokai_Fish_OSX/blob/master/set_colors.fish
 # https://fishshell.com/docs/current/index.html#variables-color

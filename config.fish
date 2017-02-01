@@ -174,9 +174,9 @@ function weather --description "Show weather"
   curl wttr.in/$argv
 end
 
-function xsh --description "Prepend this to command to explain its syntax in browser i.e. `xsh iptables -vnL --line-numbers`"
+function xsh --description "Prepend this to command to explain its syntax i.e. `xsh iptables -vnL --line-numbers`"
   w3m -o confirm_qq=false "http://explainshell.com/explain?cmd=$argv"
-  # replace open to w3m to view explanation in terminal
+  # replace w3m to any browser like chrome
 end
 
 function transfer --description "Upload file to transfer.sh"

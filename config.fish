@@ -171,7 +171,14 @@ function random-name
 end
 
 function random-email 
-  set domain (echo -e "notmailinator.com\veryrealemail.com\nchammy.info\ntradermail.info\nmailinater.com\nsuremail.info\nreconmail.com" | shuf -n1)
+  set domain (echo -e \
+"notmailinator.com
+veryrealemail.com
+chammy.info
+tradermail.info
+mailinater.com
+suremail.info
+reconmail.com" | shuf -n1)
   set email (curl -s www.pseudorandom.name | string replace ' ' '')@$domain
   printf "$email" | tee /dev/tty | xclip -sel clip
   echo -e "\ncopied to clipboard\nhttps://www.mailinator.com/inbox2.jsp?public_to=$email"

@@ -78,14 +78,14 @@ fish -c update-fzf
 Decription
 ----------
 
-Script to simply sync all changes into git repository with one line command. For example publish local changes to Github.
+Script to simply sync all changes into git repository with one command. For example publish local changes to Github.
 
 Requirements
 ----------
 
-sudo apt-get install git
+1. sudo apt-get install git
 
-[Setup mergetool](https://developer.atlassian.com/blog/2015/12/tips-tools-to-solve-git-conflicts/)
+2. [Setup mergetool](https://developer.atlassian.com/blog/2015/12/tips-tools-to-solve-git-conflicts/#parade-of-merge-tools)
 
 Usage
 -----
@@ -194,6 +194,43 @@ skypenotify "%sname" "%smessage"
 
 <hr/>
 
+# [snippy.sh](https://github.com/dmi3/bin/blob/master/snippy.sh)
+
+Decription
+----------
+
+Text Snippet expander. Simulates cut→replace→paste so works in almost any application. Examples:
+
+* Type `->`, press hotkey, get `→`. 
+
+* Type `thx`, press hotkey, get `Thank you`.
+
+Original idea [sessy](https://bbs.archlinux.org/viewtopic.php?id-71938), and [Linux Magazine](http://www.linux-magazine.com/Issues/2014/162/Workspace-Text-Expander) with following improvements:
+
+* Works as keybinding in Compiz/Unity/Openbox
+
+* Does not goes crazy if keybinding includes Ctrl, Alt, Shift...
+
+* Works in Sublime Text/IntelliJ Idea/Chrome
+
+* Expands snippets without space i.e. `30eur` → `30€`
+
+* Expands snippets without symbols i.e. `->` → `→``
+
+* Works with Ubuntu 16.04
+
+Requirements
+----------
+
+`sudo apt-get install xdotool xclip xsel`
+
+Usage
+-----
+
+Bind script to hotkey in your DE. Shift+Tab recommended.
+
+<hr/>
+
 # [sssh](https://github.com/dmi3/bin/blob/master/sssh)
 
 Decription
@@ -242,7 +279,7 @@ timer 6 # i.e. notify after 6 minutes
 
 # [todo](https://github.com/dmi3/bin/blob/master/todo)
 
-Wunderlist CLI client
+Wunderlist CLI for adding todos
 
 ---------------------
 
@@ -264,11 +301,11 @@ Instalation
 
 4. <https://developer.wunderlist.com/apps>
 
-5. [CREATE APP] (Put https://wunderlist.com to both `APP URL` and `AUTH CALLBACK URL`)
+5. `[CREATE APP]` (Put https://wunderlist.com to both `APP URL` and `AUTH CALLBACK URL`)
 
-6. Set enviroment variables in this file (line 30)
+6. Set enviroment variables in this script ↓ (line 31)
 
-7. Add more list shortcuts (line 38)
+7. Add more list shortcuts ↓ (line 39)
 
 Usage
 -----

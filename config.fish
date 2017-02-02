@@ -11,6 +11,10 @@
 #  curl https://raw.githubusercontent.com/dmi3/bin/master/config.fish --create-dirs -o ~/.config/fish/config.fish
 #  fish -c update-fzf
 
+#
+# Fish config
+#
+
 function fish_user_key_bindings
 	  # Clear input on Ctrl+U
     bind \cu 'commandline "";'
@@ -55,8 +59,11 @@ end
 # Disable greeting
 set -u fish_greeting
 
-# Show 3 (next and prev) months in cal
-# Start week on monday
+#
+# Useful aliases
+#
+
+# Show 3 (next and prev) months in cal, start week on monday
 alias cal="ncal -bM3"
 
 # Create missing directories in path
@@ -83,7 +90,9 @@ end
 
 alias git-show-unpushed-commits='git cherry -v' 
 
-# Fzf stuff https://github.com/junegunn/fzf
+#
+# Fzf stuff (https://github.com/junegunn/fzf)
+#
 
 set -x FZF_DEFAULT_OPTS --prompt="⌕ "
 
@@ -109,7 +118,11 @@ end
 
 function search-gui --description "Search files, and open directory in GUI File Manager. Useful in File Mangagers that lack search-as-you-type"
   find $PWD 2>/dev/null | fzf | read -l result; and open (dirname $result) &
-end   
+end
+
+#
+# Util improvements
+#
 
 function reset_window --description  "Reset window size and bring it to main monitor. Useful if DE messes up in multiple monitor configuration"
   wmctrl -r $argv -e 0,0,0,800,600
@@ -158,19 +171,21 @@ function subl --description "Starts Sublime Text. Additionally supports piping (
   end
 end
 
+#
+# Web services
+#
+
 # Shows external ip
 alias myip='curl ifconfig.co'
 
 # Like whoami but shows your external ip and geolocation
 alias whereami='curl ifconfig.co/json'
 
-# Web services
-
 function random-name
   curl www.pseudorandom.name
 end
 
-function random-email 
+function random-email --description "Copy random email in one of Mailinator subdomains and provide link to check it"
   set domain (echo -e \
 "notmailinator.com
 veryrealemail.com
@@ -194,17 +209,27 @@ function weather --description "Show weather"
   curl wttr.in/$argv
 end
 
-function xsh --description "Prepend this to command to explain its syntax in browser i.e. `xsh iptables -vnL --line-numbers`"
+function xsh --description "Prepend this to command to explain its syntax i.e. `xsh iptables -vnL --line-numbers`"
   w3m -o confirm_qq=false "http://explainshell.com/explain?cmd=$argv"
-  # replace open to w3m to view explanation in terminal
+  # replace w3m to any browser like chrome
 end
 
 function transfer --description "Upload file to transfer.sh"
   curl --progress-bar --upload-file $argv https://transfer.sh/(basename $argv)   
 end
 
-# Colors
+#sudo apt-get install libtranslate-bin
+function translate-ru
+  echo "$argv" | translate-bin -s google -t ru
+end
 
+function translate-en
+  echo "$argv" | translate-bin -s google -f ru -t en
+end
+
+
+#
+# Color configuration
 # https://github.com/benmarten/Monokai_Fish_OSX/blob/master/set_colors.fish
 # https://fishshell.com/docs/current/index.html#variables-color
 

@@ -122,7 +122,7 @@ end
 
 #
 # Util improvements
-#   
+#
 
 function reset_window --description  "Reset window size and bring it to main monitor. Useful if DE messes up in multiple monitor configuration"
   wmctrl -r $argv -e 0,0,0,800,600
@@ -186,7 +186,14 @@ function random-name
 end
 
 function random-email --description "Copy random email in one of Mailinator subdomains and provide link to check it"
-  set domain (echo -e "notmailinator.com\veryrealemail.com\nchammy.info\ntradermail.info\nmailinater.com\nsuremail.info\nreconmail.com" | shuf -n1)
+  set domain (echo -e \
+"notmailinator.com
+veryrealemail.com
+chammy.info
+tradermail.info
+mailinater.com
+suremail.info
+reconmail.com" | shuf -n1)
   set email (curl -s www.pseudorandom.name | string replace ' ' '')@$domain
   printf "$email" | tee /dev/tty | xclip -sel clip
   echo -e "\ncopied to clipboard\nhttps://www.mailinator.com/inbox2.jsp?public_to=$email"

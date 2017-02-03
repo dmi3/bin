@@ -212,11 +212,11 @@ function transfer --description "Upload file to transfer.sh"
 end
 
 #sudo apt-get install libtranslate-bin
-function translate-ru
+function tru
   echo "$argv" | translate-bin -s google -t ru
 end
 
-function translate-en
+function ten
   echo "$argv" | translate-bin -s google -f ru -t en
 end
 

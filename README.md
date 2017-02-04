@@ -364,10 +364,6 @@ Usage
 
 <hr/>
 
-# [translate.sh](https://github.com/dmi3/bin/blob/master/translate.sh)
-
-<hr/>
-
 # [volume](https://github.com/dmi3/bin/blob/master/volume)
 
 Decription

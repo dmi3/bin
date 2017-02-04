@@ -100,6 +100,25 @@ Usage
 
 <hr/>
 
+# [insert-translation.sh](https://github.com/dmi3/bin/blob/master/insert-translation.sh)
+
+Decription
+----------
+
+Prompts for text. Then inputs translation. Works in any application.
+
+Requirements
+----------
+
+`sudo apt-get install libtranslate-bin xdotool`
+
+Usage
+-----
+
+* Bind script to hotkey in your DE. After input wait couple of seconds for translation to appear.
+
+<hr/>
+
 # [itunec](https://github.com/dmi3/bin/blob/master/itunec)
 
 Decription
@@ -199,23 +218,25 @@ skypenotify "%sname" "%smessage"
 Decription
 ----------
 
-Text Snippet expander. Simulates cut→replace→paste so works in almost any application. Examples:
+System wide text snippet expander. Simulates cut→replace→paste so works in almost any application. Examples:
 
 * Type `->`, press hotkey, get `→`. 
 
 * Type `thx`, press hotkey, get `Thank you`.
 
-Original idea [sessy](https://bbs.archlinux.org/viewtopic.php?id-71938), and [Linux Magazine](http://www.linux-magazine.com/Issues/2014/162/Workspace-Text-Expander) with following improvements:
+Original idea by [sessy](https://bbs.archlinux.org/viewtopic.php?id-71938) and [Linux Magazine](http://www.linux-magazine.com/Issues/2014/162/Workspace-Text-Expander) with following improvements:
 
 * Works as keybinding in Compiz/Unity/Openbox
 
-* Does not goes crazy if keybinding includes Ctrl, Alt, Shift...
+* Does not go crazy if keybinding includes Ctrl, Alt, Shift...
 
 * Works in Sublime Text/IntelliJ Idea/Chrome
 
-* Expands snippets without space i.e. `30eur` → `30€`
+* Expands snippets without preceding space i.e. `30eur` to `30€`
 
-* Expands snippets without symbols i.e. `->` → `→``
+* Expands snippets with symbols i.e. `->` to `→`
+
+* Stores all snippets in one file
 
 * Works with Ubuntu 16.04
 
@@ -227,7 +248,11 @@ Requirements
 Usage
 -----
 
-Bind script to hotkey in your DE. Shift+Tab recommended.
+* Bind script to hotkey in your DE, for example Shift+Tab.
+
+* Add new snippets after line 30, in format `s/SHORCUT$/REPLACEMENT/g;`
+
+* If you use this for emoji, it will work but make me sad.
 
 <hr/>
 
@@ -315,6 +340,31 @@ Usage
      todo resolve issue --work --star
 
      todo --work meet customer --on jan 7
+
+<hr/>
+
+# [translate-selection.sh](https://github.com/dmi3/bin/blob/master/translate-selection.sh)
+
+Decription
+----------
+
+Show popup with translation of selected text. Works in any application.
+
+Requirements
+----------
+
+`sudo apt-get install libtranslate-bin zenity xsel`
+
+Usage
+-----
+
+* Bind script to hotkey in your DE.
+
+* Select any text. Press hotkey.
+
+<hr/>
+
+# [translate.sh](https://github.com/dmi3/bin/blob/master/translate.sh)
 
 <hr/>
 

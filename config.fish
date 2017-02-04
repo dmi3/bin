@@ -220,11 +220,11 @@ end
 
 #sudo apt-get install libtranslate-bin
 function tru
-  echo "$argv" | translate-bin -s google -t ru
+  echo "$argv" | translate-bin -s google -t ru | sed "s/.*>//g"
 end
 
 function ten
-  echo "$argv" | translate-bin -s google -f ru -t en
+  echo "$argv" | translate-bin -s google -f ru -t en | sed "s/.*>//g"
 end
 
 

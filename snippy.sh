@@ -2,16 +2,17 @@
 
 #  Decription
 #  ----------
-#  Text Snippet expander. Simulates cut→replace→paste so works in almost any application. Examples:
+#  System wide text snippet expander. Simulates cut→replace→paste so works in almost any application. Examples:
 #  * Type `->`, press hotkey, get `→`. 
 #  * Type `thx`, press hotkey, get `Thank you`.
 #
-#  Original idea [sessy](https://bbs.archlinux.org/viewtopic.php?id=71938), and [Linux Magazine](http://www.linux-magazine.com/Issues/2014/162/Workspace-Text-Expander) with following improvements:
+#  Original idea by [sessy](https://bbs.archlinux.org/viewtopic.php?id=71938) and [Linux Magazine](http://www.linux-magazine.com/Issues/2014/162/Workspace-Text-Expander) with following improvements:
 #  * Works as keybinding in Compiz/Unity/Openbox
-#  * Does not goes crazy if keybinding includes Ctrl, Alt, Shift...
+#  * Does not go crazy if keybinding includes Ctrl, Alt, Shift...
 #  * Works in Sublime Text/IntelliJ Idea/Chrome
-#  * Expands snippets without space i.e. `30eur` → `30€`
-#  * Expands snippets without symbols i.e. `->` → `→``
+#  * Expands snippets without preceding space i.e. `30eur` to `30€`
+#  * Expands snippets with symbols i.e. `->` to `→`
+#  * Stores all snippets in one file
 #  * Works with Ubuntu 16.04
 
 #  Author: Dmitry (http://dmi3.net)
@@ -23,26 +24,28 @@
 
 #  Usage
 #  -----
-#  Bind script to hotkey in your DE. Shift+Tab recommended.
+#  * Bind script to hotkey in your DE, for example Shift+Tab.
+#  * Add new snippets after line 30, in format `s/SHORCUT$/REPLACEMENT/g;`
+#  * If you use this for emoji, it will work but make me sad.
 
-sh -c "xdotool key --clearmodifiers ctrl+shift+Left"
-sh -c "xdotool key --clearmodifiers ctrl+x"
-selection=`xsel -b`
-
-trans="s/<-$/←/g;
+snippets="s/<-$/←/g;
 s/->$/→/g;
 s/larr$/←/g;
 s/rarr$/→/g;
 s/darr$/↓/g;
 s/uarr$/↑/g;
-s/eur$/€/g;
 s/copy$/©/g;
+s/eur$/€/g;
 s/unf$/unfortunately/g;
 s/suc$/successful/g;
 s/thx$/Thank you\./g;
 s/bus$/business/g;"
 
-echo -n "$selection" | sed "$trans" | xclip -sel clip
+sh -c "xdotool key --clearmodifiers ctrl+shift+Left"
+sh -c "xdotool key --clearmodifiers ctrl+x"
+selection=`xsel -b`
+
+echo -n "$selection" | sed "$snippets" | xclip -sel clip
 
 sh -c "xdotool key --clearmodifiers ctrl+v"
 

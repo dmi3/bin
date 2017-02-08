@@ -110,7 +110,9 @@ Prompts for text. Then inputs translation. Works in any application.
 Requirements
 ----------
 
-`sudo apt-get install libtranslate-bin xdotool`
+1. Setup https://github.com/dmi3/bin/blob/master/yandex-translate.sh
+
+2. `sudo apt-get install zenity xsel`
 
 Usage
 -----
@@ -234,6 +236,8 @@ Original idea by [sessy](https://bbs.archlinux.org/viewtopic.php?id-71938) and [
 
 * Expands snippets without preceding space i.e. `30eur` to `30€`
 
+   - If snippet needs preceding space or start of line - use regexp `\b` i.e. `s/\bv$/✔/g;` converts `v` to `✔` only if its separate symbol
+
 * Expands snippets with symbols i.e. `->` to `→`
 
 * Stores all snippets in one file
@@ -353,7 +357,9 @@ Show popup with translation of selected text. Works in any application.
 Requirements
 ----------
 
-`sudo apt-get install libtranslate-bin zenity xsel`
+1. Setup https://github.com/dmi3/bin/blob/master/yandex-translate.sh
+
+2. `sudo apt-get install zenity xsel`
 
 Usage
 -----
@@ -380,5 +386,23 @@ Usage
 -----
 
 volume (up|down|mute)
+
+<hr/>
+
+# [yandex-translate.sh](https://github.com/dmi3/bin/blob/master/yandex-translate.sh)
+
+Decription
+----------
+
+CLI Yandex Translate API ru↔en. Automatically detects language. Translates any language to Russian, and Russian to English.
+
+Usage
+-----
+
+`yandex-translate.sh cat is a small, typically furry, carnivorous mammal` # en → ru
+
+`yandex-translate.sh die Hauskatze ist eine Unterart der Wildkatze` # de → ru
+
+`yandex-translate.sh кот это маленькое, хищное и очень хитрое млекопитающее` # ru → en
 
 <hr/>

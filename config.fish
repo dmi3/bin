@@ -81,7 +81,7 @@ alias poweroff='shutdown -P now'
 alias reboot='shutdown -r now'
 
 # Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
-alias copy='xclip -sel clip'
+# alias copy='xclip -sel clip'
 
 function mkcd --description "Create and cd to directory"
   mkdir $argv
@@ -171,6 +171,15 @@ function subl --description "Starts Sublime Text. Additionally supports piping (
   end
 end
 
+# Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
+function copy --description "Copy pipe or argument"
+  if [ "$argv" = "" ]
+    xclip -sel clip
+  else
+    printf $argv | xclip -sel clip
+  end    
+end
+
 #
 # Web services
 #
@@ -218,15 +227,10 @@ function transfer --description "Upload file to transfer.sh"
   curl --progress-bar --upload-file $argv https://transfer.sh/(basename $argv)   
 end
 
-#sudo apt-get install libtranslate-bin
-function tru
-  echo "$argv" | translate-bin -s google -t ru | sed "s/.*>//g"
+#https://github.com/dmi3/bin/blob/master/yandex-translate.sh
+function translate
+  yandex-translate.sh "$argv"
 end
-
-function ten
-  echo "$argv" | translate-bin -s google -f ru -t en | sed "s/.*>//g"
-end
-
 
 #
 # Color configuration

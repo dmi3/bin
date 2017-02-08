@@ -9,7 +9,8 @@
 
 #  Requirements
 #  ----------
-#  `sudo apt-get install libtranslate-bin xdotool`
+#  1. Setup https://github.com/dmi3/bin/blob/master/yandex-translate.sh
+#  2. `sudo apt-get install zenity xsel`
 
 #  Usage
 #  -----
@@ -18,7 +19,10 @@
 DEST_LANG=en
 SRC_LANG=ru
 
-echo $(zenity --entry) | translate-bin -s google -f "$SRC_LANG" -t "$DEST_LANG" | sed "s/.*>//g" | xclip -sel clip
+printf $(yandex-translate.sh "$(zenity --entry)") | xclip -sel clip
+
+# Alternative using translate-bin
+# echo $(zenity --entry) | translate-bin -s google -f "$SRC_LANG" -t "$DEST_LANG" | sed "s/.*>//g" | xclip -sel clip
 
 sh -c "xdotool key --clearmodifiers ctrl+v"
 

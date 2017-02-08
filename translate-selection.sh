@@ -9,17 +9,18 @@
 
 #  Requirements
 #  ----------
-#  `sudo apt-get install libtranslate-bin zenity xsel`
+#  1. Setup https://github.com/dmi3/bin/blob/master/yandex-translate.sh
+#  2. `sudo apt-get install zenity xsel`
 
 #  Usage
 #  -----
 #  * Bind script to hotkey in your DE.
 #  * Select any text. Press hotkey.
 
-DEST_LANG=ru
-
-#sed - fix issue in translate-bin
 selection=`xsel -p`
-zenity --info --text "$selection\n$(echo "$selection" | translate-bin -s google -t "$DEST_LANG" | sed "s/.*>//g")"
+zenity --info --text "$selection\n$(yandex-translate.sh "$selection")"
+
+# Alternative using translate-bin
+#zenity --info --text "$selection\n$(echo "$selection" | translate-bin -s google -t "$DEST_LANG" | sed "s/.*>//g")"
 
 

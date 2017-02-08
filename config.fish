@@ -19,16 +19,17 @@ function fish_user_key_bindings
 	  # Clear input on Ctrl+U
     bind \cu 'commandline "";'
     
-    # Simulate Ctrl+R in Bash    
-    if type -q fzf
-      # Use fzf if installed
-      bind \cr fzf-history-widget
+    if type -q fzf # Use fzf if installed
+      # Simulate Ctrl+R in Bash      
+      bind \cr "fzf-history-widget; and commandline -f execute"
 
-      # Fuzzy search & append filename to current commandline
-      bind \ce search
-    else
-      # Use poor man completion (as up arrow, without search-as-you-type)
-      echo "⚠ fzf is not installed. To greatly improve Ctrl+R and Ctrl+E type `update-fzf`"
+      # Search history, allows edit command before execution
+      bind \ce fzf-history-widget
+
+      # Fuzzy recursive search files in current directory & append selection to current command
+      bind \cf search
+    else # Use poor man completion (as up arrow, without search-as-you-type)
+      echo "⚠ fzf is not installed. To greatly improve Ctrl+R, Ctrl+E and Ctrl+F type `update-fzf`"
       bind \cr history-search-backward
     end      
 
@@ -99,7 +100,6 @@ set -x FZF_DEFAULT_OPTS --prompt="⌕ "
 function fzf-history-widget
     history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort | read -l result; and commandline $result
     commandline -f repaint
-    commandline -f execute
 end
 
 function search --description "Search files by mask, case insensitive, output with full path"

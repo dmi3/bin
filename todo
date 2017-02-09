@@ -45,6 +45,8 @@ contains -- "--on" $argv; and set DATE (date $DATEFMT --date=(string replace -r 
 
 set TITLE (string replace -ra "\-\-\w*\s?" "" -- "$argv" | string trim) #remove arguments starting with --
 
+math (echo $version | tr -d .)"<231" > /dev/null; and echo "⚠ Please upgrade fish shell to at least 2.3.0"
+
 if not type -q wl
   set WL_VERSION (curl -Ls -o /dev/null -w "%{url_effective}" https://github.com/robdimsdale/wl/releases/latest | xargs basename | string trim -c "v")
   echo "⚠ wl is not found. Installing $WL_VERSION."

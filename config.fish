@@ -34,7 +34,9 @@ function fish_user_key_bindings
     else # Use poor man completion (as up arrow, without search-as-you-type)
       echo "⚠ fzf is not installed. To greatly improve Ctrl+R, Ctrl+E, Ctrl+Alt+F and Ctrl+F type `update-fzf`"
       bind \cr history-search-backward
-    end      
+    end
+
+    math (echo $version | tr -d .)"<231" > /dev/null; and echo "⚠ Please upgrade fish shell to at least 2.3.0"
 
     # Send terminate on Ctrl+Shift+C to free Ctrl+C for copy (in terminal settings).
     stty intr \^C
@@ -42,7 +44,14 @@ end
 
 function fish_prompt
     set_color 777 --bold
-    echo -n [(pwd)❯
+    
+    # Full path trimmed to width of terminal
+    set width (pwd | string length)
+    if math "$width>$COLUMNS+3" > /dev/null
+      echo -n […(pwd | string sub -s (math $width - $COLUMNS + 4))❯
+    else
+      echo -n [(pwd)❯
+    end
     
     # Git stuff
     set __git_branch (git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
@@ -86,15 +95,22 @@ alias reboot='shutdown -r now'
 
 alias ...='cd ../..'
 
-# Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
-# alias copy='xclip -sel clip'
+alias git-show-unpushed-commits='git cherry -v' 
 
 function mkcd --description "Create and cd to directory"
   mkdir $argv
   and cd $argv
 end
 
-alias git-show-unpushed-commits='git cherry -v' 
+# Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
+# If arguments are given, copies it to clipboard
+function copy --description "Copy pipe or argument"
+  if [ "$argv" = "" ]
+    xclip -sel clip
+  else
+    printf $argv | xclip -sel clip
+  end    
+end
 
 #
 # Fzf stuff (https://github.com/junegunn/fzf)
@@ -122,14 +138,14 @@ function search-contents --description "Search file contents"
   and commandline -f repaint
 end
 
+function search-gui --description "Search files, and open directory in GUI File Manager. Useful in File Mangagers that lack search-as-you-type"
+  find $PWD 2>/dev/null | fzf | read -l result; and open (dirname $result) &
+end
+
 function update-fzf --description "Installs or updates fzf"
   set FZF_VERSION (curl -Ls -o /dev/null -w "%{url_effective}" https://github.com/junegunn/fzf-bin/releases/latest | xargs basename)
   curl -L https://github.com/junegunn/fzf-bin/releases/download/$FZF_VERSION/fzf-$FZF_VERSION-linux_amd64.tgz | tar -xz -C /tmp/
   sudo -p "Root password to install fzf: " mv /tmp/fzf-$FZF_VERSION-linux_amd64 /usr/bin/fzf
-end
-
-function search-gui --description "Search files, and open directory in GUI File Manager. Useful in File Mangagers that lack search-as-you-type"
-  find $PWD 2>/dev/null | fzf | read -l result; and open (dirname $result) &
 end
 
 #
@@ -181,15 +197,6 @@ function subl --description "Starts Sublime Text. Additionally supports piping (
   else
     /opt/sublime_text/sublime_text "$argv"
   end
-end
-
-# Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
-function copy --description "Copy pipe or argument"
-  if [ "$argv" = "" ]
-    xclip -sel clip
-  else
-    printf $argv | xclip -sel clip
-  end    
 end
 
 #

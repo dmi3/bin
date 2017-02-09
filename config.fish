@@ -13,8 +13,9 @@
 
 #
 # Fish config
-#
+# https://fishshell.com/docs/current/
 
+# https://github.com/fish-shell/fish-shell/blob/master/share/functions/fish_default_key_bindings.fish
 function fish_user_key_bindings
 	  # Clear input on Ctrl+U
     bind \cu 'commandline "";'
@@ -28,8 +29,10 @@ function fish_user_key_bindings
 
       # Fuzzy recursive search files in current directory & append selection to current command
       bind \cf search
+      
+      bind \e\cf search-contents
     else # Use poor man completion (as up arrow, without search-as-you-type)
-      echo "⚠ fzf is not installed. To greatly improve Ctrl+R, Ctrl+E and Ctrl+F type `update-fzf`"
+      echo "⚠ fzf is not installed. To greatly improve Ctrl+R, Ctrl+E, Ctrl+Alt+F and Ctrl+F type `update-fzf`"
       bind \cr history-search-backward
     end      
 
@@ -81,6 +84,8 @@ alias free='free -m'
 alias poweroff='shutdown -P now'
 alias reboot='shutdown -r now'
 
+alias ...='cd ../..'
+
 # Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
 # alias copy='xclip -sel clip'
 
@@ -98,8 +103,9 @@ alias git-show-unpushed-commits='git cherry -v'
 set -x FZF_DEFAULT_OPTS --prompt="⌕ "
 
 function fzf-history-widget
-    history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort | read -l result; and commandline $result
-    commandline -f repaint
+    history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort | read -l result
+    and commandline $result
+    and commandline -f repaint
 end
 
 function search --description "Search files by mask, case insensitive, output with full path"
@@ -108,6 +114,12 @@ function search --description "Search files by mask, case insensitive, output wi
   else
     find $PWD -iname $argv 2>/dev/null  | fzf
   end    
+end
+
+function search-contents --description "Search file contents"
+  grep -I -H -n -v --line-buffered --color=never -r -e '^$' . | fzf | string split ":" | head -n 1 | read -l result
+  and commandline -a $result
+  and commandline -f repaint
 end
 
 function update-fzf --description "Installs or updates fzf"
@@ -231,6 +243,11 @@ end
 function translate
   yandex-translate.sh "$argv"
 end
+
+# todo save alternative history with full paths
+# function postexec_test --on-event fish_postexec
+#   echo postexec handler: $argv
+# end
 
 #
 # Color configuration

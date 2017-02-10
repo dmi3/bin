@@ -1,6 +1,6 @@
 #  Decription
 #  ----------
-#  Fish config with awesome prompt, unicode symbols, better fzf integration and lot of handy functions.
+#  Fish config with awesome flexible prompt, unicode symbols, better fzf integration and lot of handy functions.
 
 #  Author: Dmitry (http://dmi3.net)
 #  Source: https://github.com/dmi3/bin
@@ -36,7 +36,7 @@ function fish_user_key_bindings
       bind \cr history-search-backward
     end
 
-    math (echo $version | tr -d .)"<231" > /dev/null; and echo "⚠ Please upgrade fish shell to at least 2.3.0"
+    math (echo $version | tr -d .)"<231" > /dev/null; and echo "⚠ Please upgrade Fish shell to at least 2.3.0 https://fishshell.com/#platform_tabs"
 
     # Send terminate on Ctrl+Shift+C to free Ctrl+C for copy (in terminal settings).
     stty intr \^C
@@ -44,24 +44,25 @@ end
 
 function fish_prompt
     set_color 777 --bold
+
+    set __git_branch (git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
     
-    # Full path trimmed to width of terminal
-    set width (pwd | string length)
-    if math "$width>$COLUMNS+3" > /dev/null
-      echo -n […(pwd | string sub -s (math $width - $COLUMNS + 4))❯
+    # Full path + git trimmed to width of terminal
+    set prompt_width (math (pwd | string length) + (string length "$__git_branch") + 7)
+    if test $prompt_width -gt $COLUMNS
+      echo -n […(pwd | string sub -s (math $prompt_width - $COLUMNS + 4))❯
     else
       echo -n [(pwd)❯
     end
     
-    # Git stuff
-    set __git_branch (git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+    # Git stuff    
     if [ $__git_branch!="" ]
         set_color A6E22E
         echo -n ' ⌥'$__git_branch
         set __git_unpushed_commits (git cherry -v | wc -l)
         if [ $__git_unpushed_commits !=  "0" ]
             set_color F92672
-            echo -n ' ⬆'$__git_unpushed_commits
+            echo -n " ⬆$__git_unpushed_commits "
         end
     end
     
@@ -251,7 +252,13 @@ function translate
   yandex-translate.sh "$argv"
 end
 
+# https://gist.github.com/rsvp/1859875
+function freq --description "Line frequency in piped input"
+  cat 1>| sort -f | uniq -c | sort -k 1nr -k 2f
+end
+
 # todo save alternative history with full paths
+# cat alternative_history | sort -f | uniq -c | sort -k 1nr -k 2f | cut -c 9- | fzf --no-sort --tac
 # function postexec_test --on-event fish_postexec
 #   echo postexec handler: $argv
 # end

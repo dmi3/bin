@@ -29,7 +29,8 @@
 #  * Add new snippets after line 30, in format `s/SHORCUT$/REPLACEMENT/g;`
 #  * If you use this for emoji, it will work but make me sad.
 
-snippets="s/<->$/↔/g;
+snippets="
+s/<->$/⇄/g;
 s/<-$/←/g;
 s/->$/→/g;
 s/~$/≈/g;
@@ -44,6 +45,8 @@ s/darr$/↓/g;
 s/uarr$/↑/g;
 s/copy$/©/g;
 s/eur$/€/g;
+s/fu$/futher/g;
+s/sim$/simultaneously/g;
 s/unf$/unfortunately/g;
 s/env$/environment/g;
 s/suc$/successful/g;

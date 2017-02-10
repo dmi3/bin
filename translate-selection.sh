@@ -18,7 +18,7 @@
 #  * Select any text. Press hotkey.
 
 selection=`xsel -p`
-zenity --info --text "$selection\n$(yandex-translate.sh "$selection")"
+zenity --info --timeout 10 --text "$selection\n$(yandex-translate.sh "$selection")" 
 
 # Alternative using translate-bin
 #zenity --info --text "$selection\n$(echo "$selection" | translate-bin -s google -t "$DEST_LANG" | sed "s/.*>//g")"

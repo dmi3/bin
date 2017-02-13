@@ -1,19 +1,20 @@
 #!/usr/bin/python3
 
 #  Decription
-#  ===========
+#  ----------
 #  Script to run gzdoom with various configurations/wads. Selectable via dmenu
 
 #  Author: Dmitry (http://dmi3.net)
 #  Source: https://github.com/dmi3/bin
 
 #  Requirements
-#  ============
-#  sudo apt-get install gzdoom dmenu python3 python3-setuptools
-#  sudo easy_install3 sh
+#  ------------
+#  1. [Get latest Gzdoom](http://debian.drdteam.org/)
+#  2. `sudo apt-get install gzdoom dmenu python3 python3-setuptools
+#  3. `sudo easy_install3 sh`
 
 #  Usage
-#  =====
+#  -----
 #  doom
 
 MAP_DIR = "/media/archive/games/doom/wads/maps/"
@@ -22,9 +23,9 @@ DOOM_BIN = "/usr/bin/gzdoom"
 MODS = {
   "vanilla":"",
   "russian_overkill":"hires.pk3 bdlitev13gzdoomV2.pk3 RO_pb_2.1b.pk3 Moldova_pb_v1.1.pk3 regeneration2.wad",
-  "brutal_doom":"hires.pk3 brutalv20b.pk3 BrutalBloodPatch20b.pk3 regeneration2.wad",
+  "brutal_doom":"hires.pk3 brutalv20b.pk3 BrutalBloodPatch20b.pk3 regeneration2.wad Cannon_Shotgun_v4.wad",
 }
-PARAMS = ""# "+set sv_jump 2 +set sv_crouch 2"
+PARAMS = "+set sv_jump 2 +set sv_crouch 2 +set sv_cheats 1" # need sv_cheats to `give cannonshotgun`
 TIMELIMIT_MIN=15 #set 0 to play infinitely!
 
 from sh import ls,dmenu,echo,touch,kill,notify_send,Command
@@ -33,14 +34,15 @@ from os import path
 
 doom = Command(DOOM_BIN)
 mod=dmenu(echo("\n".join(MODS.keys())))
-mods=MODS[str(mod).strip()].replace(" "," "+MOD_DIR)
-wad=MAP_DIR+str(dmenu(ls(MAP_DIR,"-1","-t")))
+mods=MOD_DIR+MODS[str(mod).strip()].replace(" "," "+MOD_DIR)
+wad=MAP_DIR+str(dmenu(ls(MAP_DIR,"-1","-t"))).strip()
 
-cmd=PARAMS+"-file "+mods+" "+wad
-print(">"+cmd+"<")
-#touch(wad) #because we sort by last modified = first in menu
 
-pid=doom(cmd, _bg=True).pid
+cmd=PARAMS+" -file "+mods+" "+wad
+touch(wad) #because we sort by last modified = first in menu
+args = cmd.split(" ")
+
+pid=doom(*args, _bg=True).pid
 
 if TIMELIMIT_MIN>0:
   sleep(TIMELIMIT_MIN*60)

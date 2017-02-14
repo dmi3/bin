@@ -16,8 +16,7 @@
 #  * Stores all snippets in one file
 #  * Works with Ubuntu 16.04
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Requirements
 #  ----------

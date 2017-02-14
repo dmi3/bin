@@ -4,12 +4,11 @@
 #  ----------
 #  Script to simply sync all changes into git repository with one command. For example publish local changes to Github.
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Requirements
 #  ----------
-#  1. sudo apt-get install git
+#  1. `sudo apt-get install git`
 #  2. [Setup mergetool](https://developer.atlassian.com/blog/2015/12/tips-tools-to-solve-git-conflicts/#parade-of-merge-tools)
 
 #  Usage

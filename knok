@@ -1,21 +1,20 @@
 #!/usr/bin/python3
 
 #  Decription
-#  ===========
+#  -----------
 #  Knocks to given ports with 0.5 second delay. Useful when default knockd delay
 #  is to short for server to react. Additionally displays Gun's N' Roses lyrics :)
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Requirements
-#  ============
-#  sudo apt-get install knockd python3 python3-setuptools
-#  sudo easy_install3 sh
+#  ------------
+#  1. `sudo apt-get install knockd python3 python3-setuptools`
+#  2. `sudo easy_install3 sh`
 
 #  Usage
-#  =====
-#  knock ip [port,port...]
+#  -----
+#  `knock ip [port,port...]`
 
 
 from sh import knock

@@ -4,8 +4,7 @@
 #  ----------
 #  Script to run gzdoom with various configurations/wads. Selectable via dmenu
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Requirements
 #  ------------
@@ -41,6 +40,8 @@ wad=MAP_DIR+str(dmenu(ls(MAP_DIR,"-1","-t"))).strip()
 cmd=PARAMS+" -file "+mods+" "+wad
 touch(wad) #because we sort by last modified = first in menu
 args = cmd.split(" ")
+
+print(args)
 
 pid=doom(*args, _bg=True).pid
 

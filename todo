@@ -1,15 +1,14 @@
 #!/usr/bin/fish
 
 #  Wunderlist CLI for adding todos
-#  =====================
+#  ===============================
 
 #  Decription
 #  ----------
 #  Wrapper for [wl](https://github.com/robdimsdale/wl/releases) for adding todos with more convenient syntax
 #  [Read More](http://developer.run/15)
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Instalation
 #  -----------

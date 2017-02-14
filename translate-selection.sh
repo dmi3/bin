@@ -4,8 +4,7 @@
 #  ----------
 #  Show popup with translation of selected text. Works in any application.
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Requirements
 #  ----------
@@ -18,7 +17,7 @@
 #  * Select any text. Press hotkey.
 
 selection=`xsel -p`
-zenity --info --timeout 10 --text "$selection\n$(yandex-translate.sh "$selection")" 
+zenity --info --timeout 10 --text "$selection\n$(translate-yandex.sh "$selection")" 
 
 # Alternative using translate-bin
 #zenity --info --text "$selection\n$(echo "$selection" | translate-bin -s google -t "$DEST_LANG" | sed "s/.*>//g")"

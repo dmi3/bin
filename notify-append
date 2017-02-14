@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 
 #  Decription
-#  ===========
+#  -----------
 #  Script to run append Notify OSD messages as shown on http://thexnews.com/uploads/notify.gif
 #  Since x-canonical-append is broken in notify-send for example in Skype you will wait forever untill all messages are shown
 #  This script makes new messages shown in same notification window bellow the already shown
 #  Created as addition to notify-send. Use notify-send when you want to send notification and notify-append when you want append or replace it.
-#  Readme in russian: http://thexnews.com/p/554
+#  [Readme in russian](http://thexnews.com/p/554)
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 usage = """Usage:
 notify-append title name [icon] [-r]
@@ -35,12 +34,12 @@ class NotifyAppendService(dbus.service.Object):
     actions_list      = ''
     hint              = {"x-canonical-append":"allowed"}
     time              = 1000   # Doesn't matter
-    
+
     bus = dbus.SessionBus()
     notif = bus.get_object(item, path)
     notify = dbus.Interface(notif, interface)
     self.previous_id = notify.Notify(app_name, id_num_to_replace, icon, title, text, actions_list, hint, time)
-        
+
 if __name__ == "__main__":
   replace = "-r" in sys.argv
   if replace:

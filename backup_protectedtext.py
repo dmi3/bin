@@ -1,18 +1,17 @@
 #!/usr/bin/python3
 
 #  Decription
-#  ===========
-#  Backup secrets from www.protectedtext.com to local storage
-#  If file is changed, keep previous version with date postfix
-#  Only backups once per day
-#  Can be decrypted using `base64 -d BACKUP_FILE | openssl aes-256-cbc -d -k PASSWORD`
-#  More info <http://developer.run/13>
+#  -----------
+#  * Backup secrets from www.protectedtext.com to local storage
+#  * If file is changed, keep previous version with date postfix
+#  * Only backups once per day
+#  * Can be decrypted using `base64 -d BACKUP_FILE | openssl aes-256-cbc -d -k PASSWORD`
+#  * More info <http://developer.run/13>
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Usage
-#  =====
+#  -----
 #  Run from commandline or add to cron
 
 

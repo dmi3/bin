@@ -4,8 +4,7 @@
 #  ----------
 #  Prompts for text. Then inputs translation. Works in any application.
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Requirements
 #  ----------
@@ -19,7 +18,7 @@
 DEST_LANG=en
 SRC_LANG=ru
 
-printf $(yandex-translate.sh "$(zenity --entry)") | xclip -sel clip
+printf $(translate-yandex.sh "$(zenity --entry)") | xclip -sel clip
 
 # Alternative using translate-bin
 # echo $(zenity --entry) | translate-bin -s google -f "$SRC_LANG" -t "$DEST_LANG" | sed "s/.*>//g" | xclip -sel clip

@@ -1,20 +1,19 @@
 #  Decription
-#  ===========
+#  -----------
 #  Some handy bash aliases
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Requirements
-#  ============
-#  sudo apt-get install twistd pm-utils
+#  ------------
+#  `sudo apt-get install twistd pm-utils`
 
 #  Usage
-#  =====
-#  wget https://raw.githubusercontent.com/dmi3/bin/aliases.bash --no-check-certificate -O ~/bin/aliases.bash
-#  echo "source ~/bin/aliases.bash" >> ~/.bashrc
-#  To make bash more usable you probably want to install https://github.com/mrzool/bash-sensible
-#  To make this work across remote machines, you also may want to install https://github.com/Russell91/sshrc 
+#  -----
+#  1. `wget https://raw.githubusercontent.com/dmi3/bin/aliases.bash --no-check-certificate -O ~/bin/aliases.bash`
+#  2. `echo "source ~/bin/aliases.bash" >> ~/.bashrc`
+#  3. To make bash more usable you probably want to install https://github.com/mrzool/bash-sensible
+#  4. To make this work across remote machines, you also may want to install https://github.com/Russell91/sshrc 
 
 # Resolve aliases after sudo
 alias sudo='sudo '

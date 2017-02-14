@@ -4,8 +4,7 @@
 #  ----------
 #  CLI Yandex Translate API ru↔en. Automatically detects language. Translates any language to Russian, and Russian to English.
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Usage
 #  -----

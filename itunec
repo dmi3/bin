@@ -1,25 +1,24 @@
 #!/usr/bin/python3
 
 #  Decription
-#  ===========
+#  -----------
 #  Mounts USB device, syncs new podcast in gpodder then umounts device
 
-#  Author: Dmitry (http://dmi3.net)
-#  Source: https://github.com/dmi3/bin
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Requirements
-#  ============
-#  sudo apt-get install python3 id3v2
-#  wget https://raw.github.com/dmi3/bin/master/notify-append -P ~/bin && chmod +x ~/bin/notify-append
+#  ------------
+#  1. `sudo apt-get install python3 id3v2`
+#  2. `wget https://raw.github.com/dmi3/bin/master/notify-append -P ~/bin && chmod +x ~/bin/notify-append`
 
 #  Usage
-#  =====
-#  set LABEL to label of your player filesystem (for example `SANSA CLIP` to find label type `ls -l /dev/disk/by-label/`)
-#  set GPODDER_DIR to directory where gpodder download podcasts
-#  run `itunec` when you want to sync
+#  -----
+#  1. set LABEL to label of your player filesystem (for example `SANSA CLIP` to find label type `ls -l /dev/disk/by-label/`)
+#  2. set GPODDER_DIR to directory where gpodder download podcasts
+#  3. run `itunec` when you want to sync
 #  or
-#  gpodder -> Podcasts -> Prefences -> Devices; set  Device type to `Filesystem-based` and `Mountpoint` path where device is mounted by default
-#  gpodder -> Podcasts -> Prefences -> Edit config -> cmd_all_download_complete -> itunec
+#  1. gpodder -> Podcasts -> Prefences -> Devices; set  Device type to `Filesystem-based` and `Mountpoint` path where device is mounted by default
+#  2. gpodder -> Podcasts -> Prefences -> Edit config -> cmd_all_download_complete -> itunec
 
 LABEL = "AUDIOS"
 GPODDER_DIR = "/media/archive/incoming/gpodder/"
@@ -33,7 +32,7 @@ def fix_tags(dirsa):
       if f.count(".mp3")>0 and not is_russian(root):
         show_title=os.path.basename(root)
         path=os.path.join(root,f)
-      
+
         try:
           if (id3v2("-l",path).count("TAL") == 0):
             id3v2("-A",show_title,path)
@@ -64,7 +63,7 @@ try:
   devid = device.split("/")[-1]
   devpath = "/dev/"+devid.replace("\n","")
 
-  #Mount device 
+  #Mount device
   mntmsg = udisks("--mount",devpath)
   wasmnt = "is mounted" in mntmsg
   if not wasmnt:
@@ -75,18 +74,18 @@ try:
   gpo("sync")
 
   time.sleep(3)
-  
+
   #Umount device
   if not wasmnt:
     mntmsg = udisks("--unmount",devpath)
     if mntmsg == "":
-      zenity("--info","--text","Its now safe to remove "+LABEL)   
+      zenity("--info","--text","Its now safe to remove "+LABEL)
     else:
       notify(mntmsg)
   else:
     zenity("--info","--text","Sync done")
-  
-except StopIteration: 
+
+except StopIteration:
   notify("Unable to find device "+LABEL)
 except ErrorReturnCode_1:
   notify("Unable to mount device "+LABEL)

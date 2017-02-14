@@ -34,16 +34,21 @@ Usage
 Run from commandline or add to cron
 <hr/>
 
-# [config.fish](https://github.com/dmi3/bin/blob/master/config.fish)
-
-<hr/>
-
-# [config/config.fish](https://github.com/dmi3/bin/blob/master/config/config.fish)
-
-<hr/>
-
 # [config/fish/completions/todo.fish](https://github.com/dmi3/bin/blob/master/config/fish/completions/todo.fish)
 
+<hr/>
+
+# [config/fish/config.fish](https://github.com/dmi3/bin/blob/master/config/fish/config.fish)
+
+Decription
+----------
+Fish config with awesome flexible prompt, unicode symbols, better fzf integration and lot of handy functions.
+Instalation
+----------
+1. [Install fish](http://fishshell.com/#platform_tabs)
+2. `curl https://raw.githubusercontent.com/dmi3/bin/master/config.fish --create-dirs -o ~/.config/fish/config.fish`
+3. `fish -c update-fzf`
+ echo postexec handler: $argv
 <hr/>
 
 # [generate-readme.fish](https://github.com/dmi3/bin/blob/master/generate-readme.fish)
@@ -65,10 +70,6 @@ Usage
     git-sync # current dir
     git-sync # if you want sync all files
     git-sync -u # if you want only sync files explicitly added via `git add filename`
-<hr/>
-
-# [insert-translation.sh](https://github.com/dmi3/bin/blob/master/insert-translation.sh)
-
 <hr/>
 
 # [itunec](https://github.com/dmi3/bin/blob/master/itunec)
@@ -93,42 +94,42 @@ or
 # [knok](https://github.com/dmi3/bin/blob/master/knok)
 
 Decription
-===========
+-----------
 Knocks to given ports with 0.5 second delay. Useful when default knockd delay
 is to short for server to react. Additionally displays Gun's N' Roses lyrics :)
 Requirements
-============
-sudo apt-get install knockd python3 python3-setuptools
-sudo easy_install3 sh
+------------
+1. `sudo apt-get install knockd python3 python3-setuptools`
+2. `sudo easy_install3 sh`
 Usage
-=====
-knock ip [port,port...]
+-----
+`knock ip [port,port...]`
 <hr/>
 
 # [layoutset](https://github.com/dmi3/bin/blob/master/layoutset)
 
 Decription
-===========
+-----------
 Script to set keyboard layout depending if its Apple or regular keyboard + some settings
 Usage
-=====
-layoutset
+-----
+`layoutset`
 <hr/>
 
 # [skypenotify](https://github.com/dmi3/bin/blob/master/skypenotify)
 
 Decription
-===========
+-----------
 Script to run append Skype messages in Notify OSD as shown on http://thexnews.com/uploads/notify.gif
 Since x-canonical-append is broken in notify-send for example in Skype you will wait forever untill all messages are shown
 This script makes new messages readable in same notification window
 Readme in russian: http://thexnews.com/p/554
 Requirements
-============
-wget https://raw.github.com/dmi3/bin/master/notify-append -P ~/bin && chmod +x ~/bin/notify-append
+-----------=
+`wget https://raw.github.com/dmi3/bin/master/notify-append -P ~/bin && chmod +x ~/bin/notify-append`
 Usage: 
-======
-skypenotify "%sname" "%smessage"
+-----=
+`skypenotify "%sname" "%smessage"`
 <hr/>
 
 # [snippy.sh](https://github.com/dmi3/bin/blob/master/snippy.sh)
@@ -160,37 +161,37 @@ Usage
 # [sssh](https://github.com/dmi3/bin/blob/master/sssh)
 
 Decription
-===========
+-----------
 Script to change your terminal title to user@host when connecting to ssh and changing 
 it back after exiting. Additionally sets green prompt on remote host.
 Useful for Keepassx and visual distinction to avoid notorious "wrong window" problem.
 Also works when connecting Fish → Bash
 Requirements
-============
-sudo apt-get install xdotool
+-----------=
+`sudo apt-get install xdotool`
 Usage
-=====
-sssh user@hostname
+-----
+`sssh user@hostname`
 <hr/>
 
 # [timer](https://github.com/dmi3/bin/blob/master/timer)
 
 Decription
-===========
+-----------
 Simple timer with sound and dialog window notification. To remind you to turn stove off :). 
 Replace pc_up.wav to any available audiofile. 
 Requirements
-============
-sudo apt-get install zenity vlc
+------------
+    sudo apt-get install zenity vlc
 Usage
-=====
-timer 6 # i.e. notify after 6 minutes
+-----
+    timer 6 # i.e. notify after 6 minutes
 <hr/>
 
 # [todo](https://github.com/dmi3/bin/blob/master/todo)
 
 Wunderlist CLI for adding todos
-=====================
+===============================
 Decription
 ----------
 Wrapper for [wl](https://github.com/robdimsdale/wl/releases) for adding todos with more convenient syntax
@@ -258,13 +259,9 @@ Decription
 -----------
 Script to control audio volume from console, hotkeys, e.t.c. Also shows nice Notify OSD buble with current volume value
 Requirements
------------=
-sudo apt-get install pulseaudio notify-osd
+------------
+    sudo apt-get install pulseaudio notify-osd
 Usage
 -----
-volume (up|down|mute)
-<hr/>
-
-# [yandex-translate.sh](https://github.com/dmi3/bin/blob/master/yandex-translate.sh)
-
+    volume (up|down|mute)
 <hr/>

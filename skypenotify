@@ -3,9 +3,10 @@
 #  Decription
 #  -----------
 #  Script to run append Skype messages in Notify OSD as shown on http://thexnews.com/uploads/notify.gif
-#  Since x-canonical-append is broken in notify-send for example in Skype you will wait forever untill all messages are shown
+#  Since `x-canonical-append` is broken in notify-send for example in Skype you will wait forever untill all messages are shown
 #  This script makes new messages readable in same notification window
-#  Readme in russian: http://thexnews.com/p/554
+#
+#  [Readme in russian](http://thexnews.com/p/554)
 
 #  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
@@ -13,8 +14,8 @@
 #  ------------
 #  `wget https://raw.github.com/dmi3/bin/master/notify-append -P ~/bin && chmod +x ~/bin/notify-append`
 
-#  Usage: 
-#  ------
+#  Usage 
+#  -----
 #  `skypenotify "%sname" "%smessage"`
 
 focused_id=`xprop -root | grep "window id" | grep _NET_ACTIVE | cut -d " " -f 5 | cut -c 3-10`

@@ -2,7 +2,7 @@
 
 #  Decription
 #  ----------
-#  Generates readme
+#  Generates this readme
 
 echo "# Useful scripts for Linux users"    
 

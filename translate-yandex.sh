@@ -8,9 +8,9 @@
 
 #  Usage
 #  -----
-#  `yandex-translate.sh cat is a small, typically furry, carnivorous mammal` # en → ru
-#  `yandex-translate.sh die Hauskatze ist eine Unterart der Wildkatze` # de → ru
-#  `yandex-translate.sh кот это маленькое, хищное и очень хитрое млекопитающее` # ru → en
+#      yandex-translate.sh cat is a small, typically furry, carnivorous mammal # en → ru
+#      yandex-translate.sh die Hauskatze ist eine Unterart der Wildkatze # de → ru
+#      yandex-translate.sh кот это маленькое, пушистое и очень хитрое млекопитающее # ru → en
 
 key=$(cat ~/gitstuff/keys/yandex_translate) # get your key https://tech.yandex.ru/keys/get/?service=trnsl&ncrnd=1455
 

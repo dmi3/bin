@@ -12,7 +12,7 @@ Some handy bash aliases
 Requirements
 ------------
 `sudo apt-get install twistd pm-utils`
-Usage
+\Usage
 -----
 1. `wget https://raw.githubusercontent.com/dmi3/bin/aliases.bash --no-check-certificate -O ~/bin/aliases.bash`
 2. `echo "source ~/bin/aliases.bash" >> ~/.bashrc`
@@ -29,7 +29,7 @@ Decription
 * Only backups once per day
 * Can be decrypted using `base64 -d BACKUP_FILE | openssl aes-256-cbc -d -k PASSWORD`
 * More info <http://developer.run/13>
-Usage
+\Usage
 -----
 Run from commandline or add to cron
 <hr/>
@@ -64,7 +64,7 @@ Requirements
 ----------
 1. `sudo apt-get install git`
 2. [Setup mergetool](https://developer.atlassian.com/blog/2015/12/tips-tools-to-solve-git-conflicts/#parade-of-merge-tools)
-Usage
+\Usage
 -----
     git-sync /path/to/repo
     git-sync # current dir
@@ -81,7 +81,7 @@ Requirements
 ------------
 1. `sudo apt-get install python3 id3v2`
 2. `wget https://raw.github.com/dmi3/bin/master/notify-append -P ~/bin && chmod +x ~/bin/notify-append`
-Usage
+\Usage
 -----
 1. set LABEL to label of your player filesystem (for example `SANSA CLIP` to find label type `ls -l /dev/disk/by-label/`)
 2. set GPODDER_DIR to directory where gpodder download podcasts
@@ -101,7 +101,7 @@ Requirements
 ------------
 1. `sudo apt-get install knockd python3 python3-setuptools`
 2. `sudo easy_install3 sh`
-Usage
+\Usage
 -----
 `knock ip [port,port...]`
 <hr/>
@@ -111,7 +111,7 @@ Usage
 Decription
 -----------
 Script to set keyboard layout depending if its Apple or regular keyboard + some settings
-Usage
+\Usage
 -----
 `layoutset`
 <hr/>
@@ -127,7 +127,7 @@ Readme in russian: http://thexnews.com/p/554
 Requirements
 -----------=
 `wget https://raw.github.com/dmi3/bin/master/notify-append -P ~/bin && chmod +x ~/bin/notify-append`
-Usage: 
+\Usage: 
 -----=
 `skypenotify "%sname" "%smessage"`
 <hr/>
@@ -151,7 +151,7 @@ Original idea by [sessy](https://bbs.archlinux.org/viewtopic.php?id=71938) and [
 Requirements
 ----------
 `sudo apt-get install xdotool xclip xsel`
-Usage
+\Usage
 -----
 * Bind script to hotkey in your DE, for example Shift+Tab.
 * Add new snippets after line 30, in format `s/SHORCUT$/REPLACEMENT/g;`
@@ -169,7 +169,7 @@ Also works when connecting Fish → Bash
 Requirements
 -----------=
 `sudo apt-get install xdotool`
-Usage
+\Usage
 -----
 `sssh user@hostname`
 <hr/>
@@ -183,7 +183,7 @@ Replace pc_up.wav to any available audiofile.
 Requirements
 ------------
     sudo apt-get install zenity vlc
-Usage
+\Usage
 -----
     timer 6 # i.e. notify after 6 minutes
 <hr/>
@@ -205,7 +205,7 @@ Instalation
 5. `[CREATE APP]` (Put https://wunderlist.com to both `APP URL` and `AUTH CALLBACK URL`)
 6. Set enviroment variables in this script ↓ (line 31)
 7. Add more list shortcuts ↓ (line 39)
-Usage
+\Usage
 -----
      todo buy stuff --life --on next monday
      todo resolve issue --work --star
@@ -221,7 +221,7 @@ Requirements
 ----------
 1. Setup https://github.com/dmi3/bin/blob/master/yandex-translate.sh
 2. `sudo apt-get install zenity xsel`
-Usage
+\Usage
 -----
 * Bind script to hotkey in your DE.
 * Select any text. Press hotkey.
@@ -232,7 +232,7 @@ Usage
 Decription
 ----------
 CLI Yandex Translate API ru↔en. Automatically detects language. Translates any language to Russian, and Russian to English.
-Usage
+\Usage
 -----
 `yandex-translate.sh cat is a small, typically furry, carnivorous mammal` # en → ru
 `yandex-translate.sh die Hauskatze ist eine Unterart der Wildkatze` # de → ru
@@ -248,7 +248,7 @@ Requirements
 ----------
 1. Setup https://github.com/dmi3/bin/blob/master/yandex-translate.sh
 2. `sudo apt-get install zenity xsel`
-Usage
+\Usage
 -----
 * Bind script to hotkey in your DE. After input wait couple of seconds for translation to appear.
 <hr/>
@@ -261,7 +261,7 @@ Script to control audio volume from console, hotkeys, e.t.c. Also shows nice Not
 Requirements
 ------------
     sudo apt-get install pulseaudio notify-osd
-Usage
+\Usage
 -----
     volume (up|down|mute)
 <hr/>

@@ -2,7 +2,8 @@
 
 # [aliases.bash](https://github.com/dmi3/bin/blob/master/aliases.bash)
 
-aaa
+zzz
+
 
 Decription
 -----------
@@ -66,6 +67,10 @@ Instalation
 Decription
 ----------
 Generates this readme
+
+Usage
+-----
+echo "#!/bin/sh\necho gen readme\nfish generate-readme.fish > README.md" > .git/hooks/pre-commit
 <hr/>
 
 # [git-sync](https://github.com/dmi3/bin/blob/master/git-sync)

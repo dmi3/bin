@@ -6,7 +6,8 @@
 
 #  Usage
 #  -----
-#  echo "#!/bin/sh\necho gen readme\nfish generate-readme.fish > README.md" > .git/hooks/pre-commit
+#       echo -e "#!/bin/sh\necho gen readme\nfish generate-readme.fish > README.md" > .git/hooks/pre-commit
+#       chmod +x .git/hooks/pre-commit    
 
 
 echo "# Useful scripts for Linux users"    

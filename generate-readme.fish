@@ -4,6 +4,11 @@
 #  ----------
 #  Generates this readme
 
+#  Usage
+#  -----
+#  echo "#!/bin/sh\necho gen readme\nfish generate-readme.fish > README.md" > .git/hooks/pre-commit
+
+
 echo "# Useful scripts for Linux users"    
 
 for f in (git ls-files "*[^.md|^.txt]")

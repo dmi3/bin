@@ -24,10 +24,12 @@ function fish_user_key_bindings
       bind \cr "fzf-history-widget; and commandline -f execute"
 
       # Search history, allows edit command before execution
-      bind \ce fzf-history-widget
+      bind \er fzf-history-widget      
 
       # Fuzzy recursive search files in current directory & append selection to current command
       bind \cf search
+      
+      bind \ce freq_history
       
       bind \e\cf search-contents
     else # Use poor man completion (as up arrow, without search-as-you-type)
@@ -108,7 +110,7 @@ function copy --description "Copy pipe or argument"
   if [ "$argv" = "" ]
     xclip -sel clip
   else
-    printf $argv | xclip -sel clip
+    printf "$argv" | xclip -sel clip
   end    
 end
 
@@ -255,12 +257,6 @@ end
 function freq --description "Line frequency in piped input"
   cat 1>| sort -f | uniq -c | sort -k 1nr -k 2f
 end
-
-# todo save alternative history with full paths
-# cat alternative_history | sort -f | uniq -c | sort -k 1nr -k 2f | cut -c 9- | fzf --no-sort --tac
-# function postexec_test --on-event fish_postexec
-#   echo postexec handler: $argv
-# end
 
 #
 # Color configuration

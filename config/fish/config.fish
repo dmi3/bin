@@ -51,15 +51,15 @@ function fish_prompt
     # Full path + git trimmed to width of terminal
     set prompt_width (math (pwd | string length) + (string length "$__git_branch") + 7)
     if test $prompt_width -gt $COLUMNS
-      echo -n […(pwd | string sub -s (math $prompt_width - $COLUMNS + 4))❯
+      echo -n […(pwd | string sub -s (math $prompt_width - $COLUMNS + 4))"❯ "
     else
-      echo -n [(pwd)❯
+      echo -n [(pwd)"❯ "
     end
     
     # Git stuff    
     if [ $__git_branch!="" ]
         set_color A6E22E
-        echo -n ' ⌥'$__git_branch
+        echo -n '⌥'$__git_branch
         set __git_unpushed_commits (git cherry -v | wc -l)
         if [ $__git_unpushed_commits !=  "0" ]
             set_color F92672
@@ -231,7 +231,7 @@ end
 
 function random-password --description "Generate random password" --argument-names 'length'
   test -n "$length"; or set length 13
-  head /dev/urandom | tr -dc "[:graph:]" | head -c $length | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
+  head /dev/urandom | tr -dc "[:alnum:]~!#\$%^&*-+=?./|" | head -c $length | tee /dev/tty | xclip -sel clip; and echo -e "\ncopied to clipboard"
 end
 
 function weather --description "Show weather"

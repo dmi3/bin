@@ -45,6 +45,10 @@ test -n "$commit_message" || commit_message="bump" #default value if empty
 git commit -a -m "$commit_message"
 
 # Try to push, if no sucess run merge and push again
-git push origin master || git pull || git mergetool && git commit -a -m "merging" && git push origin master
+git push origin master \
+    || git pull \
+    || git mergetool \
+    && git commit -a -m "merging" \
+    && git push origin master
 
 

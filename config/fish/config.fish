@@ -154,9 +154,11 @@ end
 # Util improvements
 #
 
-function reset_window --description  "Reset window size and bring it to main monitor. Useful if DE messes up in multiple monitor configuration"
-  wmctrl -r $argv -e 0,0,0,800,600
-  wmctrl -a $argv
+function reset_windows --description  "Reset all windows size and bring it to main monitor. Useful if DE messes up in multiple monitor configuration"
+  for f in (wmctrl -l | cut -d' ' -f 1)
+    wmctrl -i -r $f -e 0,0,0,800,600
+    wmctrl -i -a $f
+  end
 end
 
 # Prepend `sudo` to `nano` command if file is not editable by current user

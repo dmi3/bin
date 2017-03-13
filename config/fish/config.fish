@@ -10,6 +10,7 @@
 #  2. `curl https://raw.githubusercontent.com/dmi3/bin/master/config/fish/config.fish --create-dirs -o ~/.config/fish/config.fish`
 #  3. `fish -c update-fzf`
 
+
 #
 # Fish config
 # https://fishshell.com/docs/current/

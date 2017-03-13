@@ -7,7 +7,7 @@
 #  Instalation
 #  ----------
 #  1. [Install fish](http://fishshell.com/#platform_tabs)
-#  2. `curl https://raw.githubusercontent.com/dmi3/bin/master/config.fish --create-dirs -o ~/.config/fish/config.fish`
+#  2. `curl https://raw.githubusercontent.com/dmi3/bin/master/config/fish/config.fish --create-dirs -o ~/.config/fish/config.fish`
 #  3. `fish -c update-fzf`
 
 #
@@ -147,7 +147,7 @@ end
 function update-fzf --description "Installs or updates fzf"
   set FZF_VERSION (curl -Ls -o /dev/null -w "%{url_effective}" https://github.com/junegunn/fzf-bin/releases/latest | xargs basename)
   curl -L https://github.com/junegunn/fzf-bin/releases/download/$FZF_VERSION/fzf-$FZF_VERSION-linux_amd64.tgz | tar -xz -C /tmp/
-  sudo -p "Root password to install fzf: " mv /tmp/fzf-$FZF_VERSION-linux_amd64 /usr/bin/fzf
+  sudo -p "Root password to install fzf: " mv /tmp/fzf /usr/bin/fzf
 end
 
 #

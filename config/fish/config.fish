@@ -135,9 +135,16 @@ function search --description "Search files by mask, case insensitive, output wi
 end
 
 function search-contents --description "Search file contents"
-  grep -I -H -n -v --line-buffered --color=never -r -e '^$' . | fzf | string split ":" | head -n 1 | read -l result
-  and commandline -a $result
-  and commandline -f repaint
+  if type -q ag
+    ag --nobreak --nonumbers --noheading --hidden . | fzf | string split ":" | head -n 1 | read -l result
+    and commandline $result
+    and commandline -f repaint
+  else
+    echo "⚠ to speed up search install ag"
+    grep -I -H -n -v --line-buffered --color=never -r -e '^$' . | fzf | string split ":" | head -n 1 | read -l result
+    and commandline $result
+    and commandline -f repaint
+  end
 end
 
 function search-gui --description "Search files, and open directory in GUI File Manager. Useful in File Mangagers that lack search-as-you-type"

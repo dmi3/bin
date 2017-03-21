@@ -137,7 +137,7 @@ end
 
 function search-contents --description "Search file contents"
   if type -q ag
-    ag --nobreak --nonumbers --noheading --hidden . | fzf | string split ":" | head -n 1 | read -l result
+    ag --nobreak --no-numbers --noheading --hidden . | fzf --preview-window 'up:3:wrap' --preview 'echo {} | cut -d ":" -f2' | string split ":" | head -n 1 | read -l result
     and commandline $result
     and commandline -f repaint
   else

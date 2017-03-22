@@ -1,4 +1,3 @@
-#  Decription
 #  ----------
 #  Fish config with awesome flexible prompt, unicode symbols, better fzf integration and lot of handy functions.
 
@@ -22,10 +21,7 @@ function fish_user_key_bindings
     
     if type -q fzf # Use fzf if installed
       # Simulate Ctrl+R in Bash      
-      bind \cr "fzf-history-widget; and commandline -f execute"
-
-      # Search history, allows edit command before execution
-      bind \er fzf-history-widget      
+      bind \cr fzf-history-widget
 
       # Fuzzy recursive search files in current directory & append selection to current command
       bind \cf search
@@ -116,15 +112,20 @@ function copy --description "Copy pipe or argument"
 end
 
 #
-# Fzf stuff (https://github.com/junegunn/fzf)
+# Fzf stuff 
+# https://github.com/junegunn/fzf
+# https://github.com/junegunn/fzf/blob/master/man/man1/fzf.1
 #
 
 set -x FZF_DEFAULT_OPTS --prompt="⌕ "
 
 function fzf-history-widget
-    history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort | read -l result
+    history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort \
+      --bind "ctrl-e:execute(echo \" commandline {}\")+cancel+cancel" \
+      --header "Enter to exec, or Ctrl+E to edit before" | read -l result
     and commandline $result
     and commandline -f repaint
+    and commandline -f execute
 end
 
 function search --description "Search files by mask, case insensitive, output with full path"
@@ -137,7 +138,12 @@ end
 
 function search-contents --description "Search file contents"
   if type -q ag
-    ag --nobreak --no-numbers --noheading --hidden . | fzf --preview-window 'up:3:wrap' --preview 'echo {} | cut -d ":" -f2' | string split ":" | head -n 1 | read -l result
+    ag --nobreak --no-numbers --noheading --max-count 100000 . 2>/dev/null \
+        | fzf \
+          --header 'Searching file contents' \
+          --preview-window 'up:3:wrap' \
+          --preview 'echo {} | cut -d ":" -f2' \
+        | string split ':' | head -n 1 | read -l result
     and commandline $result
     and commandline -f repaint
   else

@@ -3,26 +3,26 @@
 #  Simple Hackable Pomodoro Timer
 #  ===============================
 
+#  <img src="http://developer.run/pic/tomatych.png"/>
+#
 #  Decription
 #  -----------
-#  Allows
 #
-#  * Score Habitica habits on completed or canceled Pomodoros
-#  * Set Slack to do not disturb mode while Pomodoro is running
-#  * Set Tomato emoji as Slack status, so your colleagues get that you are "trying to concentrate"
-#  * Update Beeminder to match goal of completing *n* Pomodoros per day
-#  * Change color to match your favourite breed of tomato
-#  * ...
+#  Intended to be hacked and modified to fit your specific vision of how Pomodoro timers should work. Some assembly may be required :)
 #
-#  Some assembly may be required :)
-#  [Read More](http://developer.run/18)
+#  See recipes:
+#
+#  * [Score Habitica habits on completed or canceled Pomodoros](http://developer.run/18#habitica)
+#  * [Set Slack to do not disturb mode while Pomodoro is running](http://developer.run/18#dnd)
+#  * [Set Tomato Emoji as Slack status while Pomodoro is running](http://developer.run/18#slack)
+#  * [More...](http://developer.run/18)
 
 #  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Requirements
 #  ------------
-#  1. On Linux and Mac install package `python-tk`
-#  2. pip install requests
+#  1. On Linux install package `python-tk`, Windows should have it installed with Python
+#  2. `pip install requests`
 
 try:
     import Tkinter as tk
@@ -30,14 +30,12 @@ except ImportError:
     import tkinter as tk
 import time
 import datetime
-import os
 import requests
 
 class App():
     def __init__(self):
         self.root = tk.Tk()
         self.root.wm_attributes("-topmost", 1) # always on top
-        self.root.tk.call('wm', 'iconphoto', self.root._w, tk.PhotoImage(data="R0lGODlhIAAgAOMIAAAAAHkAAJcDALUhBgBlANM/JAChAPFdQv///////////////////////////////yH+EUNyZWF0ZWQgd2l0aCBHSU1QACH5BAEKAAgALAAAAAAgACAAAASwEMlJq704622BB0ZofKDIUaQ4fuo5pSIcupK8eu1GkkM/EEDC7oMZeny/oBFQNCKDQmNz+FRKX5+D9lDoFlRIsG+55XrFPfSAvPV+RWH42Fh2q9VLN3LPHwj+AnlefYR+gIJdhX2AgUZ6inuMS5CGjH8BmAGTkJaAmZpOnJ0Cn5uKo6SZJCgfSKilRBc8Pq+qsR2ttKOwHlMArru2vTpLVy7FxifIQzQIyzvN0dLTEhEAOw=="))
         self.label = tk.Label(font=("Helvetica Neue", 44))
         self.label.pack()
 

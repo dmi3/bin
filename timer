@@ -13,5 +13,5 @@
 #  -----
 #      timer 6 # i.e. notify after 6 minutes
 
-sleep $1m && (zenity --info --text "Timer done" & vlc -q --no-repeat --play-and-exit -I dummy /home/graf/documents/sounds/quake/pc_up.wav) &
+sleep $1m && (zenity --info --text "Timer done" & cvlc /home/graf/documents/sounds/quake/pc_up.wav vlc://quit) &
 

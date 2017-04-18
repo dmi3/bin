@@ -47,15 +47,13 @@ to Fish completion as arguments for `todo` command
 
 # [config/fish/config.fish](https://github.com/dmi3/bin/blob/master/config/fish/config.fish)
 
-
-Decription
 ----------
 Fish config with awesome flexible prompt, unicode symbols, better fzf integration and lot of handy functions.
 
 Instalation
 ----------
 1. [Install fish](http://fishshell.com/#platform_tabs)
-2. `curl https://raw.githubusercontent.com/dmi3/bin/master/config.fish --create-dirs -o ~/.config/fish/config.fish`
+2. `curl https://raw.githubusercontent.com/dmi3/bin/master/config/fish/config.fish --create-dirs -o ~/.config/fish/config.fish`
 3. `fish -c update-fzf`
 <hr/>
 
@@ -241,6 +239,27 @@ Usage
      todo buy stuff --life --on next monday
      todo resolve issue --work --star
      todo --work meet customer --on jan 7
+<hr/>
+
+# [tomatych.py](https://github.com/dmi3/bin/blob/master/tomatych.py)
+
+Simple Hackable Pomodoro Timer
+===============================
+<img src="http://developer.run/pic/tomatych.png"/>
+
+Decription
+-----------
+Intended to be hacked and modified to fit your specific vision of how Pomodoro timers should work. Some assembly may be required :)
+See recipes:
+* [Score Habitica habits on completed or canceled Pomodoros](http://developer.run/18#habitica)
+* [Set Slack to do not disturb mode while Pomodoro is running](http://developer.run/18#dnd)
+* [Set Tomato Emoji as Slack status while Pomodoro is running](http://developer.run/18#slack)
+* [More...](http://developer.run/18)
+
+Requirements
+------------
+1. On Linux install package `python-tk`, Windows should have it installed with Python
+2. `pip install requests`
 <hr/>
 
 # [translate-selection.sh](https://github.com/dmi3/bin/blob/master/translate-selection.sh)

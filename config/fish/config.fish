@@ -121,8 +121,9 @@ set -x FZF_DEFAULT_OPTS --prompt="⌕ "
 
 function fzf-history-widget
     history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort \
-      --bind "ctrl-e:execute(echo \" commandline {}\")+cancel+cancel" \
-      --header "Enter to exec, or Ctrl+E to edit before" | read -l result
+      --bind "ctrl-c:execute(echo \" commandline {}\")+cancel+cancel" \
+      --bind "ctrl-x:execute(echo \"printf {} | xclip -sel clip\")+cancel+cancel" \
+      --header "Enter to exec, Ctrl+X to copy, Ctrl+E to edit" | read -l result
     and commandline $result
     and commandline -f repaint
     and commandline -f execute

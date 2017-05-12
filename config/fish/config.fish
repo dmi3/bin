@@ -26,7 +26,7 @@ function fish_user_key_bindings
       # Fuzzy recursive search files in current directory & append selection to current command
       bind \cf search
       
-      bind \ce freq_history
+      #bind \ce freq_history
       
       bind \e\cf search-contents
     else # Use poor man completion (as up arrow, without search-as-you-type)
@@ -121,7 +121,7 @@ set -x FZF_DEFAULT_OPTS --prompt="⌕ "
 
 function fzf-history-widget
     history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort \
-      --bind "ctrl-c:execute(echo \" commandline {}\")+cancel+cancel" \
+      --bind "ctrl-e:execute(echo \" commandline {}\")+cancel+cancel" \
       --bind "ctrl-x:execute(echo \"printf {} | xclip -sel clip\")+cancel+cancel" \
       --header "Enter to exec, Ctrl+X to copy, Ctrl+E to edit" | read -l result
     and commandline $result

@@ -35,6 +35,19 @@ Usage
 Run from commandline or add to cron
 <hr/>
 
+# [batch-rename.py](https://github.com/dmi3/bin/blob/master/batch-rename.py)
+
+
+Decription
+-----------
+Renames files given in arguments. Interactively prompts for file name. If no otherwise specified - uses first file
+name + number.
+
+Usage
+-----
+rename.py file1 file2 file3 ...
+<hr/>
+
 # [config/fish/completions/todo.fish](https://github.com/dmi3/bin/blob/master/config/fish/completions/todo.fish)
 
 

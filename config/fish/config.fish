@@ -84,6 +84,9 @@ alias mkdir='mkdir -pv'
 # Print full file path
 alias path='readlink -e'
 
+# add current directory to path
+alias add-to-path='set -U fish_user_paths (pwd) $fish_user_paths'
+
 # Human readable sizes (i.e. Mb, Gb etc)
 alias df='df -h'
 alias du='du -ch'

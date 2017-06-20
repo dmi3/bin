@@ -92,6 +92,10 @@ alias free='free -m'
 alias poweroff='shutdown -P now'
 alias reboot='shutdown -r now'
 
+# Ask password when working with docker https://www.projectatomic.io/blog/2015/08/why-we-dont-let-non-root-users-run-docker-in-centos-fedora-or-rhel/
+alias docker='sudo docker'
+alias docker-compose='sudo docker-compose'
+
 alias ...='cd ../..'
 
 alias git-show-unpushed-commits='git cherry -v' 
@@ -122,7 +126,7 @@ set -x FZF_DEFAULT_OPTS --prompt="⌕ "
 function fzf-history-widget
     history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort \
       --bind "ctrl-e:execute(echo \" commandline {}\")+cancel+cancel" \
-      --bind "ctrl-x:execute(echo \"printf {} | xclip -sel clip\")+cancel+cancel" \
+      --bind "ctrl-x:execute(echo \" printf {} | xclip -sel clip\")+cancel+cancel" \
       --header "Enter to exec, Ctrl+X to copy, Ctrl+E to edit" | read -l result
     and commandline $result
     and commandline -f repaint

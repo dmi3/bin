@@ -7,11 +7,14 @@
 
 #  Requirements
 #  ------------
-#      sudo apt-get install zenity vlc
+#      sudo apt-get install dunst aplay
 
 #  Usage
 #  -----
 #      timer 6 # i.e. notify after 6 minutes
 
-sleep $1m && (zenity --info --text "Timer done" & cvlc /home/graf/documents/sounds/quake/pc_up.wav vlc://quit) &
+sleep $1m && (notify-send -u critical "Timer done $1" & aplay ~/gitstuff/documents/sounds/pc_up.wav) &
+
+# Alternative approach - show popup instead of notification
+#sleep $1m && (zenity --info --text "Timer done" & cvlc /home/edmnovi/gitstuff/documents/sounds/pc_up_beep.wav vlc://quit) &
 

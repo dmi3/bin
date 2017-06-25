@@ -220,7 +220,7 @@ Replace pc_up.wav to any available audiofile.
 
 Requirements
 ------------
-    sudo apt-get install zenity vlc
+    sudo apt-get install dunst aplay
 
 Usage
 -----

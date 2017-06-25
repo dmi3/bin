@@ -129,7 +129,7 @@ set -x FZF_DEFAULT_OPTS --prompt="⌕ "
 function fzf-history-widget
     history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort \
       --bind "ctrl-e:execute(echo \" commandline {}\")+cancel+cancel" \
-      --bind "ctrl-d:execute(echo \" history delete --case-sensitive {}\")+cancel+cancel" \
+      --bind "ctrl-d:execute(echo \" history delete {}\")+cancel+cancel" \
       --bind "ctrl-x:execute(echo \" printf {} | xclip -sel clip\")+cancel+cancel" \
       --header "Enter to exec, Ctrl+X to copy, Ctrl+E to edit, Ctrl+D to delete" | read -l result
     and commandline $result

@@ -15,8 +15,11 @@ from sys import argv
 from os import rename
 from urllib.request import unquote
 from os.path import splitext, abspath, basename, dirname
+from sh import zenity, notify_send
+
 
 new = ""
+message = ""
 
 for i,f in enumerate(argv[1:]):
     if "file://" in f:
@@ -26,14 +29,13 @@ for i,f in enumerate(argv[1:]):
     name,ext = splitext(f)
 
     if new == "":
-       new = input("new name [%s_#]: " % (basename(name)))
-       new = new or basename(name)
+       new = zenity("--text", "Rename", "--entry", "--entry-text", basename(name)).strip()
 
     try:
         new_name = "%s/%s_%s%s" % (fdir, new, i, ext)
         rename(f, new_name)
-        print(f + ' → ' + new_name)
+        message = "%s%s → %s\n" % (message, f, new_name)
     except Exception as e:
-        print(e)
+        notify_send("Error", "-u", "critical", e)
 
-input("ok")
+notify_send("Renamed", message)

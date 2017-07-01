@@ -108,6 +108,8 @@ function mkcd --description "Create and cd to directory"
   and cd $argv
 end
 
+alias open='xdg-open'
+
 # Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
 # If arguments are given, copies it to clipboard
 function copy --description "Copy pipe or argument"

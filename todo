@@ -50,7 +50,7 @@ if not type -q wl
   set WL_VERSION (curl -Ls -o /dev/null -w "%{url_effective}" https://github.com/robdimsdale/wl/releases/latest | xargs basename | string trim -c "v")
   echo "⚠ wl is not found. Installing $WL_VERSION."
   curl -L https://github.com/robdimsdale/wl/releases/download/v$WL_VERSION/wl-linux-amd64-$WL_VERSION -o /tmp/wl
-  chmod +x /tmp/wl; sudo -p "Root password to install wl: " mv /tmp/wl /usr/bin/wl; 
+  chmod +x /tmp/wl; sudo -p "Root password to install wl: " mv /tmp/wl /usr/local/bin/wl; 
 end  
 
 wl create-task --title="$TITLE" --dueDate=$DATE --listID=$LIST --starred=$STAR | grep 'title\|starred\|due_date'

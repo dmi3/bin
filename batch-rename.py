@@ -14,14 +14,15 @@
 from sys import argv
 from os import rename
 from urllib.request import unquote
-from os.path import splitext, abspath, basename, dirname
+from os.path import splitext, abspath, basename, dirname, isfile
 from sh import zenity, notify_send
 
 
 new = ""
 message = ""
 
-for i,f in enumerate(argv[1:]):
+i = 0
+for f in argv[1:]:
     if "file://" in f:
         f = unquote(f)[7:]
 
@@ -32,7 +33,12 @@ for i,f in enumerate(argv[1:]):
        new = zenity("--text", "Rename", "--entry", "--entry-text", basename(name)).strip()
 
     try:
-        new_name = "%s/%s_%s%s" % (fdir, new, i, ext)
+        while True:
+            i = i + 1
+            new_name = "%s/%s %s%s" % (fdir, new, i, ext)
+            if not isfile(new_name):
+                break
+
         rename(f, new_name)
         message = "%s%s → %s\n" % (message, f, new_name)
     except Exception as e:

@@ -51,4 +51,6 @@ git push origin master \
     && git commit -a -m "merging" \
     && git push origin master
 
+exit 0    
+
 

@@ -92,9 +92,6 @@ alias df='df -h'
 alias du='du -ch'
 alias free='free -m'
 
-alias poweroff='shutdown -P now'
-alias reboot='shutdown -r now'
-
 # Ask password when working with docker https://www.projectatomic.io/blog/2015/08/why-we-dont-let-non-root-users-run-docker-in-centos-fedora-or-rhel/
 alias docker='sudo docker'
 alias docker-compose='sudo docker-compose'
@@ -141,7 +138,7 @@ end
 
 function search --description "Search files by mask, case insensitive, output with full path"
   if [ $argv == ""]
-    find $PWD 2>/dev/null | fzf | read -l result; and commandline -a $result
+    find $PWD 2>/dev/null | fzf -q "'" | read -l result; and commandline -a $result
   else
     find $PWD -iname $argv 2>/dev/null  | fzf
   end    
@@ -151,6 +148,7 @@ function search-contents --description "Search file contents"
   if type -q ag
     ag --nobreak --no-numbers --noheading --max-count 100000 . 2>/dev/null \
         | fzf \
+          -q "'"
           --header 'Searching file contents' \
           --preview-window 'up:3:wrap' \
           --preview 'echo {} | cut -d ":" -f2' \
@@ -172,7 +170,7 @@ end
 function update-fzf --description "Installs or updates fzf"
   set FZF_VERSION (curl -Ls -o /dev/null -w "%{url_effective}" https://github.com/junegunn/fzf-bin/releases/latest | xargs basename)
   curl -L https://github.com/junegunn/fzf-bin/releases/download/$FZF_VERSION/fzf-$FZF_VERSION-linux_amd64.tgz | tar -xz -C /tmp/
-  sudo -p "Root password to install fzf: " mv /tmp/fzf /usr/bin/fzf
+  sudo -p "Root password to install fzf: " mv /tmp/fzf /usr/local/bin/fzf
 end
 
 #

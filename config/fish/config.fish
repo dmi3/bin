@@ -26,7 +26,7 @@ function fish_user_key_bindings
       # Fuzzy recursive search files in current directory & append selection to current command
       bind \cf search
       
-      #bind \ce freq_history
+      bind \ce rangr
       
       bind \e\cf search-contents
     else # Use poor man completion (as up arrow, without search-as-you-type)
@@ -281,6 +281,21 @@ end
 # https://gist.github.com/rsvp/1859875
 function freq --description "Line frequency in piped input"
   cat 1>| sort -f | uniq -c | sort -k 1nr -k 2f
+end
+
+function rangr 
+  rm /tmp/rangr 2> /dev/null; or true
+
+  ranger
+
+  if [ -f /tmp/rangr ]
+    if test -d (cat /tmp/rangr)
+      cd (cat /tmp/rangr)
+      commandline -f repaint
+    else if test -e (cat /tmp/rangr)
+        commandline (cat /tmp/rangr)
+    end
+  end
 end
 
 #

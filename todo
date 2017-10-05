@@ -53,4 +53,12 @@ if not type -q wl
   chmod +x /tmp/wl; sudo -p "Root password to install wl: " mv /tmp/wl /usr/local/bin/wl; 
 end  
 
-wl create-task --title="$TITLE" --dueDate=$DATE --listID=$LIST --starred=$STAR | grep 'title\|starred\|due_date'
+set result (wl create-task --title="$TITLE" --dueDate=$DATE --listID=$LIST --starred=$STAR)
+
+if test $status -eq 0
+    echo $result | grep 'title\|starred\|due_date'
+else
+    echo $result
+end
+
+ 

@@ -15,6 +15,7 @@
 # https://fishshell.com/docs/current/
 
 # https://github.com/fish-shell/fish-shell/blob/master/share/functions/fish_default_key_bindings.fish
+# fish_key_reader
 function fish_user_key_bindings
 	  # Clear input on Ctrl+U
     bind \cu 'commandline "";'
@@ -33,6 +34,12 @@ function fish_user_key_bindings
       echo "⚠ fzf is not installed. To greatly improve Ctrl+R, Ctrl+E, Ctrl+Alt+F and Ctrl+F type `update-fzf`"
       bind \cr history-search-backward
     end
+
+    # Navigation with Alt+Ctrl ↑→←
+    bind \e\[1\;7D "prevd; or cd ..; and commandline -f repaint"
+    bind \e\[1\;7C "nextd; and commandline -f repaint"
+    bind \e\[1\;7A "cd ..; and commandline -f repaint"
+    bind \e\[1\;7B "prevd; and commandline -f repaint"
 
     math (echo $version | tr -d .)"<231" > /dev/null; and echo "⚠ Please upgrade Fish shell to at least 2.3.0 https://fishshell.com/#platform_tabs"
 
@@ -83,6 +90,9 @@ alias mkdir='mkdir -pv'
 
 # Print full file path
 alias path='readlink -e'
+
+# Remove directories but ask nicely
+alias rmm='rm -rvI'
 
 # add current directory to path
 alias add-to-path='set -U fish_user_paths (pwd) $fish_user_paths'
@@ -148,7 +158,7 @@ function search-contents --description "Search file contents"
   if type -q ag
     ag --nobreak --no-numbers --noheading --max-count 100000 . 2>/dev/null \
         | fzf \
-          -q "'"
+          -q "'" \
           --header 'Searching file contents' \
           --preview-window 'up:3:wrap' \
           --preview 'echo {} | cut -d ":" -f2' \
@@ -273,7 +283,7 @@ function transfer --description "Upload file to transfer.sh"
   curl --progress-bar --upload-file $argv https://transfer.sh/(basename $argv)   
 end
 
-#https://github.com/dmi3/bin/blob/master/yandex-translate.sh
+# https://github.com/dmi3/bin/blob/master/yandex-translate.sh
 function translate
   translate-yandex.sh "$argv"
 end

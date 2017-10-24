@@ -27,7 +27,8 @@ function fish_user_key_bindings
       # Fuzzy recursive search files in current directory & append selection to current command
       bind \cf search
       
-      bind \ce rangr
+      # Most frequently visited directories on Ctrl+E
+      bind \ce scd
       
       bind \e\cf search-contents
     else # Use poor man completion (as up arrow, without search-as-you-type)
@@ -36,10 +37,10 @@ function fish_user_key_bindings
     end
 
     # Navigation with Alt+Ctrl ↑→←
-    bind \e\[1\;7D "prevd; or cd ..; and commandline -f repaint"
-    bind \e\[1\;7C "nextd; and commandline -f repaint"
-    bind \e\[1\;7A "cd ..; and commandline -f repaint"
-    bind \e\[1\;7B "prevd; and commandline -f repaint"
+    bind \e\[1\;7D "set __ignore_dir_history 1; prevd; echo; commandline -f repaint;"
+    bind \e\[1\;7C "set __ignore_dir_history 1; nextd; echo; commandline -f repaint;"
+    bind \e\[1\;7A "set __ignore_dir_history 1; cd ..; echo; commandline -f repaint;"
+    bind \e\[1\;7B "set __ignore_dir_history 1; prevd; echo; commandline -f repaint;"
 
     math (echo $version | tr -d .)"<231" > /dev/null; and echo "⚠ Please upgrade Fish shell to at least 2.3.0 https://fishshell.com/#platform_tabs"
 
@@ -70,9 +71,24 @@ function fish_prompt
             echo -n " ⬆$__git_unpushed_commits "
         end
     end
-    
+
     echo
     echo (set_color 777)'➤ '
+end
+
+function postexec_test --on-event fish_postexec
+    set -l last_status $status
+    if [ $last_status -ne 0 ]
+      echo (set_color F92672)"✖ $last_status"
+    end  
+end
+
+# Use fish as file manager. ls on directory change
+function spwd --on-variable PWD
+  echo
+  ls $PWD
+  test -n "$__ignore_dir_history"; or pwd >> ~/.local/share/fish/fish_dir_history
+  set -e __ignore_dir_history  
 end
 
 # Disable greeting
@@ -108,14 +124,29 @@ alias docker-compose='sudo docker-compose'
 
 alias ...='cd ../..'
 
+alias sizeof="du -hs"
+
 alias git-show-unpushed-commits='git cherry -v' 
+
+# Scroll ll if theres more files that fit on screen
+alias ll='ls -l --color=always | less -R -X -F'
+
+function git-revert-file --description "Revert single file in git"
+  git reset HEAD $argv; git checkout $argv
+end
 
 function mkcd --description "Create and cd to directory"
   mkdir $argv
   and cd $argv
 end
 
-alias open='xdg-open'
+function open --description "Open file in new process"
+  xdg-open $argv &
+end
+
+function amount --description "Mount archive"
+  /usr/lib/gvfs/gvfsd-archive file=$argv
+end
 
 # Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
 # If arguments are given, copies it to clipboard
@@ -171,6 +202,13 @@ function search-contents --description "Search file contents"
     and commandline $result
     and commandline -f repaint
   end
+end
+
+function scd
+    cat ~/.local/share/fish/fish_dir_history | freq | fzf -q "'" -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort | cut -c9- | read -l result
+    and cd $result
+    and commandline -f repaint
+    and ls
 end
 
 function search-gui --description "Search files, and open directory in GUI File Manager. Useful in File Mangagers that lack search-as-you-type"

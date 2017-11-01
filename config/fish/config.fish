@@ -76,16 +76,15 @@ function fish_prompt
     echo (set_color 777)'➤ '
 end
 
-function postexec_test --on-event fish_postexec
+function show_exit_code --on-event fish_postexec --description "show exit code of command failure"
     set -l last_status $status
-    if [ $last_status -ne 0 ]
+    if [ $last_status -ne 0 -a $argv != "" ]
       echo (set_color F92672)"✖ $last_status"
     end  
 end
 
-# Use fish as file manager. ls on directory change
-function spwd --on-variable PWD
-  echo
+function spwd --on-variable PWD --description "Use fish as file manager. ls on directory change"
+  echo (set_color -d FFFFFF)
   ls $PWD
   test -n "$__ignore_dir_history"; or pwd >> ~/.local/share/fish/fish_dir_history
   set -e __ignore_dir_history  
@@ -128,8 +127,9 @@ alias sizeof="du -hs"
 
 alias git-show-unpushed-commits='git cherry -v' 
 
-# Scroll ll if theres more files that fit on screen
-alias ll='ls -l --color=always | less -R -X -F'
+function ll --description "Scroll ll if theres more files that fit on screen"
+  ls -l $argv --color=always | less -R -X -F
+end  
 
 function git-revert-file --description "Revert single file in git"
   git reset HEAD $argv; git checkout $argv
@@ -144,8 +144,20 @@ function open --description "Open file in new process"
   xdg-open $argv &
 end
 
+# function aunpack --description "Unpack archive"
+#   aunpack "$argv" --save-outdir=/tmp/___aaaunpack
+#   cd (cat /tmp/___aaaunpack)
+# end
+
 function amount --description "Mount archive"
-  /usr/lib/gvfs/gvfsd-archive file=$argv
+  /usr/lib/gvfs/gvfsd-archive file=$argv 2>/dev/null &
+  sleep 1
+  cd $XDG_RUNTIME_DIR/gvfs  
+  cd (ls -p | grep / | tail -1) # cd last created dir
+end
+
+function aumount --description "Unmount all mounted archive (and gvfs locations)"
+  gvfs-mount --unmount $XDG_RUNTIME_DIR/gvfs/*
 end
 
 # Useful for piping, i.e. `cat ~/.ssh/id_rsa.pub | copy`
@@ -179,9 +191,10 @@ end
 
 function search --description "Search files by mask, case insensitive, output with full path"
   if [ $argv == ""]
-    find $PWD 2>/dev/null | fzf -q "'" | read -l result; and commandline -a $result
+    find $PWD 2>/dev/null | fzf -q "'" \
+      --bind "ctrl-f:execute(echo -e \" search-contents\n\")+cancel+cancel" | read -l result; and commandline -a $result
   else
-    find $PWD -iname $argv 2>/dev/null  | fzf
+    find $PWD -iname $argv 2>/dev/null  | fzf      
   end    
 end
 

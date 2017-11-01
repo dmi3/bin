@@ -17,7 +17,7 @@ available=$(awk '/^Cached/ { c=$2 } /^MemAvailable/ { a=$2 } END { printf "%.0f"
 
 if [ $available -lt 1000 ] # threshold in megabytes
     then
-    notify-send -u critical "Memory is running out!"
+    notify-send "Memory is running out!" # -u critical
 fi
 
 echo $available | awk '{ printf "%.1f", $1/1024 }'

@@ -37,10 +37,10 @@ function fish_user_key_bindings
     end
 
     # Navigation with Alt+Ctrl ↑→←
-    bind \e\[1\;7D "set __ignore_dir_history 1; prevd; echo; commandline -f repaint;"
-    bind \e\[1\;7C "set __ignore_dir_history 1; nextd; echo; commandline -f repaint;"
-    bind \e\[1\;7A "set __ignore_dir_history 1; cd ..; echo; commandline -f repaint;"
-    bind \e\[1\;7B "set __ignore_dir_history 1; prevd; echo; commandline -f repaint;"
+    bind \e\[1\;7D "prevd; echo; commandline -f repaint;"
+    bind \e\[1\;7C "nextd; echo; commandline -f repaint;"
+    bind \e\[1\;7A "cd ..; echo; commandline -f repaint;"
+    bind \e\[1\;7B "prevd; echo; commandline -f repaint;"
 
     math (echo $version | tr -d .)"<231" > /dev/null; and echo "⚠ Please upgrade Fish shell to at least 2.3.0 https://fishshell.com/#platform_tabs"
 
@@ -83,11 +83,17 @@ function show_exit_code --on-event fish_postexec --description "Show exit code o
     end  
 end
 
+function save_dir --on-event fish_postexec --description "If command was executed if directory, save dir to Ctrl+E history for quick access"
+    test "$last_pwd"!="$PWD"; 
+      and string match -q -r "(^\$|ls|cd|pwd|ll|echo|man)" $argv;
+      or echo "$PWD" >> ~/.local/share/fish/fish_dir_history
+
+    set -g last_pwd "$PWD"
+end
+
 function spwd --on-variable PWD --description "Use fish as file manager. ls on directory change"
   echo (set_color -d FFFFFF)
   ls $PWD
-  test -n "$__ignore_dir_history"; or pwd >> ~/.local/share/fish/fish_dir_history
-  set -e __ignore_dir_history  
 end
 
 # Disable greeting

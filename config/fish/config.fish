@@ -76,7 +76,7 @@ function fish_prompt
     echo (set_color 777)'➤ '
 end
 
-function show_exit_code --on-event fish_postexec --description "show exit code of command failure"
+function show_exit_code --on-event fish_postexec --description "Show exit code on command failure"
     set -l last_status $status
     if [ $last_status -ne 0 -a $argv != "" ]
       echo (set_color F92672)"✖ $last_status"
@@ -168,6 +168,10 @@ function copy --description "Copy pipe or argument"
   else
     printf "$argv" | xclip -sel clip
   end    
+end
+
+function color --description "Print color"
+  echo (set_color (string trim -c '#' "$argv"))"██"
 end
 
 #

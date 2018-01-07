@@ -1,0 +1,29 @@
+#!/usr/bin/fish
+
+#  Decription
+#  ----------
+#  Script for quickly adding and accessing bookmarks. Browser independent.
+#  Useful when set by hotkeys or [ClipIt](https://github.com/CristianHenzel/ClipIt) actions.
+
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
+
+#  Requirements
+#  ----------
+#  1. `sudo apt-get install fzf`
+
+#  Usage
+#  -----
+
+#  * `bookmarks -a http://github.com useful site`
+#  * `bookmarks`
+#  * Bookmark currently copied link using [ClipIt](https://github.com/CristianHenzel/ClipIt) actions: `bookmarks -a %s $(zenity --entry)`
+
+set BOOKMARKS_FILE ~/git/stuff/braindump/bookmarks.md
+
+argparse 'a/add' -- $argv
+
+if set -q _flag_add
+    echo -e "$argv\\n" >> $BOOKMARKS_FILE
+else
+    cat $BOOKMARKS_FILE | fzf --tac --no-sort | string match -r "(http[s]?://.*?)[\s>]" | tail -1 | read -l result; and vivaldi -a $result
+end

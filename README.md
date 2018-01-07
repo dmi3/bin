@@ -100,12 +100,12 @@ Instalation
 
 Decription
 -----------
-Ping <https://healthchecks.io/> on successful Duplicati backup
+Ping <https://healthchecks.io/> on successful [Duplicati](https://www.duplicati.com/) backup
 
 Usage
 -----
 Add path to this script to `run-script-after` in job `Configuration` → `Options` → `Advanched Options`
-On Windows you will need to create `.bat` file containing path to this script, and add `.bat` file in `run-script-after`
+On Windows you will need to create `.bat` file containing path to this script, and add path to `.bat` file to `run-script-after`
 <hr/>
 
 # [generate-readme.fish](https://github.com/dmi3/bin/blob/master/generate-readme.fish)

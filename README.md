@@ -48,6 +48,25 @@ Usage
 rename.py file1 file2 file3 ...
 <hr/>
 
+# [bookmarks](https://github.com/dmi3/bin/blob/master/bookmarks)
+
+
+Decription
+----------
+Script for quickly adding and accessing bookmarks. Browser independent.
+Useful when set by hotkeys or [ClipIt](https://github.com/CristianHenzel/ClipIt) actions.
+
+Requirements
+----------
+1. `sudo apt-get install fzf`
+
+Usage
+-----
+* `bookmarks -a http://github.com useful site`
+* `bookmarks`
+* Bookmark currently copied link using [ClipIt](https://github.com/CristianHenzel/ClipIt) actions: `bookmarks -a %s $(zenity --entry)`
+<hr/>
+
 # [config/clipit/clipitrc](https://github.com/dmi3/bin/blob/master/config/clipit/clipitrc)
 
 <hr/>
@@ -72,6 +91,8 @@ Instalation
 1. [Install fish](http://fishshell.com/#platform_tabs)
 2. `curl https://raw.githubusercontent.com/dmi3/bin/master/config/fish/config.fish --create-dirs -o ~/.config/fish/config.fish`
 3. `fish -c update-fzf`
+ aunpack "$argv" --save-outdir=/tmp/___aaaunpack
+ cd (cat /tmp/___aaaunpack)
 <hr/>
 
 # [duplicati-ping.py](https://github.com/dmi3/bin/blob/master/duplicati-ping.py)
@@ -172,6 +193,23 @@ Works best with [indicator-sysmonitor](https://github.com/fossfreedom/indicator-
 Requirements
 ----------
 1. `sudo apt-get install notify-send `
+<hr/>
+
+# [poweroff](https://github.com/dmi3/bin/blob/master/poweroff)
+
+
+Decription
+----------
+Gracefully closes all running X applications, then powers off the computer.
+Useful to avoid issues when calling `poweroff` from console:
+* "The database you are trying to open is locked by another instance of KeePassXC.",
+* "Well, this is embarrassing. Firefox is having trouble recovering your windows and tabs."
+* Spotify forgetting current playlist
+* etc
+
+Requirements
+----------
+1. `sudo apt-get install wmctrl`
 <hr/>
 
 # [skypenotify](https://github.com/dmi3/bin/blob/master/skypenotify)

@@ -48,6 +48,10 @@ Usage
 rename.py file1 file2 file3 ...
 <hr/>
 
+# [config/clipit/clipitrc](https://github.com/dmi3/bin/blob/master/config/clipit/clipitrc)
+
+<hr/>
+
 # [config/fish/completions/todo.fish](https://github.com/dmi3/bin/blob/master/config/fish/completions/todo.fish)
 
 
@@ -68,6 +72,19 @@ Instalation
 1. [Install fish](http://fishshell.com/#platform_tabs)
 2. `curl https://raw.githubusercontent.com/dmi3/bin/master/config/fish/config.fish --create-dirs -o ~/.config/fish/config.fish`
 3. `fish -c update-fzf`
+<hr/>
+
+# [duplicati-ping.py](https://github.com/dmi3/bin/blob/master/duplicati-ping.py)
+
+
+Decription
+-----------
+Ping <https://healthchecks.io/> on successful Duplicati backup
+
+Usage
+-----
+Add path to this script to `run-script-after` in job `Configuration` → `Options` → `Advanched Options`
+On Windows you will need to create `.bat` file containing path to this script, and add `.bat` file in `run-script-after`
 <hr/>
 
 # [generate-readme.fish](https://github.com/dmi3/bin/blob/master/generate-readme.fish)
@@ -141,6 +158,20 @@ Requirements
 Usage
 -----
 `knock ip [port,port...]`
+<hr/>
+
+# [memory-available.sh](https://github.com/dmi3/bin/blob/master/memory-available.sh)
+
+
+Decription
+----------
+Prints free memory in gigabytes. Sends urgent notification if usage is less than defined value.
+Cached memory is considered free.
+Works best with [indicator-sysmonitor](https://github.com/fossfreedom/indicator-sysmonitor) and [dunst](http://developer.run/23)
+
+Requirements
+----------
+1. `sudo apt-get install notify-send `
 <hr/>
 
 # [skypenotify](https://github.com/dmi3/bin/blob/master/skypenotify)

@@ -115,6 +115,9 @@ alias path='readlink -e'
 # Remove directories but ask nicely
 alias rmm='rm -rvI'
 
+# Copy directories but ask nicely
+alias cpp='cp -R'
+
 # add current directory to path
 alias add-to-path='set -U fish_user_paths (pwd) $fish_user_paths'
 
@@ -126,6 +129,8 @@ alias free='free -m'
 # Ask password when working with docker https://www.projectatomic.io/blog/2015/08/why-we-dont-let-non-root-users-run-docker-in-centos-fedora-or-rhel/
 alias docker='sudo docker'
 alias docker-compose='sudo docker-compose'
+
+alias xs='cd'
 
 alias ...='cd ../..'
 
@@ -147,7 +152,7 @@ function mkcd --description "Create and cd to directory"
 end
 
 function open --description "Open file in new process"
-  xdg-open $argv &
+  xdg-open $argv & 
 end
 
 # function aunpack --description "Unpack archive"
@@ -174,6 +179,10 @@ function copy --description "Copy pipe or argument"
   else
     printf "$argv" | xclip -sel clip
   end    
+end
+
+function copypath --description "Copy full file path"
+  readlink -e $argv | xclip -sel clip
 end
 
 function color --description "Print color"

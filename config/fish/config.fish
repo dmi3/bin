@@ -83,6 +83,15 @@ function show_exit_code --on-event fish_postexec --description "Show exit code o
     end  
 end
 
+#
+# Turn fish into powerful file manager!
+#
+
+function fish_title
+  if [ "$_" != "fish" ]; echo "➤ $_ "; end
+  echo 🖿 (basename (pwd))
+end
+
 function save_dir --on-event fish_postexec --description "If command was executed if directory, save dir to Ctrl+E history for quick access"
     test "$last_pwd"!="$PWD"; 
       and string match -q -r "(^\$|ls|cd|pwd|ll|echo|man)" $argv;
@@ -115,6 +124,9 @@ alias path='readlink -e'
 # Remove directories but ask nicely
 alias rmm='rm -rvI'
 
+# Copy directories but ask nicely
+alias cpp='cp -R'
+
 # add current directory to path
 alias add-to-path='set -U fish_user_paths (pwd) $fish_user_paths'
 
@@ -123,9 +135,7 @@ alias df='df -h'
 alias du='du -ch'
 alias free='free -m'
 
-# Ask password when working with docker https://www.projectatomic.io/blog/2015/08/why-we-dont-let-non-root-users-run-docker-in-centos-fedora-or-rhel/
-alias docker='sudo docker'
-alias docker-compose='sudo docker-compose'
+alias xs='cd'
 
 alias ...='cd ../..'
 
@@ -147,7 +157,7 @@ function mkcd --description "Create and cd to directory"
 end
 
 function open --description "Open file in new process"
-  xdg-open $argv &
+  xdg-open $argv & 
 end
 
 # function aunpack --description "Unpack archive"
@@ -176,6 +186,10 @@ function copy --description "Copy pipe or argument"
   end    
 end
 
+function copypath --description "Copy full file path"
+  readlink -e $argv | xclip -sel clip
+end
+
 function color --description "Print color"
   echo (set_color (string trim -c '#' "$argv"))"██"
 end
@@ -190,10 +204,13 @@ set -x FZF_DEFAULT_OPTS --prompt="⌕ "
 
 function fzf-history-widget
     history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort \
+      --preview-window 'up:50%:wrap:hidden' \
+      --preview 'echo {}' \
       --bind "ctrl-e:execute(echo \" commandline {}\")+cancel+cancel" \
       --bind "ctrl-d:execute(echo \" history delete {}\")+cancel+cancel" \
       --bind "ctrl-x:execute(echo \" printf {} | xclip -sel clip\")+cancel+cancel" \
-      --header "Enter to exec, Ctrl+X to copy, Ctrl+E to edit, Ctrl+D to delete" | read -l result
+      --bind "ctrl-a:toggle-preview" \
+      --header "Enter: exec, Ctrl+X: copy, Ctrl+E: edit, Ctrl+D: delete, Ctrl+A: show full" | read -l result
     and commandline $result
     and commandline -f repaint
     and commandline -f execute
@@ -283,6 +300,11 @@ end
 # If Sublime Text installed - use it instead of Gedit
 if type -q subl
   alias gedit=subl
+end
+
+# If [sssh](https://github.com/dmi3/bin/blob/master/sssh) installed - use it instead of ssh
+if type -q sssh
+  alias ssh=sssh
 end
 
 function subl --description "Starts Sublime Text. Additionally supports piping (i.e. `ls | subl`) and urls (i.e. `subl http://jenkins/logs`)"

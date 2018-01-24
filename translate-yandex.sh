@@ -12,7 +12,7 @@
 #      yandex-translate.sh die Hauskatze ist eine Unterart der Wildkatze # de → ru
 #      yandex-translate.sh кот это маленькое, пушистое и очень хитрое млекопитающее # ru → en
 
-key=$(cat ~/gitstuff/keys/yandex_translate) # get your key https://tech.yandex.ru/keys/get/?service=trnsl&ncrnd=1455
+key=$(cat ~/git/stuff/keys/yandex_translate) # get your key https://tech.yandex.ru/keys/get/?service=trnsl&ncrnd=1455
 
 if [[ $* =~ ^.*[А-Яа-яЁё]+.*$ ]] ; then lang=en; else lang=ru; fi # if at least one Cyrillic symbol
 curl -s "https://translate.yandex.net/api/v1.5/tr.json/translate?key=$key&lang=$lang&" --data-urlencode "text=$*" | awk -F'"' {' print $10 '}

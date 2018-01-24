@@ -57,7 +57,11 @@ sh -c "xdotool key --clearmodifiers ctrl+shift+Left"
 sh -c "xdotool key --clearmodifiers ctrl+x"
 selection=`xsel -b`
 
+sleep 0.05
+
 echo -n "$selection" | sed "$snippets" | xclip -sel clip
+
+sleep 0.05
 
 sh -c "xdotool key --clearmodifiers ctrl+v"
 

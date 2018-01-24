@@ -18,7 +18,7 @@
 #  `sssh user@hostname`
 
 CUSTOM_PS1='PS1="\[$(tput bold)\]\[$(tput setaf 2)\][\u@\h \W]\\$ \[$(tput sgr0)\]"'
-CUSTOM_TITLE='echo -e "\033]0;$USER@$HOSTNAME\a"'
+CUSTOM_TITLE='echo -e "\033]0;🖧 $USER@$HOSTNAME\a"'
 
 PREV_TITLE=`xdotool getwindowfocus getwindowname`
 /usr/bin/ssh -t "$@" "export PROMPT_COMMAND='eval '\\''$CUSTOM_TITLE;$CUSTOM_PS1'\\'; bash --login"

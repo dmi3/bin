@@ -137,6 +137,8 @@ alias free='free -m'
 
 alias xs='cd'
 
+alias xs='cd'
+
 alias ...='cd ../..'
 
 alias sizeof="du -hs"

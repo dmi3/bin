@@ -105,8 +105,12 @@ function spwd --on-variable PWD --description "Use fish as file manager. ls on d
   ls $PWD
 end
 
-# Disable greeting
-set -u fish_greeting
+function fish_greeting
+  if test -e /var/run/motd.dynamic
+    set_color 4E9A06
+    cat /var/run/motd.dynamic
+  end
+end
 
 #
 # Useful aliases

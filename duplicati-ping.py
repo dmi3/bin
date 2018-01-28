@@ -14,6 +14,7 @@
 import os
 import urllib.request
 
-with open(os.environ['DUPLICATI__RESULTFILE']) as r:
-    if str('ParsedResult: Success' in r.read()):
-        urllib.request.urlopen('https://hchk.io/ URL')
+if os.environ['DUPLICATI__OPERATIONNAME'] == 'Backup':
+    with open(os.environ['DUPLICATI__RESULTFILE']) as r:
+        if str('ParsedResult: Success' in r.read()):
+            urllib.request.urlopen('https://hchk.io/ URL')

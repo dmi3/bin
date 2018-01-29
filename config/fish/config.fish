@@ -141,8 +141,6 @@ alias free='free -m'
 
 alias xs='cd'
 
-alias xs='cd'
-
 alias ...='cd ../..'
 
 alias sizeof="du -hs"
@@ -212,11 +210,12 @@ function fzf-history-widget
     history | fzf -q (commandline) -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort \
       --preview-window 'up:50%:wrap:hidden' \
       --preview 'echo {}' \
-      --bind "ctrl-e:execute(echo \" commandline {}\")+cancel+cancel" \
+      --bind "ctrl-q:execute(echo \" commandline {}\")+cancel+cancel" \
       --bind "ctrl-d:execute(echo \" history delete {}\")+cancel+cancel" \
       --bind "ctrl-x:execute(echo \" printf {} | xclip -sel clip\")+cancel+cancel" \
       --bind "ctrl-a:toggle-preview" \
-      --header "Enter: exec, Ctrl+X: copy, Ctrl+E: edit, Ctrl+D: delete, Ctrl+A: show full" | read -l result
+      --bind "ctrl-e:execute(echo \" eval scd\")+cancel+cancel" \
+      --header "Enter: exec, Ctrl+X: copy, Ctrl+Q: edit, Ctrl+D: delete, Ctrl+A: show full" | read -l result
     and commandline $result
     and commandline -f repaint
     and commandline -f execute
@@ -251,7 +250,11 @@ function search-contents --description "Search file contents"
 end
 
 function scd
-    cat ~/.local/share/fish/fish_dir_history | freq | fzf -q "'" -e +s +m --tiebreak=index --toggle-sort=ctrl-r --sort | cut -c9- | read -l result
+    cat ~/.local/share/fish/fish_dir_history | freq | fzf \
+    -q "'" -e +s +m \
+    --tiebreak=index \
+    --sort \
+       | cut -c9- | read -l result
     and cd $result
     and commandline -f repaint
     and ls

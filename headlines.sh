@@ -2,8 +2,9 @@
 
 #  Decription
 #  -----------
-#  Prints top headlines from Hacker News. See <http://developer.run/27>.
-#  Additionally prints latest @sadserver tweet for cynical comments.
+#  * Prints top headlines from Hacker News
+#  * Additionally prints latest [@sadserver](https://twitter.com/sadserver) tweet for cynical comment
+#  * See <http://developer.run/27> for description and more ideas
 
 #  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
   
@@ -13,11 +14,11 @@
 
 #  Usage
 #  ------------
-#  ⚠ You need `chmod 777 /var/run/motd.dynamic` on boot or use `root`
-#
-#  * `headlines.sh > /var/run/motd.dynamic`
-#  * OR `crontab -e`; `0 */2 * * * /path/to/headlines.sh > /var/run/motd.dynamic`
+   
+#  * `headlines.sh`    
 #  * OR <https://ownyourbits.com/2017/04/05/customize-your-motd-login-message-in-debian-and-ubuntu/>
+#  * OR `chmod 777 /var/run/motd.dynamic` on boot and `headlines.sh > /var/run/motd.dynamic`
+#  * OR `chmod 777 /var/run/motd.dynamic` on boot and put `0 */2 * * * /path/to/headlines.sh > /var/run/motd.dynamic` to `crontab -e`
 
 SINCE=$(date --date="5 days ago" +%s)
 MAX=3

@@ -2,7 +2,8 @@
 
 #  Decription
 #  -----------
-#  Prints top headlines from Hacker News. See <http://developer.run/27>
+#  Prints top headlines from Hacker News. See <http://developer.run/27>.
+#  Additionally prints latest @sadserver tweet.
 
 #  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
   
@@ -24,3 +25,8 @@ THRESHOLD=1000
 echo " 📰 HEADLINES $(date '+%Y/%m/%d %H:%S')"
 curl -s "https://hn.algolia.com/api/v1/search_by_date?numericFilters=points>$THRESHOLD,created_at_i>$SINCE&hitsPerPage=$MAX" \
  | jq -r "if .nbHits == 0 then \"No news is good news\" else .hits[].title end"
+
+# Latest @sadserver tweet
+TODAY=$(date +%Y-%m-%d)
+curl -s "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ftwitrss.me%2Ftwitter_user_to_rss%2F%3Fuser%3Dsadserver" \
+    | jq -r ".items[] | select(.pubDate | contains(\"$TODAY\")) | \"\n@sadserver: \" + .title"

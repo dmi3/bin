@@ -146,7 +146,8 @@ Usage
 
 Decription
 -----------
-Prints top headlines from Hacker News. See <http://developer.run/27>
+Prints top headlines from Hacker News. See <http://developer.run/27>.
+Additionally prints latest @sadserver tweet.
 
 Requirements
 ------------

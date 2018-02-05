@@ -54,7 +54,13 @@ s/thx$/Thank you\./g;
 s/bus$/business/g;"
 
 sh -c "xdotool key --clearmodifiers ctrl+shift+Left"
+
+sleep 0.05
+
 sh -c "xdotool key --clearmodifiers ctrl+x"
+
+sleep 0.05
+
 selection=`xsel -b`
 
 sleep 0.05

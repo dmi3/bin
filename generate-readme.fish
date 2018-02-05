@@ -10,6 +10,7 @@
 #       chmod +x .git/hooks/pre-commit    
 
 
+
 echo "# Useful scripts for Linux users"    
 
 for f in (git ls-files "*[^.md|^.txt]")
@@ -17,3 +18,5 @@ for f in (git ls-files "*[^.md|^.txt]")
     grep -h -e "#\s\s" ~/git/bin/$f | grep -v "Author\|Source" | string sub -s 4 | string replace -ar "(?=Usage|Requirements|Instalation|Decription)" "\n"
     echo -e "<hr/>"    
 end
+
+git add README.md

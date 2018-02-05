@@ -141,6 +141,25 @@ Usage
     git-sync -u # if you want only sync files explicitly added via `git add filename`
 <hr/>
 
+# [headlines.sh](https://github.com/dmi3/bin/blob/master/headlines.sh)
+
+
+Decription
+-----------
+Prints top headlines from Hacker News. See <http://developer.run/27>
+
+Requirements
+------------
+    sudo apt-get install jq
+
+Usage
+------------
+⚠ You need `chmod 777 /var/run/motd.dynamic` on boot or use `root`
+* `headlines.sh > /var/run/motd.dynamic`
+* OR `crontab -e`; `0 */2 * * * /path/to/headlines.sh > /var/run/motd.dynamic`
+* OR <https://ownyourbits.com/2017/04/05/customize-your-motd-login-message-in-debian-and-ubuntu/>
+<hr/>
+
 # [itunec](https://github.com/dmi3/bin/blob/master/itunec)
 
 

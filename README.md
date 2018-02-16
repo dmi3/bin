@@ -1,6 +1,5 @@
-# Useful scripts for Linux users
 
-# [aliases.bash](https://github.com/dmi3/bin/blob/master/aliases.bash)
+# [aliases.bash](https://github.com/bin/bin/blob/master/aliases.bash)
 
 
 Decription
@@ -19,7 +18,7 @@ Usage
 4. To make this work across remote machines, you also may want to install https://github.com/Russell91/sshrc 
 <hr/>
 
-# [backup_protectedtext.py](https://github.com/dmi3/bin/blob/master/backup_protectedtext.py)
+# [backup_protectedtext.py](https://github.com/bin/bin/blob/master/backup_protectedtext.py)
 
 
 Decription
@@ -35,7 +34,7 @@ Usage
 Run from commandline or add to cron
 <hr/>
 
-# [batch-rename.py](https://github.com/dmi3/bin/blob/master/batch-rename.py)
+# [batch-rename.py](https://github.com/bin/bin/blob/master/batch-rename.py)
 
 
 Decription
@@ -48,7 +47,7 @@ Usage
 rename.py file1 file2 file3 ...
 <hr/>
 
-# [bookmarks](https://github.com/dmi3/bin/blob/master/bookmarks)
+# [bookmarks](https://github.com/bin/bin/blob/master/bookmarks)
 
 
 Decription
@@ -67,35 +66,15 @@ Usage
 * Bookmark currently copied link using [ClipIt](https://github.com/CristianHenzel/ClipIt) actions: `bookmarks -a %s $(zenity --entry)`
 <hr/>
 
-# [config/clipit/clipitrc](https://github.com/dmi3/bin/blob/master/config/clipit/clipitrc)
+# [config/clipit/clipitrc](https://github.com/bin/bin/blob/master/config/clipit/clipitrc)
 
 <hr/>
 
-# [config/fish/completions/todo.fish](https://github.com/dmi3/bin/blob/master/config/fish/completions/todo.fish)
+# [config/fish/config.fish](https://github.com/bin/bin/blob/master/config/fish/config.fish)
 
-
-Decription
-----------
-Auto generate completion for [todo](https://github.com/dmi3/bin/blob/master/todo) script.
-Search script for strings starting with `--` and add them
-to Fish completion as arguments for `todo` command
 <hr/>
 
-# [config/fish/config.fish](https://github.com/dmi3/bin/blob/master/config/fish/config.fish)
-
-----------
-Fish config with awesome flexible prompt, unicode symbols, better fzf integration and lot of handy functions.
-
-Instalation
-----------
-1. [Install fish](http://fishshell.com/#platform_tabs)
-2. `curl https://raw.githubusercontent.com/dmi3/bin/master/config/fish/config.fish --create-dirs -o ~/.config/fish/config.fish`
-3. `fish -c update-fzf`
- aunpack "$argv" --save-outdir=/tmp/___aaaunpack
- cd (cat /tmp/___aaaunpack)
-<hr/>
-
-# [duplicati-ping.py](https://github.com/dmi3/bin/blob/master/duplicati-ping.py)
+# [duplicati-ping.py](https://github.com/bin/bin/blob/master/duplicati-ping.py)
 
 
 Decription
@@ -108,7 +87,7 @@ Add path to this script to `run-script-after` in job `Configuration` → `Option
 On Windows you will need to create `.bat` file containing path to this script, and add path to `.bat` file to `run-script-after`
 <hr/>
 
-# [generate-readme.fish](https://github.com/dmi3/bin/blob/master/generate-readme.fish)
+# [generate-readme.fish](https://github.com/bin/bin/blob/master/generate-readme.fish)
 
 
 Decription
@@ -117,11 +96,11 @@ Generates this readme
 
 Usage
 -----
-     echo -e "#!/bin/sh\necho gen readme\nfish generate-readme.fish > README.md" > .git/hooks/pre-commit
+     echo -e "#!/bin/sh\necho \# Useful scripts for Linux users > README.md\ngenerate-readme.fish >> README.md" > .git/hooks/pre-commit
      chmod +x .git/hooks/pre-commit    
 <hr/>
 
-# [git-sync](https://github.com/dmi3/bin/blob/master/git-sync)
+# [git-sync](https://github.com/bin/bin/blob/master/git-sync)
 
 
 Decription
@@ -141,7 +120,7 @@ Usage
     git-sync -u # if you want only sync files explicitly added via `git add filename`
 <hr/>
 
-# [headlines.sh](https://github.com/dmi3/bin/blob/master/headlines.sh)
+# [headlines.sh](https://github.com/bin/bin/blob/master/headlines.sh)
 
 
 Decription
@@ -162,7 +141,7 @@ Usage
 * OR `chmod 777 /var/run/motd.dynamic` on boot and put `0 */2 * * * /path/to/headlines.sh > /var/run/motd.dynamic` to `crontab -e`
 <hr/>
 
-# [itunec](https://github.com/dmi3/bin/blob/master/itunec)
+# [itunec](https://github.com/bin/bin/blob/master/itunec)
 
 
 Decription
@@ -184,7 +163,7 @@ or
 2. gpodder -> Podcasts -> Prefences -> Edit config -> cmd_all_download_complete -> itunec
 <hr/>
 
-# [knok](https://github.com/dmi3/bin/blob/master/knok)
+# [knok](https://github.com/bin/bin/blob/master/knok)
 
 
 Decription
@@ -202,7 +181,7 @@ Usage
 `knock ip [port,port...]`
 <hr/>
 
-# [memory-available.sh](https://github.com/dmi3/bin/blob/master/memory-available.sh)
+# [memory-available.sh](https://github.com/bin/bin/blob/master/memory-available.sh)
 
 
 Decription
@@ -216,7 +195,7 @@ Requirements
 1. `sudo apt-get install notify-send `
 <hr/>
 
-# [poweroff](https://github.com/dmi3/bin/blob/master/poweroff)
+# [poweroff](https://github.com/bin/bin/blob/master/poweroff)
 
 
 Decription
@@ -233,7 +212,42 @@ Requirements
 1. `sudo apt-get install wmctrl`
 <hr/>
 
-# [skypenotify](https://github.com/dmi3/bin/blob/master/skypenotify)
+# [singlecmd.fish](https://github.com/bin/bin/blob/master/singlecmd.fish)
+
+<img src="https://developer.run/pic/singlecmd.fish.gif"/>
+
+Decription
+-----------
+* Prompts for single Fish command in left bottom corner of given application window
+* To make benefit of Fish shell autocompletion and history
+* Closes after first command is executed
+* If command fails, leaves window to inspect error message
+For example you want execute `git clone git@github.com:dmi3/bin.git` in current directory from Double Commander:
+1. Press `Shift+F2` and terminal window appears in left bottom corner of Double Commander window
+1. First you want `git` and `clone` to be autocompleted using Fish
+1. During clone process you want to see `git` command output to monitor progeress
+1. If everything is ok, promt will close
+1. In case of error you will have chance to read error message
+
+Requirements
+------------
+* `sudo apt-get install fish wmcrtl xterm`
+
+Usage
+-----
+* Use [Fish config](https://github.com/dmi3/fish) that supports `ONE_COMMAND`
+* Argument is window title of any app:
+  * `singlecmd.fish "Sublime Text"`
+  * `singlecmd.fish "IntelliJ IDEA"`
+  * ...
+* OR open Double Commander
+* `Toolbar` → `Insert new button`:
+  * Command: `/path/to/singlecmd.fish`
+  * Parameters: `"Double Commander"`
+  * Hot Key: `Shift+F2`
+<hr/>
+
+# [skypenotify](https://github.com/bin/bin/blob/master/skypenotify)
 
 
 Decription
@@ -252,7 +266,7 @@ Usage
 `skypenotify "%sname" "%smessage"`
 <hr/>
 
-# [snippy.sh](https://github.com/dmi3/bin/blob/master/snippy.sh)
+# [snippy.sh](https://github.com/bin/bin/blob/master/snippy.sh)
 
 
 Decription
@@ -281,7 +295,7 @@ Usage
 * If you use this for emoji, it will work but make me sad.
 <hr/>
 
-# [sssh](https://github.com/dmi3/bin/blob/master/sssh)
+# [sssh](https://github.com/bin/bin/blob/master/sssh)
 
 
 Decription
@@ -300,55 +314,11 @@ Usage
 `sssh user@hostname`
 <hr/>
 
-# [timer](https://github.com/dmi3/bin/blob/master/timer)
-
-
-Decription
------------
-Simple timer with sound and dialog window notification. To remind you to turn stove off :). 
-Replace pc_up.wav to any available audiofile. 
-
-Requirements
-------------
-    sudo apt-get install dunst aplay
-
-Usage
------
-    timer 6 # i.e. notify after 6 minutes
-<hr/>
-
-# [todo](https://github.com/dmi3/bin/blob/master/todo)
-
-Wunderlist CLI for adding todos
-===============================
-
-Decription
-----------
-Wrapper for [wl](https://github.com/robdimsdale/wl/releases) for adding todos with more convenient syntax
-[Read More](http://developer.run/15)
-
-Instalation
------------
-1. ⚠ Make sure [Fish shell](http://fishshell.com/#platform_tabs) > 2.3.0
-2. `curl https://raw.githubusercontent.com/dmi3/bin/master/todo --create-dirs -o ~/bin/todo`
-3. `curl https://raw.githubusercontent.com/dmi3/bin/master/config/fish/completions/todo.fish --create-dirs -o ~/.config/fish/completions/todo.fish`
-4. <https://developer.wunderlist.com/apps>
-5. `[CREATE APP]` (Put https://wunderlist.com to both `APP URL` and `AUTH CALLBACK URL`)
-6. Set enviroment variables in this script ↓ (line 31)
-7. Add more list shortcuts ↓ (line 39)
-
-Usage
------
-     todo buy stuff --life --on next monday
-     todo resolve issue --work --star
-     todo --work meet customer --on jan 7
-<hr/>
-
-# [tomatych.py](https://github.com/dmi3/bin/blob/master/tomatych.py)
+# [tomatych.py](https://github.com/bin/bin/blob/master/tomatych.py)
 
 <hr/>
 
-# [translate-selection.sh](https://github.com/dmi3/bin/blob/master/translate-selection.sh)
+# [translate-selection.sh](https://github.com/bin/bin/blob/master/translate-selection.sh)
 
 
 Decription
@@ -366,7 +336,7 @@ Usage
 * Select any text. Press hotkey.
 <hr/>
 
-# [translate-yandex.sh](https://github.com/dmi3/bin/blob/master/translate-yandex.sh)
+# [translate-yandex.sh](https://github.com/bin/bin/blob/master/translate-yandex.sh)
 
 
 Decription
@@ -380,7 +350,7 @@ Usage
     yandex-translate.sh кот это маленькое, пушистое и очень хитрое млекопитающее # ru → en
 <hr/>
 
-# [translation-insert.sh](https://github.com/dmi3/bin/blob/master/translation-insert.sh)
+# [translation-insert.sh](https://github.com/bin/bin/blob/master/translation-insert.sh)
 
 
 Decription
@@ -395,20 +365,4 @@ Requirements
 Usage
 -----
 * Bind script to hotkey in your DE. After input wait couple of seconds for translation to appear.
-<hr/>
-
-# [volume](https://github.com/dmi3/bin/blob/master/volume)
-
-
-Decription
------------
-Script to control audio volume from console, hotkeys, e.t.c. Also shows nice Notify OSD buble with current volume value
-
-Requirements
-------------
-    sudo apt-get install pulseaudio notify-osd
-
-Usage
------
-    volume (up|down|mute)
 <hr/>

@@ -45,7 +45,6 @@ s/darr$/↓/g;
 s/uarr$/↑/g;
 s/copy$/©/g;
 s/eur$/€/g;
-s/fu$/futher/g;
 s/sim$/simultaneously/g;
 s/unf$/unfortunately/g;
 s/env$/environment/g;
@@ -53,11 +52,11 @@ s/suc$/successful/g;
 s/thx$/Thank you\./g;
 s/bus$/business/g;"
 
-sh -c "xdotool key --clearmodifiers ctrl+shift+Left"
+xdotool key --clearmodifiers ctrl+shift+Left
 
 sleep 0.05
 
-sh -c "xdotool key --clearmodifiers ctrl+x"
+xdotool key --clearmodifiers ctrl+x
 
 sleep 0.05
 
@@ -69,5 +68,5 @@ echo -n "$selection" | sed "$snippets" | xclip -sel clip
 
 sleep 0.05
 
-sh -c "xdotool key --clearmodifiers ctrl+v"
+xdotool key --clearmodifiers ctrl+v
 

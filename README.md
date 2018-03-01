@@ -127,7 +127,7 @@ Usage
 <img src="https://developer.run/pic/headlines.png"/>
 Description
 -----------
-* Prints ground shaking headlines from Hacker News in shell greeting
+* Prints grounqd shaking headlines from Hacker News in shell greeting
 * Don't miss next Meltdown, be notified right away!
 * Doesn't distract you if nothing important happened
 * Allows open given news item in browser and mark it as read
@@ -141,6 +141,7 @@ Requirements
 
 Usage
 ------------
+ 
 * `headlines.sh` will print latest headlines
 * `headlines.sh 1` will open first headline url in browser and mark it as read
   - Note that after that hedline №2 move up to №1

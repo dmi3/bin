@@ -1,5 +1,6 @@
+# Useful scripts for Linux users
 
-# [aliases.bash](https://github.com/bin/bin/blob/master/aliases.bash)
+# [aliases.bash](https://github.com/dmi3/bin/blob/master/aliases.bash)
 
 
 Decription
@@ -18,7 +19,7 @@ Usage
 4. To make this work across remote machines, you also may want to install https://github.com/Russell91/sshrc 
 <hr/>
 
-# [backup_protectedtext.py](https://github.com/bin/bin/blob/master/backup_protectedtext.py)
+# [backup_protectedtext.py](https://github.com/dmi3/bin/blob/master/backup_protectedtext.py)
 
 
 Decription
@@ -34,7 +35,7 @@ Usage
 Run from commandline or add to cron
 <hr/>
 
-# [batch-rename.py](https://github.com/bin/bin/blob/master/batch-rename.py)
+# [batch-rename.py](https://github.com/dmi3/bin/blob/master/batch-rename.py)
 
 
 Decription
@@ -47,7 +48,7 @@ Usage
 rename.py file1 file2 file3 ...
 <hr/>
 
-# [bookmarks](https://github.com/bin/bin/blob/master/bookmarks)
+# [bookmarks](https://github.com/dmi3/bin/blob/master/bookmarks)
 
 
 Decription
@@ -66,15 +67,16 @@ Usage
 * Bookmark currently copied link using [ClipIt](https://github.com/CristianHenzel/ClipIt) actions: `bookmarks -a %s $(zenity --entry)`
 <hr/>
 
-# [config/clipit/clipitrc](https://github.com/bin/bin/blob/master/config/clipit/clipitrc)
+# [config/clipit/clipitrc](https://github.com/dmi3/bin/blob/master/config/clipit/clipitrc)
 
 <hr/>
 
-# [config/fish/config.fish](https://github.com/bin/bin/blob/master/config/fish/config.fish)
+# [config/fish/config.fish](https://github.com/dmi3/bin/blob/master/config/fish/config.fish)
 
+Fish config with awesome flexible prompt, unicode symbols, better fzf integration and tons of handy functions.
 <hr/>
 
-# [duplicati-ping.py](https://github.com/bin/bin/blob/master/duplicati-ping.py)
+# [duplicati-ping.py](https://github.com/dmi3/bin/blob/master/duplicati-ping.py)
 
 
 Decription
@@ -87,7 +89,7 @@ Add path to this script to `run-script-after` in job `Configuration` → `Option
 On Windows you will need to create `.bat` file containing path to this script, and add path to `.bat` file to `run-script-after`
 <hr/>
 
-# [generate-readme.fish](https://github.com/bin/bin/blob/master/generate-readme.fish)
+# [generate-readme.fish](https://github.com/dmi3/bin/blob/master/generate-readme.fish)
 
 
 Decription
@@ -100,7 +102,7 @@ Usage
      chmod +x .git/hooks/pre-commit    
 <hr/>
 
-# [git-sync](https://github.com/bin/bin/blob/master/git-sync)
+# [git-sync](https://github.com/dmi3/bin/blob/master/git-sync)
 
 
 Decription
@@ -120,13 +122,17 @@ Usage
     git-sync -u # if you want only sync files explicitly added via `git add filename`
 <hr/>
 
-# [headlines.sh](https://github.com/bin/bin/blob/master/headlines.sh)
+# [headlines.sh](https://github.com/dmi3/bin/blob/master/headlines.sh)
 
-
-Decription
+<img src="https://developer.run/pic/headlines.png"/>
+Description
 -----------
-* Prints top headlines from Hacker News
+* Prints ground shaking headlines from Hacker News in shell greeting
+* Don't miss next Meltdown, be notified right away!
+* Doesn't distract you if nothing important happened
+* Allows open given news item in browser and mark it as read
 * Additionally prints latest [@sadserver](https://twitter.com/sadserver) tweet for cynical comment
+* If you prefer simpler version without additional functionality refer [to initial version](https://github.com/dmi3/bin/blob/2fb9f8a894ea4eba5edb13c7135861740de83084/headlines.sh)
 * See <http://developer.run/27> for description and more ideas
 
 Requirements
@@ -135,13 +141,19 @@ Requirements
 
 Usage
 ------------
-* `headlines.sh`    
-* OR <https://ownyourbits.com/2017/04/05/customize-your-motd-login-message-in-debian-and-ubuntu/>
-* OR `chmod 777 /var/run/motd.dynamic` on boot and `headlines.sh > /var/run/motd.dynamic`
-* OR `chmod 777 /var/run/motd.dynamic` on boot and put `0 */2 * * * /path/to/headlines.sh > /var/run/motd.dynamic` to `crontab -e`
+* `headlines.sh` will print latest headlines
+* `headlines.sh 1` will open first headline url in browser and mark it as read
+  - Note that after that hedline №2 move up to №1
+* If you want to hide any particular news header add it to `~/.readnews`:
+  - Single `echo "The Header" >> ~/.readnews`
+  - All `headlines.sh >> ~/.readnews`
+* Add to shell greeting [see screenshot](https://developer.run/pic/headlines.png)
+  - <https://ownyourbits.com/2017/04/05/customize-your-motd-login-message-in-debian-and-ubuntu/>
+  - OR `chmod 777 /var/run/motd.dynamic` on boot and `headlines.sh > /var/run/motd.dynamic`
+  - OR `chmod 777 /var/run/motd.dynamic` on boot and put `0 */2 * * * /path/to/headlines.sh > /var/run/motd.dynamic` to `crontab -e`
 <hr/>
 
-# [itunec](https://github.com/bin/bin/blob/master/itunec)
+# [itunec](https://github.com/dmi3/bin/blob/master/itunec)
 
 
 Decription
@@ -163,7 +175,7 @@ or
 2. gpodder -> Podcasts -> Prefences -> Edit config -> cmd_all_download_complete -> itunec
 <hr/>
 
-# [knok](https://github.com/bin/bin/blob/master/knok)
+# [knok](https://github.com/dmi3/bin/blob/master/knok)
 
 
 Decription
@@ -181,7 +193,7 @@ Usage
 `knock ip [port,port...]`
 <hr/>
 
-# [memory-available.sh](https://github.com/bin/bin/blob/master/memory-available.sh)
+# [memory-available.sh](https://github.com/dmi3/bin/blob/master/memory-available.sh)
 
 
 Decription
@@ -195,7 +207,7 @@ Requirements
 1. `sudo apt-get install notify-send `
 <hr/>
 
-# [poweroff](https://github.com/bin/bin/blob/master/poweroff)
+# [poweroff](https://github.com/dmi3/bin/blob/master/poweroff)
 
 
 Decription
@@ -212,7 +224,7 @@ Requirements
 1. `sudo apt-get install wmctrl`
 <hr/>
 
-# [skypenotify](https://github.com/bin/bin/blob/master/skypenotify)
+# [skypenotify](https://github.com/dmi3/bin/blob/master/skypenotify)
 
 
 Decription
@@ -231,7 +243,7 @@ Usage
 `skypenotify "%sname" "%smessage"`
 <hr/>
 
-# [snippy.sh](https://github.com/bin/bin/blob/master/snippy.sh)
+# [snippy.sh](https://github.com/dmi3/bin/blob/master/snippy.sh)
 
 
 Decription
@@ -260,7 +272,7 @@ Usage
 * If you use this for emoji, it will work but make me sad.
 <hr/>
 
-# [sssh](https://github.com/bin/bin/blob/master/sssh)
+# [sssh](https://github.com/dmi3/bin/blob/master/sssh)
 
 
 Decription
@@ -279,11 +291,15 @@ Usage
 `sssh user@hostname`
 <hr/>
 
-# [tomatych.py](https://github.com/bin/bin/blob/master/tomatych.py)
+# [tomatych.py](https://github.com/dmi3/bin/blob/master/tomatych.py)
 
+<img src="http://developer.run/pic/tomatych.png"/>
+* Simple Hackable Pomodoro Timer with optional Slack and Habitica integrations.
+* Intended to be hacked and modified to fit your specific vision of how Pomodoro timers should work.
+* Moved to [separate repo](https://github.com/dmi3/tomatych)
 <hr/>
 
-# [translate-selection.sh](https://github.com/bin/bin/blob/master/translate-selection.sh)
+# [translate-selection.sh](https://github.com/dmi3/bin/blob/master/translate-selection.sh)
 
 
 Decription
@@ -301,7 +317,7 @@ Usage
 * Select any text. Press hotkey.
 <hr/>
 
-# [translate-yandex.sh](https://github.com/bin/bin/blob/master/translate-yandex.sh)
+# [translate-yandex.sh](https://github.com/dmi3/bin/blob/master/translate-yandex.sh)
 
 
 Decription
@@ -315,7 +331,7 @@ Usage
     yandex-translate.sh кот это маленькое, пушистое и очень хитрое млекопитающее # ru → en
 <hr/>
 
-# [translation-insert.sh](https://github.com/bin/bin/blob/master/translation-insert.sh)
+# [translation-insert.sh](https://github.com/dmi3/bin/blob/master/translation-insert.sh)
 
 
 Decription

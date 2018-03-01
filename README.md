@@ -125,9 +125,10 @@ Usage
 # [headlines.sh](https://github.com/dmi3/bin/blob/master/headlines.sh)
 
 <img src="https://developer.run/pic/headlines.png"/>
+
 Description
 -----------
-* Prints grounqd shaking headlines from Hacker News in shell greeting
+* Prints ground shaking headlines from Hacker News in shell greeting
 * Don't miss next Meltdown, be notified right away!
 * Doesn't distract you if nothing important happened
 * Allows open given news item in browser and mark it as read
@@ -141,7 +142,6 @@ Requirements
 
 Usage
 ------------
- 
 * `headlines.sh` will print latest headlines
 * `headlines.sh 1` will open first headline url in browser and mark it as read
   - Note that after that hedline №2 move up to №1
@@ -295,6 +295,7 @@ Usage
 # [tomatych.py](https://github.com/dmi3/bin/blob/master/tomatych.py)
 
 <img src="http://developer.run/pic/tomatych.png"/>
+&nbsp;
 * Simple Hackable Pomodoro Timer with optional Slack and Habitica integrations.
 * Intended to be hacked and modified to fit your specific vision of how Pomodoro timers should work.
 * Moved to [separate repo](https://github.com/dmi3/tomatych)

@@ -143,11 +143,12 @@ Requirements
 Usage
 ------------
 * `headlines.sh` will print latest headlines
-* `headlines.sh 1` will open first headline url in browser and mark it as read
-  - Note that after that hedline №2 move up to №1
+* `headlines.sh read` will open all news in browser and mark it as read
+  - It might be useful for `headlines.sh read > /var/run/motd.dynamic`
 * If you want to hide any particular news header add it to `~/.readnews`:
   - Single `echo "The Header" >> ~/.readnews`
   - All `headlines.sh >> ~/.readnews`
+  - `~/.readnews` might be synced between computers
 * Add to shell greeting [see screenshot](https://developer.run/pic/headlines.png)
   - <https://ownyourbits.com/2017/04/05/customize-your-motd-login-message-in-debian-and-ubuntu/>
   - OR `chmod 777 /var/run/motd.dynamic` on boot and `headlines.sh > /var/run/motd.dynamic`

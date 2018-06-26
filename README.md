@@ -54,6 +54,8 @@ rename.py file1 file2 file3 ...
 Decription
 ----------
 Script for quickly adding and accessing bookmarks. Browser independent.
+When you want to store bookmarks in plain format, use CLI, but don't want use [bm](https://github.com/tj/bm) 
+or [Buku](https://github.com/jarun/Buku)
 Useful when set by hotkeys or [ClipIt](https://github.com/CristianHenzel/ClipIt) actions.
 
 Requirements
@@ -131,7 +133,7 @@ Description
 * Prints ground shaking headlines from Hacker News in shell greeting
 * Don't miss next Meltdown, be notified right away!
 * Doesn't distract you if nothing important happened
-* Allows open given news item in browser and mark it as read
+* Allows open all news in browser and mark it as read
 * Additionally prints latest [@sadserver](https://twitter.com/sadserver) tweet for cynical comment
 * If you prefer simpler version without additional functionality refer [to initial version](https://github.com/dmi3/bin/blob/2fb9f8a894ea4eba5edb13c7135861740de83084/headlines.sh)
 * See <http://developer.run/27> for description and more ideas

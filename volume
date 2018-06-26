@@ -16,17 +16,16 @@
 
 
 icon=notification-audio-volume-medium
-volume=$(pactl list sinks | grep Volume |cut -d" " -f4)
 if [[ $* == "down" ]]; then
   #amixer set PCM 5%-
   #amixer -q set Master 5- unmute
   pactl -- set-sink-volume 0 "-2%" &
-  volume=$(pactl list sinks | grep Volume |cut -d" " -f4)
+  volume=$(pactl list sinks | grep Volume | grep -oe "[0-9]*%" | head -1)
 elif [[ $* == "up" ]]; then
   #amixer set PCM 5%+
   #amixer -q set Master 5+ unmute
   pactl -- set-sink-volume 0 "+2%" &
-  volume=$(pactl list sinks | grep Volume |cut -d" " -f4)
+  volume=$(pactl list sinks | grep Volume | grep -oe "[0-9]*%" | head -1)
 elif [[ $* == "mute" ]]; then
   toggle=$((pactl list sinks | grep -q Mute:.no && echo 1) || echo 0)
   pactl set-sink-mute 0 $toggle

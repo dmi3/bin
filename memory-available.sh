@@ -20,4 +20,4 @@ if [ $available -lt 1000 ] # threshold in megabytes
     notify-send "Memory is running out!" # -u critical
 fi
 
-echo $available | awk '{ printf "%.1f", $1/1024 }'
+echo $available | awk '{ printf "🛢️%4.1fGb", $1/1024 }'

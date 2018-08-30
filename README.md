@@ -48,6 +48,27 @@ Usage
 rename.py file1 file2 file3 ...
 <hr/>
 
+# [battery](https://github.com/dmi3/bin/blob/master/battery)
+
+
+Description
+----------
+One more script to show battery status as bar(s). Difference from other solutions:
+* Simplicity, duh
+* Acknowledges the fact that there were sometimes more than one battery in laptop
+  - Will display capacity for all batteries
+* Also the fact that there were sometimes no battery at all!
+  - No error in this case
+* Old batteries usually max at ≈99, so it has same symbol as 100
+* Can work with [indicator-sysmonitor](https://github.com/fossfreedom/indicator-sysmonitor)
+* [Spark](https://github.com/holman/spark) could be used here, but this solution is even simpler
+
+Usage
+-----
+    $ battery
+    🔌 ▄▇
+<hr/>
+
 # [bookmarks](https://github.com/dmi3/bin/blob/master/bookmarks)
 
 

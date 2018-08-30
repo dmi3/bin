@@ -1,0 +1,35 @@
+#!/bin/bash
+
+#  Description
+#  ----------
+#  One more script to show battery status as bar(s). Difference from other solutions:
+#
+#  * Simplicity, duh
+#  * Acknowledges the fact that there were sometimes more than one battery in laptop
+#    - Will display capacity for all batteries
+#  * Also the fact that there were sometimes no battery at all!
+#    - No error in this case
+#  * Old batteries usually max at ≈99, so it has same symbol as 100
+#  * Can work with [indicator-sysmonitor](https://github.com/fossfreedom/indicator-sysmonitor)
+#  * [Spark](https://github.com/holman/spark) could be used here, but this solution is even simpler
+
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
+
+#  Usage
+#  -----
+#      $ battery
+#      🔌 ▄▇
+
+grep -q 0 /sys/class/power_supply/AC/online 2> /dev/null && echo -n "🔋 " || echo -n "🔌 " 
+
+for capacity in /sys/class/power_supply/BAT*/capacity; do
+    case $(cat $capacity 2> /dev/null) in 
+        [0-9])  echo -n "▁" ;;
+        [1-2]?) echo -n "▂" ;;
+        [3-4]?) echo -n "▃" ;;
+        [5-6]?) echo -n "▄" ;;
+        [7-8]?) echo -n "▅" ;;
+        9?)     echo -n "▇" ;; 
+        100)    echo -n "▇" ;;
+    esac
+done

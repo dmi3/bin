@@ -17,8 +17,12 @@
 
 #  Usage
 #  -----
-#      $ battery
+#      $ battery # multiple batteries are installed
 #      🔌 ▄▇
+#      $ battery # single battery is installed
+#      🔌 ▇
+#      $ battery # no battery is installed
+#      🔌
 
 grep -q 0 /sys/class/power_supply/AC/online 2> /dev/null && echo -n "🔋 " || echo -n "🔌 " 
 

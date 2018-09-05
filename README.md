@@ -65,8 +65,12 @@ One more script to show battery status as bar(s). Difference from other solution
 
 Usage
 -----
-    $ battery
+    $ battery # multiple batteries are installed
     🔌 ▄▇
+    $ battery # single battery is installed
+    🔌 ▇
+    $ battery # no battery is installed
+    🔌
 <hr/>
 
 # [bookmarks](https://github.com/dmi3/bin/blob/master/bookmarks)

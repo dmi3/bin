@@ -9,10 +9,11 @@
 #  Original idea by [sessy](https://bbs.archlinux.org/viewtopic.php?id=71938) and [Linux Magazine](http://www.linux-magazine.com/Issues/2014/162/Workspace-Text-Expander) with following improvements:
 #  * Works as keybinding in Compiz/Unity/Openbox
 #  * Does not go crazy if keybinding includes Ctrl, Alt, Shift...
-#  * Works in Sublime Text/IntelliJ Idea/Chrome
+#  * Works in Sublime Text/IntelliJ Idea/Chrome/Slack
 #  * Expands snippets without preceding space i.e. `30eur` to `30€`
 #     - If snippet needs preceding space or start of line - use regexp `\b` i.e. `s/\bv$/✔/g;` converts `v` to `✔` only if its separate symbol
 #  * Expands snippets with symbols i.e. `->` to `→`
+#  * Expands commands i.e. `now` to formatted todays date, `mon` to to formatted next mondays date
 #  * Stores all snippets in one file
 #  * Works with Ubuntu 16.04
 
@@ -33,6 +34,7 @@ s/<->$/⇄/g;
 s/-^$/↑/g;
 s/<-$/←/g;
 s/->$/→/g;
+s/-$/—/g;
 s/~$/≈/g;
 s/!$/⚠/g;
 s/\bv$/✔/g;
@@ -51,7 +53,15 @@ s/unf$/unfortunately/g;
 s/env$/environment/g;
 s/suc$/successful/g;
 s/thx$/Thank you\./g;
-s/bus$/business/g;"
+s/bus$/business/g;
+s/now$/$(date +'%d\/%m\/%y')/g;
+s/mon$/$(date +'%d\/%m\/%y' --date='next mon')/g;
+s/tue$/$(date +'%d\/%m\/%y' --date='next tue')/g;
+s/wed$/$(date +'%d\/%m\/%y' --date='next wed')/g;
+s/thu$/$(date +'%d\/%m\/%y' --date='next thu')/g;
+s/fri$/$(date +'%d\/%m\/%y' --date='next fri')/g;
+s/sat$/$(date +'%d\/%m\/%y' --date='next sat')/g;
+s/sun$/$(date +'%d\/%m\/%y' --date='next sun')/g;"
 
 xdotool key --clearmodifiers ctrl+shift+Left
 

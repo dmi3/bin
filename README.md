@@ -172,7 +172,9 @@ Usage
 * `headlines.sh` will print latest headlines
 * `headlines.sh read` will open all news in browser and mark it as read (hide)
   - `~/.readnews` stores titles and urls of read news
+  - `~/.readnews` might be useful if you want to find article later
   - `~/.readnews` might be synced between computers
+* `headlines.sh clear` will mark all news as read (hide)
 * Add to shell greeting [see screenshot](https://developer.run/pic/headlines.png)
   - <https://ownyourbits.com/2017/04/05/customize-your-motd-login-message-in-debian-and-ubuntu/>
   - OR `chmod 777 /var/run/motd.dynamic` on boot and `headlines.sh > /var/run/motd.dynamic`
@@ -281,10 +283,11 @@ System wide text snippet expander. Simulates cut→replace→paste so works in a
 Original idea by [sessy](https://bbs.archlinux.org/viewtopic.php?id=71938) and [Linux Magazine](http://www.linux-magazine.com/Issues/2014/162/Workspace-Text-Expander) with following improvements:
 * Works as keybinding in Compiz/Unity/Openbox
 * Does not go crazy if keybinding includes Ctrl, Alt, Shift...
-* Works in Sublime Text/IntelliJ Idea/Chrome
+* Works in Sublime Text/IntelliJ Idea/Chrome/Slack
 * Expands snippets without preceding space i.e. `30eur` to `30€`
    - If snippet needs preceding space or start of line - use regexp `\b` i.e. `s/\bv$/✔/g;` converts `v` to `✔` only if its separate symbol
 * Expands snippets with symbols i.e. `->` to `→`
+* Expands commands i.e. `now` to formatted todays date, `mon` to to formatted next mondays date
 * Stores all snippets in one file
 * Works with Ubuntu 16.04
 

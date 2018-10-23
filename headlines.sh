@@ -24,7 +24,9 @@
 #  * `headlines.sh` will print latest headlines
 #  * `headlines.sh read` will open all news in browser and mark it as read (hide)
 #    - `~/.readnews` stores titles and urls of read news
+#    - `~/.readnews` might be useful if you want to find article later
 #    - `~/.readnews` might be synced between computers
+#  * `headlines.sh clear` will mark all news as read (hide)
 #  * Add to shell greeting [see screenshot](https://developer.run/pic/headlines.png)
 #    - <https://ownyourbits.com/2017/04/05/customize-your-motd-login-message-in-debian-and-ubuntu/>
 #    - OR `chmod 777 /var/run/motd.dynamic` on boot and `headlines.sh > /var/run/motd.dynamic`
@@ -39,9 +41,12 @@ NEWS=$(curl -s "https://hn.algolia.com/api/v1/search_by_date?numericFilters=poin
 touch ~/.readnews
 
 if [[ "$1" == "read" ]]; then
-  echo $NEWS | jq -r ".hits[].url"   | grep -vFf ~/.readnews | tee -a ~/.readnews | xargs -L 1 -P $MAX xdg-open >/dev/null 2>&1 &
-  echo $NEWS | jq -r ".hits[].title" | grep -vFf ~/.readnews >> ~/.readnews
+  echo $NEWS | jq -r '.hits[].url' | grep -vFf ~/.readnews | xargs -L 1 -P $MAX xdg-open >/dev/null 2>&1 &
 fi
+
+if [ "$1" == "read" ] || [ "$1" == "clear" ] ; then
+  echo $NEWS | jq -r '.hits[] | (.title +"\n" + .url)' | grep -vFf ~/.readnews >> ~/.readnews
+fi  
 
 echo " 📰 HEADLINES $(date '+%Y/%m/%d %H:%S')"
 echo $NEWS | jq -r "if .nbHits == 0 then \"No news is good news\" else .hits[].title end" | grep -vFf ~/.readnews || echo "All read"

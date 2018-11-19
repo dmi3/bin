@@ -1,4 +1,3 @@
-# Useful scripts for Linux users
 
 # [aliases.bash](https://github.com/dmi3/bin/blob/master/aliases.bash)
 
@@ -377,4 +376,40 @@ Requirements
 Usage
 -----
 * Bind script to hotkey in your DE. After input wait couple of seconds for translation to appear.
+<hr/>
+
+# [wa](https://github.com/dmi3/bin/blob/master/wa)
+
+
+Description
+-----------
+<img src="https://developer.run/pic/wa_full.png"/> 
+<img src="https://developer.run/pic/wa.png"/> 
+<img src="https://developer.run/pic/wa2.png"/> 
+Using Wolfram Alpha in command line. See <http://developer.run/37> for description and more ideas.
+
+Requirements
+------------
+You can use text only api and **optionaly** use [terminal that supports images](https://sw.kovidgoyal.net/kitty/)
+**or** `sudo apt-get install imagemagick` to view images
+
+Usage
+------------
+    ➤ wa helsinki to dublin plane
+    2 hours 20 minutes                                                                                           
+    ➤ wa time in dublin
+    5:37:57 pm GMT; Friday, January 27, 2017
+    ➤ wa 15.36 english money to eur
+    14.35 euros                                                                                                          
+    ➤ wa days till nov 16
+    293 days
+    ➤ wa 154Mbit/s to MB/s
+    19.2 megabytes per second
+    ➤ wa brick red hex
+    #AB0303 
+    ➤ wa weather in moscow
+    9 degrees Celsius and cloudy, with light winds✖
+    ➤ wa plot x=y^2
+    [...draws plot if supported]
+    ➤ # many many more usages... https://www.wolframalpha.com/examples/
 <hr/>

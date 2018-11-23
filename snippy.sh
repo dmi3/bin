@@ -54,14 +54,14 @@ s/env$/environment/g;
 s/suc$/successful/g;
 s/thx$/Thank you\./g;
 s/bus$/business/g;
-s/now$/$(date +'%d\/%m\/%y')/g;
-s/mon$/$(date +'%d\/%m\/%y' --date='next mon')/g;
-s/tue$/$(date +'%d\/%m\/%y' --date='next tue')/g;
-s/wed$/$(date +'%d\/%m\/%y' --date='next wed')/g;
-s/thu$/$(date +'%d\/%m\/%y' --date='next thu')/g;
-s/fri$/$(date +'%d\/%m\/%y' --date='next fri')/g;
-s/sat$/$(date +'%d\/%m\/%y' --date='next sat')/g;
-s/sun$/$(date +'%d\/%m\/%y' --date='next sun')/g;"
+s/now$/$(date +'%a %d\/%m\/%y')/g;
+s/mon$/$(date +'%a %d\/%m\/%y' --date='next mon')/g;
+s/tue$/$(date +'%a %d\/%m\/%y' --date='next tue')/g;
+s/wed$/$(date +'%a %d\/%m\/%y' --date='next wed')/g;
+s/thu$/$(date +'%a %d\/%m\/%y' --date='next thu')/g;
+s/fri$/$(date +'%a %d\/%m\/%y' --date='next fri')/g;
+s/sat$/$(date +'%a %d\/%m\/%y' --date='next sat')/g;
+s/sun$/$(date +'%a %d\/%m\/%y' --date='next sun')/g;"
 
 xdotool key --clearmodifiers ctrl+shift+Left
 

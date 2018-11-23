@@ -116,6 +116,36 @@ Add path to this script to `run-script-after` in job `Configuration` → `Option
 On Windows you will need to create `.bat` file containing path to this script, and add path to `.bat` file to `run-script-after`
 <hr/>
 
+# [ex-spotify-playlist.sh](https://github.com/dmi3/bin/blob/master/ex-spotify-playlist.sh)
+
+Export playlists from Spotify without giving credentials to shady sites (to avoid your Spotify credentials be stolen and resold to someone in different timezone)
+
+Converts Spotify playlist from "Song Links" list:
+
+    https://open.spotify.com/track/2pucDx5Wyz9uHCou4wntHa
+    https://open.spotify.com/track/2LH8eZOTAp4spvNCuLvZ8V
+    https://open.spotify.com/track/0P2p4impgdd77kBY1XrLIx
+
+To "Track - Artist" list:
+
+    Inspector Norse - Todd Terje
+    Farewell Spaceman - Blockhead
+    Bones - Oliver Koletzki    
+
+Requirements
+------------
+    sudo apt-get install jq
+
+Usage
+------------
+1. Open Spotify app
+2. Open playlist
+3. Select all tracks `Ctrl+A`
+4. Copy track urls `Ctrl+C`
+5. Paste into file and save
+6. `cat /path/to/file | ex-spotify-playlist.sh`
+<hr/>
+
 # [generate-readme.fish](https://github.com/dmi3/bin/blob/master/generate-readme.fish)
 
 

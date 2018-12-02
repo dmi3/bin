@@ -122,15 +122,15 @@ Export playlists from Spotify without giving credentials to shady sites (to avoi
 
 Converts Spotify playlist from "Song Links" list:
 
-    https://open.spotify.com/track/2pucDx5Wyz9uHCou4wntHa
-    https://open.spotify.com/track/2LH8eZOTAp4spvNCuLvZ8V
-    https://open.spotify.com/track/0P2p4impgdd77kBY1XrLIx
+    https://open.spotify.com/track/6autdCG3xl7gzoiDCEB2HN
+    https://open.spotify.com/track/4q6RvRkXquQ965hubV58lb
+    https://open.spotify.com/track/01pzLOA8rQLfoodUCLc2wj
 
 To "Track - Artist" list:
 
-    Inspector Norse - Todd Terje
-    Farewell Spaceman - Blockhead
-    Bones - Oliver Koletzki    
+    Nerevar Rising - Jeremy Soule
+    Arcanum - NewEnglandStringQuartet
+    Wilderness - Matt Uelmen    
 
 Requirements
 ------------
@@ -139,7 +139,7 @@ Requirements
 Usage
 ------------
 1. Open Spotify app
-2. Open playlist
+2. Open playlist or "Songs" view
 3. Select all tracks `Ctrl+A`
 4. Copy track urls `Ctrl+C`
 5. Paste into file and save

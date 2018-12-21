@@ -1,0 +1,27 @@
+#!/bin/bash
+
+#  Decription
+#  -----------
+#  Like [sssh](https://github.com/dmi3/bin/blob/master/sssh), but `hostname` parameter of [ssh command](https://manpage.me/?q=ssh) will appear in title.
+#  Useful when calling by nickname from local `~/.ssh/config` i.e. `ssh server_nickname`, and change of server hostname is not an option.
+
+get_first_non_option() {
+    SKIP_NEXT=false
+    for arg in "$@"; do
+        if [[ $arg == -* ]] ; then    
+            SKIP_NEXT=true
+        elif $SKIP_NEXT ; then
+            SKIP_NEXT=false
+        else 
+            echo $arg; return 0
+        fi    
+    done
+}
+
+CUSTOM_PS1='PS1="\[$(tput bold)\]\[$(tput setaf 2)\][\u@\h \W]\\$ \[$(tput sgr0)\]"'
+HOSTNAME=$(get_first_non_option "$@")
+CUSTOM_TITLE="echo -e \"\033]0;🖧 \$USER@$HOSTNAME\a\""
+
+PREV_TITLE=`xdotool getwindowfocus getwindowname`
+/usr/bin/ssh -t "$@" "export PROMPT_COMMAND='eval '\\''$CUSTOM_TITLE;$CUSTOM_PS1'\\'; bash --login"
+echo -e "\033]0;$PREV_TITLE\a"

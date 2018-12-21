@@ -6,6 +6,8 @@
 #  it back after exiting. Additionally sets green prompt on remote host.
 #  Useful for Keepassx and visual distinction to avoid notorious "wrong window" problem.
 #  Also works when connecting Fish → Bash
+#
+#  If you want hostname from local `~/.ssh/config` file to appear in title use [sssh2](https://github.com/dmi3/bin/blob/master/sssh2).
 
 #  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 

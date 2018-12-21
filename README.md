@@ -351,6 +351,15 @@ Usage
 `sssh user@hostname`
 <hr/>
 
+# [sssh2](https://github.com/dmi3/bin/blob/master/sssh2)
+
+
+Decription
+-----------
+Like [sssh](https://github.com/dmi3/bin/blob/master/sssh), but `hostname` parameter of [ssh command](https://manpage.me/?q=ssh) will appear in title.
+Useful when calling by nickname from local `~/.ssh/config` i.e. `ssh server_nickname`, and change of server hostname is not an option.
+<hr/>
+
 # [tomatych.py](https://github.com/dmi3/bin/blob/master/tomatych.py)
 
 <img src="http://developer.run/pic/tomatych.png"/>

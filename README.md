@@ -329,7 +329,6 @@ Usage
 -----
 * Bind script to hotkey in your DE, for example Shift+Tab.
 * Add new snippets after line 30, in format `s/SHORCUT$/REPLACEMENT/g;`
-* If you use this for emoji, it will work but make me sad.
 <hr/>
 
 # [sssh](https://github.com/dmi3/bin/blob/master/sssh)
@@ -341,6 +340,7 @@ Script to change your terminal title to user@host when connecting to ssh and cha
 it back after exiting. Additionally sets green prompt on remote host.
 Useful for Keepassx and visual distinction to avoid notorious "wrong window" problem.
 Also works when connecting Fish → Bash
+If you want hostname from local `~/.ssh/config` file to appear in title use [sssh2](https://github.com/dmi3/bin/blob/master/sssh2).
 
 Requirements
 ------------

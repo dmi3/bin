@@ -17,6 +17,7 @@
 #  1. `sudo apt-get install wmctrl`
 
 setsid bash -c "sleep 3 && systemctl poweroff"&
+echo "Shutdown in 3 seconds"
 WIN_IDs=$(wmctrl -l | awk '{print $1}')
 for i in $WIN_IDs; do wmctrl -ic "$i" || true; done
 

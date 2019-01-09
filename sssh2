@@ -2,14 +2,26 @@
 
 #  Decription
 #  -----------
-#  Like [sssh](https://github.com/dmi3/bin/blob/master/sssh), but `hostname` parameter of [ssh command](https://manpage.me/?q=ssh) will appear in title.
-#  Useful when calling by nickname from local `~/.ssh/config` i.e. `ssh server_nickname`, and change of server hostname is not an option.
+#  Like [sssh](https://github.com/dmi3/bin/blob/master/sssh), in addition:
+#  * `hostname` parameter of [ssh command](https://manpage.me/?q=ssh) will appear in title.
+#    - Useful when calling by nickname from local `~/.ssh/config` i.e. `ssh server_nickname`, and change of server hostname is not an option.
+#  * If command supports tunneling, display it in title
+#    - I.e. `ssh -L 80:localhost:80 server_nickname` will set title `user@[80]server_nickname`
+#  * Appends some useful [aliases](https://github.com/dmi3/fish/blob/master/aliases.fish) to existing `~/.bashrc`
+#  * Preserves command history on multiple sessions
+#
+#  Usage
+#  -----
+#  See [sssh](https://github.com/dmi3/bin/blob/master/sssh)
 
 get_first_non_option() {
     SKIP_NEXT=false
     for arg in "$@"; do
         if [[ $arg == -* ]] ; then    
             SKIP_NEXT=true
+        elif [[ $arg == *:*:* ]] ; then    
+            echo $arg | cut -d: -f1 | xargs -I "{}" printf "[{}]"
+            SKIP_NEXT=false
         elif $SKIP_NEXT ; then
             SKIP_NEXT=false
         else 
@@ -18,10 +30,37 @@ get_first_non_option() {
     done
 }
 
-CUSTOM_PS1='PS1="\[$(tput bold)\]\[$(tput setaf 2)\][\u@\h \W]\\$ \[$(tput sgr0)\]"'
-HOSTNAME=$(get_first_non_option "$@")
-CUSTOM_TITLE="echo -e \"\033]0;🖧 \$USER@$HOSTNAME\a\""
+NICKNAME=$(get_first_non_option "$@")
+
+CUSTOM_TITLE="echo -e \"\033]0;🖧 \$USER@$NICKNAME\a\""
+CUSTOM_PS1='PS1="\[$(tput bold)\]\[$(tput setaf 2)\][\u@'$NICKNAME' \w]\n🖧 \[$(tput sgr0)\]"'
+CUSTOM_RC="
+alias ll=\"ls -lh\"
+alias mkdir=\"mkdir -pv\"
+alias path=\"readlink -e\"
+alias sizeof=\"du -hs\"
+alias untar=\"tar -vxzf\"
+alias fs=\"df -h -x squashfs -x tmpfs -x devtmpfs\"
+alias myip=\"curl ifconfig.co\"
+alias getmicro=\"curl https://getmic.ro | bash && sudo mv ./micro /usr/local/bin/\"
+run() {
+  chmod +x \"\$1\"
+  exec \"\$1\" &
+}
+mkcd () {
+  mkdir \"\$1\"
+  cd \"\$1\"
+}
+shopt -s histappend
+"
 
 PREV_TITLE=`xdotool getwindowfocus getwindowname`
-/usr/bin/ssh -t "$@" "export PROMPT_COMMAND='eval '\\''$CUSTOM_TITLE;$CUSTOM_PS1'\\'; bash --login"
+/usr/bin/ssh -t "$@" "
+  SSSH_RC=$(mktemp);
+  cp ~/.bashrc \$SSSH_RC;
+  echo '$CUSTOM_RC' >> \$SSSH_RC;
+  export PROMPT_COMMAND='history -a; eval '\\''$CUSTOM_TITLE;$CUSTOM_PS1'\\';
+  bash --rcfile \$SSSH_RC;
+  rm \$SSSH_RC;"
+
 echo -e "\033]0;$PREV_TITLE\a"

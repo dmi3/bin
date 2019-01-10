@@ -362,6 +362,7 @@ Like [sssh](https://github.com/dmi3/bin/blob/master/sssh), in addition:
   - Useful when calling by nickname from local `~/.ssh/config` i.e. `ssh server_nickname`, and change of server hostname is not an option.
 * If command supports tunneling, display it in title
   - I.e. `ssh -L 80:localhost:80 server_nickname` will set title `user@[80]server_nickname`
+  - Avoid accidental closing of such tabs
 * Appends some useful [aliases](https://github.com/dmi3/fish/blob/master/aliases.fish) to existing `~/.bashrc`
 * Preserves command history on multiple sessions
 

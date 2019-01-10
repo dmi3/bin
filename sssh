@@ -18,6 +18,7 @@
 #  Usage
 #  -----
 #  `sssh user@hostname`
+#  `alias ssh=sssh`
 
 CUSTOM_PS1='PS1="\[$(tput bold)\]\[$(tput setaf 2)\][\u@\h \W]\\$ \[$(tput sgr0)\]"'
 CUSTOM_TITLE='echo -e "\033]0;🖧 $USER@$HOSTNAME\a"'

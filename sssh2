@@ -7,6 +7,7 @@
 #    - Useful when calling by nickname from local `~/.ssh/config` i.e. `ssh server_nickname`, and change of server hostname is not an option.
 #  * If command supports tunneling, display it in title
 #    - I.e. `ssh -L 80:localhost:80 server_nickname` will set title `user@[80]server_nickname`
+#    - Avoid accidental closing of such tabs
 #  * Appends some useful [aliases](https://github.com/dmi3/fish/blob/master/aliases.fish) to existing `~/.bashrc`
 #  * Preserves command history on multiple sessions
 #
@@ -32,14 +33,14 @@ get_first_non_option() {
 
 NICKNAME=$(get_first_non_option "$@")
 
-CUSTOM_TITLE="echo -e \"\033]0;🖧 \$USER@$NICKNAME\a\""
-CUSTOM_PS1='PS1="\[$(tput bold)\]\[$(tput setaf 2)\][\u@'$NICKNAME' \w]\n🖧 \[$(tput sgr0)\]"'
+CUSTOM_TITLE="🖧 \$USER@$NICKNAME"
+CUSTOM_PS1='$(tput bold)\]\[$(tput setaf 2)\][\u@'$NICKNAME' \w]\n🖧 \[$(tput sgr0)\]'
 CUSTOM_RC="
 alias ll=\"ls -lh\"
 alias mkdir=\"mkdir -pv\"
 alias path=\"readlink -e\"
-alias sizeof=\"du -hs\"
 alias untar=\"tar -vxzf\"
+alias sizeof=\"du -hs\"
 alias fs=\"df -h -x squashfs -x tmpfs -x devtmpfs\"
 alias myip=\"curl ifconfig.co\"
 alias getmicro=\"curl https://getmic.ro | bash && sudo mv ./micro /usr/local/bin/\"
@@ -52,15 +53,16 @@ mkcd () {
   cd \"\$1\"
 }
 shopt -s histappend
+export PROMPT_COMMAND=\"history -a; PS1=\\\"$CUSTOM_PS1\\\"\"
+echo -e \"\033]0;$CUSTOM_TITLE\a\"
 "
-
 PREV_TITLE=`xdotool getwindowfocus getwindowname`
+
 /usr/bin/ssh -t "$@" "
-  SSSH_RC=$(mktemp);
-  cp ~/.bashrc \$SSSH_RC;
-  echo '$CUSTOM_RC' >> \$SSSH_RC;
-  export PROMPT_COMMAND='history -a; eval '\\''$CUSTOM_TITLE;$CUSTOM_PS1'\\';
-  bash --rcfile \$SSSH_RC;
-  rm \$SSSH_RC;"
+SSSH_RC=\$(mktemp)
+cp ~/.bashrc \$SSSH_RC
+echo '$CUSTOM_RC' >> \$SSSH_RC
+bash --rcfile \$SSSH_RC
+rm \$SSSH_RC"
 
 echo -e "\033]0;$PREV_TITLE\a"

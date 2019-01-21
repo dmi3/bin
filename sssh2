@@ -36,7 +36,9 @@ NICKNAME=$(get_first_non_option "$@")
 CUSTOM_TITLE="🖧 \$USER@$NICKNAME"
 CUSTOM_PS1='$(tput bold)\]\[$(tput setaf 2)\][\u@'$NICKNAME' \w]\n🖧 \[$(tput sgr0)\]'
 CUSTOM_RC="
+alias sudo=\"sudo \"
 alias ll=\"ls -lh\"
+alias ff=\"find \$PWD -iname\"
 alias mkdir=\"mkdir -pv\"
 alias path=\"readlink -e\"
 alias untar=\"tar -vxzf\"
@@ -51,6 +53,9 @@ run() {
 mkcd () {
   mkdir \"\$1\"
   cd \"\$1\"
+}
+bak () {
+  mv \"\$1\" \"\$(basename \$1).bak\"
 }
 shopt -s histappend
 export PROMPT_COMMAND=\"history -a; PS1=\\\"$CUSTOM_PS1\\\"\"

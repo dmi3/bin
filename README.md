@@ -116,6 +116,33 @@ Add path to this script to `run-script-after` in job `Configuration` → `Option
 On Windows you will need to create `.bat` file containing path to this script, and add path to `.bat` file to `run-script-after`
 <hr/>
 
+# [ec2ssh.sh](https://github.com/dmi3/bin/blob/master/ec2ssh.sh)
+
+
+Decription
+----------
+* Writes all running AWS EC2 instances to [SSH config file](https://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/)
+* So you write `ssh instance_name` instead of `ssh -i ~/.ssh/gate.pem ec2-user@ec2-12-345-67-89.us-east-1.compute.amazonaws.com`
+* Autocompletion!
+* Command history is clean and reusable for `ssh` and `scp`
+* Instance IP change on reboot is not problem anymore
+* Works well with [sssh2](https://github.com/dmi3/bin/blob/master/sssh2).
+
+Instalation
+-----------
+* Setup [aws-cli](https://github.com/aws/aws-cli#aws-cli)
+* (Optional) Install [latest Openssh in 16.04](https://gist.github.com/stefansundin/0fd6e9de172041817d0b8a75f1ede677)
+* Change credentials in `TEMPLATE` ↓
+
+Usage
+-----
+* If you have Openssh > 7.3:
+  - `ec2ssh.sh | tee ~/.ssh/aws_config`
+  - Add [Include aws_config](https://superuser.com/a/1142813) to `~/.ssh/config`
+* Else (will overwrite file)
+  - ec2ssh.sh | tee ~/.ssh/config
+<hr/>
+
 # [ex-spotify-playlist.sh](https://github.com/dmi3/bin/blob/master/ex-spotify-playlist.sh)
 
 Export playlists from Spotify without giving credentials to shady sites (to avoid your Spotify credentials be stolen and resold to someone in different timezone)

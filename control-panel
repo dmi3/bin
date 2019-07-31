@@ -1,0 +1,41 @@
+#!/bin/bash
+
+
+#  Description
+#  -----------
+#  GUI LXDE Settings menu
+
+
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
+  
+#  Requirements
+#  ------------
+#       fzf
+     
+
+#  Usage
+#  ------------
+#      control-panel
+   
+bash -c "$(echo '🖶  Printers         | system-config-printer
+🖶  HP Printers      | hp-toolbox
+🖶  CUPS             | xdg-open http://localhost:631/
+🗔  Openbox          | subl ~/.config/openbox/lxde-rc.xml
+🗔  Openbox Config   | obconf
+🛠  DockbarX         | dbx_preference
+🔐 Passwords         | seahorse
+↻  Openbox Restart  | openbox --reconfigure
+↻  Session Restart  | sudo service lightdm restart
+👕 Look and Feel    | lxappearance
+🏁 Startup          | lxsession-default-apps
+🔄 Task Manager     | lxtask
+💻 Display Settings | lxrandr
+👥 Users            | users-admin
+🎴 Wallpapers       | xdg-open /usr/share/lubuntu/wallpapers/
+🗔  Qt Configuration | qtconfig-qt4
+🖧  Hosts            | xdg-open /etc/hosts
+💾 Filesystem       | xdg-open /etc/fstab
+💾 Disks            | gnome-disks
+💾 Disk Usage       | baobab
+👤 User             | xdg-open /etc/rc.local' | fzf --no-sort --header="📋 Control Panel" | cut -d '|' -f 2)"
+

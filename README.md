@@ -5,11 +5,7 @@
 
 Decription
 -----------
-Some handy bash aliases
-
-Requirements
-------------
-`sudo apt-get install twistd pm-utils`
+Some handy bash aliases and settings
 
 Usage
 -----
@@ -103,6 +99,26 @@ Usage
 Fish config with awesome flexible prompt, unicode symbols, better fzf integration and tons of handy functions.
 <hr/>
 
+# [config/lxterminal/lxterminal.conf](https://github.com/dmi3/bin/blob/master/config/lxterminal/lxterminal.conf)
+
+<hr/>
+
+# [control-panel](https://github.com/dmi3/bin/blob/master/control-panel)
+
+
+Description
+-----------
+GUI LXDE Settings menu
+
+Requirements
+------------
+     fzf
+
+Usage
+------------
+    control-panel
+<hr/>
+
 # [duplicati-ping.py](https://github.com/dmi3/bin/blob/master/duplicati-ping.py)
 
 
@@ -121,7 +137,7 @@ On Windows you will need to create `.bat` file containing path to this script, a
 
 Decription
 ----------
-* Writes all running AWS EC2 instances to [SSH config file](https://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/)
+* Writes all running AWS EC2 instances with defined name to [SSH config file](https://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/)
 * So you write `ssh instance_name` instead of `ssh -i ~/.ssh/gate.pem ec2-user@ec2-12-345-67-89.us-east-1.compute.amazonaws.com`
 * Autocompletion!
 * Command history is clean and reusable for `ssh` and `scp`

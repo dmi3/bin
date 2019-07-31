@@ -2,7 +2,7 @@
 
 #  Decription
 #  ----------
-#  * Writes all running AWS EC2 instances to [SSH config file](https://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/)
+#  * Writes all running AWS EC2 instances with defined name to [SSH config file](https://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/)
 #  * So you write `ssh instance_name` instead of `ssh -i ~/.ssh/gate.pem ec2-user@ec2-12-345-67-89.us-east-1.compute.amazonaws.com`
 #  * Autocompletion!
 #  * Command history is clean and reusable for `ssh` and `scp`
@@ -29,7 +29,7 @@
 TEMPLATE="
 Host \$1
   HostName \$0
-  User ubuntu
+  User ec2-user
   IdentityFile ~/.ssh/gate.pem
   IdentitiesOnly yes"
 

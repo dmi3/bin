@@ -46,6 +46,4 @@ RESPONSE=$(curl -s "https://api.wolframalpha.com/v1/result?appid=$APPID&units=me
 # Remove next if you are fine with text only api, and don't want to see any images
 test "No short answer available" = "$RESPONSE"\
      && echo ", downloading full answer..."\
-     && curl -s "https://api.wolframalpha.com/v1/simple?appid=$APPID&units=metric&foreground=$FG&background=$BG" --data-urlencode "i=$*" -o /tmp/wolfram_alpha\
-     && $VIEWER /tmp/wolfram_alpha\
-     || exit 0
+     && curl -s "https://api.wolframalpha.com/v1/simple?appid=$APPID&units=metric&foreground=$FG&background=$BG" --data-urlencode "i=$*" | $VIEWER || exit 0

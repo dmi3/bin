@@ -8,7 +8,6 @@
 #  * Don't miss next Meltdown, be notified right away!
 #  * Doesn't distract you if nothing important happened
 #  * Allows open all news in browser and mark it as read
-#  * Additionally prints latest [@sadserver](https://twitter.com/sadserver) tweet for cynical comment
 #  * If you prefer simpler version without additional functionality refer [to initial version](https://github.com/dmi3/bin/blob/2fb9f8a894ea4eba5edb13c7135861740de83084/headlines.sh)
 #  * See <http://developer.run/27> for description and more ideas
 
@@ -50,11 +49,4 @@ fi
 
 echo " 📰 HEADLINES $(date '+%Y/%m/%d %H:%S')"
 echo $NEWS | jq -r "if .nbHits == 0 then \"No news is good news\" else .hits[].title end" | grep -vFf ~/.readnews || echo "All read"
-
-# Get todays @sadserver tweet
-# Yep, it pipes `twitter.com → twitrss.me → rss2json.com` to bypass Twitter 1.1 API authentication
-
-TODAY=$(date +%Y-%m-%d)
-curl -s "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Ftwitrss.me%2Ftwitter_user_to_rss%2F%3Fuser%3Dsadserver" \
-    | jq -r ".items[] | select(.pubDate | contains(\"$TODAY\")) | \"\n@sadserver: \" + .title"
 

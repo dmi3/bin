@@ -232,7 +232,6 @@ Description
 * Don't miss next Meltdown, be notified right away!
 * Doesn't distract you if nothing important happened
 * Allows open all news in browser and mark it as read
-* Additionally prints latest [@sadserver](https://twitter.com/sadserver) tweet for cynical comment
 * If you prefer simpler version without additional functionality refer [to initial version](https://github.com/dmi3/bin/blob/2fb9f8a894ea4eba5edb13c7135861740de83084/headlines.sh)
 * See <http://developer.run/27> for description and more ideas
 

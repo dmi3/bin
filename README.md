@@ -308,6 +308,18 @@ Requirements
 1. `sudo apt-get install notify-send `
 <hr/>
 
+# [mus.sh](https://github.com/dmi3/bin/blob/master/mus.sh)
+
+
+Decription
+----------
+Setups MUS (minimal usable system). Targets very slow machines with very broken disks and very bad internet, so checks everything.
+
+Usage
+-----
+    /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/mus.sh > /tmp/mus.sh && cat /tmp/mus.sh | md5sum | grep -q "67a86091860d94dabd52b3df78bc90e4  -" && /tmp/mus.sh || echo "bad checksum"
+<hr/>
+
 # [poweroff](https://github.com/dmi3/bin/blob/master/poweroff)
 
 
@@ -323,18 +335,6 @@ Useful to avoid issues when calling `poweroff` from console:
 Requirements
 ----------
 1. `sudo apt-get install wmctrl`
-<hr/>
-
-# [setup.sh](https://github.com/dmi3/bin/blob/master/setup.sh)
-
-
-Decription
-----------
-Setups MUS (minimal usable system). Targets very slow machines with very broken disks and very bad internet, so checks everything.
-
-Usage
------
-    /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/setup.sh > /tmp/setup.sh && cat /tmp/setup.sh | md5sum | grep -q "67a86091860d94dabd52b3df78bc90e4  -" && ./setup.sh || echo "bad checksum"
 <hr/>
 
 # [skypenotify](https://github.com/dmi3/bin/blob/master/skypenotify)

@@ -8,7 +8,7 @@
 
 #  Usage
 #  -----
-#      /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/setup.sh > /tmp/setup.sh && cat /tmp/setup.sh | md5sum | grep -q "67a86091860d94dabd52b3df78bc90e4  -" && ./setup.sh || echo "bad checksum"
+#      /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/mus.sh > /tmp/mus.sh && cat /tmp/mus.sh | md5sum | grep -q "67a86091860d94dabd52b3df78bc90e4  -" && /tmp/mus.sh || echo "bad checksum"
 
 #SIZE=wget --spider https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.0.0-amd64-lxde.iso 2>&1 | grep Length | cut -d ' ' -f 2
 #SIZE=stat -c '%s' imagename.iso 
@@ -29,13 +29,14 @@ sudo apt-get update
 sudo apt-get install curl wget bash-completion firefox-esr encfs 
 sudo apt-get install hplip
 
+killall clipit
+
 wget -q --show-progress https://raw.githubusercontent.com/dmi3/bin/master/config/clipit/clipitrc -O ~/.config/clipit/clipitrc
 wget -q --show-progress https://raw.githubusercontent.com/dmi3/bin/master/config/lxterminal/lxterminal.conf -O ~/.config/lxterminal/lxterminal.conf
 wget -q --show-progress https://raw.githubusercontent.com/dmi3/bin/master/aliases.bash -O ~/aliases.bash
 wget -q --show-progress https://raw.githubusercontent.com/dmi3/bin/master/layoutset -O ~/layoutset
 wget -q --show-progress https://github.com/keepassxreboot/keepassxc/releases/download/2.4.3/KeePassXC-2.4.3-x86_64.AppImage -O ~/KeePassXC.AppImage
 
-killall clipit && nohup clipit&
 
 echo "92558321f18a2d74bb2fc11619ab541e  /home/$USER/aliases.bash
 615bec2644c9de7ac7122f1924a18bfa  /home/$USER/layoutset
@@ -45,8 +46,9 @@ md5sum -c /tmp/md5sums
 
 echo "source ~/aliases.bash" >> ~/.bashrc
 chmod +x ~/layoutset
-chmod +x ~/KeePassXC-2.4.3-x86_64.AppImage
+chmod +x ~/KeePassXC.AppImage
 
+nohup clipit&
 ~/layoutset
 
 echo "You can restart terminal now"

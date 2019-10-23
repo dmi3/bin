@@ -325,6 +325,17 @@ Requirements
 1. `sudo apt-get install wmctrl`
 <hr/>
 
+# [setup.sh](https://github.com/dmi3/bin/blob/master/setup.sh)
+
+
+Decription
+----------
+
+Usage
+-----
+    /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/setup.bash > /tmp/setup.sh && cat /tmp/setup.sh | md5sum | grep -q "92558321f18a2d74bb2fc11619ab541e  -" && ./setup.sh || echo "bad checksum"
+<hr/>
+
 # [skypenotify](https://github.com/dmi3/bin/blob/master/skypenotify)
 
 

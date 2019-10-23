@@ -330,10 +330,11 @@ Requirements
 
 Decription
 ----------
+Setups MUS (minimal usable system). Targets very slow machines with very broken disks and very bad internet, so checks everything.
 
 Usage
 -----
-    /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/setup.bash > /tmp/setup.sh && cat /tmp/setup.sh | md5sum | grep -q "92558321f18a2d74bb2fc11619ab541e  -" && ./setup.sh || echo "bad checksum"
+    /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/setup.sh > /tmp/setup.sh && cat /tmp/setup.sh | md5sum | grep -q "67a86091860d94dabd52b3df78bc90e4  -" && ./setup.sh || echo "bad checksum"
 <hr/>
 
 # [skypenotify](https://github.com/dmi3/bin/blob/master/skypenotify)

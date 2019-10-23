@@ -2,13 +2,13 @@
 
 #  Decription
 #  ----------
-
+#  Setups MUS (minimal usable system). Targets very slow machines with very broken disks and very bad internet, so checks everything.
 
 #  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Usage
 #  -----
-#      /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/setup.bash > /tmp/setup.sh && cat /tmp/setup.sh | md5sum | grep -q "92558321f18a2d74bb2fc11619ab541e  -" && ./setup.sh || echo "bad checksum"
+#      /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/setup.sh > /tmp/setup.sh && cat /tmp/setup.sh | md5sum | grep -q "67a86091860d94dabd52b3df78bc90e4  -" && ./setup.sh || echo "bad checksum"
 
 #SIZE=wget --spider https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.0.0-amd64-lxde.iso 2>&1 | grep Length | cut -d ' ' -f 2
 #SIZE=stat -c '%s' imagename.iso 

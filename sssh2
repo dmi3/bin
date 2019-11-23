@@ -59,10 +59,13 @@ bak () {
   mv \"\$1\" \"\$(basename \$1).bak\"
 }
 shopt -s histappend
+export HISTCONTROL=ignoreboth
 export PROMPT_COMMAND=\"history -a; PS1=\\\"$CUSTOM_PS1\\\"\"
 echo -e \"\033]0;$CUSTOM_TITLE\a\"
 "
 PREV_TITLE=`xdotool getwindowfocus getwindowname`
+
+echo -e "\033]0;$NICKNAME\a"
 
 /usr/bin/ssh -t "$@" "
 SSSH_RC=\$(mktemp)

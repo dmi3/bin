@@ -1,5 +1,9 @@
 # Useful scripts for Linux users
 
+# [SHASUMS](https://github.com/dmi3/bin/blob/master/SHASUMS)
+
+<hr/>
+
 # [aliases.bash](https://github.com/dmi3/bin/blob/master/aliases.bash)
 
 
@@ -198,7 +202,7 @@ Generates this readme
 
 Usage
 -----
-     echo -e "#!/bin/sh\necho \# Useful scripts for Linux users > README.md\ngenerate-readme.fish >> README.md" > .git/hooks/pre-commit
+     echo -e "#!/bin/sh\necho \# Useful scripts for Linux users > README.md\ngenerate-readme.fish >> README.md\nshasum -a 256 * | grep -v 'SHASUMS\|config' > SHASUMS" > .git/hooks/pre-commit
      chmod +x .git/hooks/pre-commit    
 <hr/>
 
@@ -313,11 +317,11 @@ Requirements
 
 Decription
 ----------
-Setups MUS (minimal usable system). Targets very slow machines with very broken disks and very bad internet, so checks everything.
+Setups MUS (Minimal Usable System). Targets very slow machines with very broken disks and very bad internet, so checks everything.
 
 Usage
 -----
-    /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/mus.sh > /tmp/mus.sh && cat /tmp/mus.sh | md5sum | grep -q "67a86091860d94dabd52b3df78bc90e4  -" && /tmp/mus.sh || echo "bad checksum"
+    /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/mus.sh > ~/mus.sh && chmod +x ~/mus.sh && ~/mus.sh
 <hr/>
 
 # [poweroff](https://github.com/dmi3/bin/blob/master/poweroff)

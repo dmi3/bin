@@ -37,7 +37,7 @@
 
 
 APPID=$(cat ~/git/stuff/keys/wolfram_alpha) # Get one at https://products.wolframalpha.com/api/
-VIEWER="kitty +kitten icat"                 # Use `set VIEWER display` from imagemagick if terminal does not support images
+VIEWER="kitty +kitten icat"                 # Use `VIEWER="display"` from imagemagick if terminal does not support images
 BG="transparent"                            # Transparent background
 FG="white"                                  # Match color to your terminal
 

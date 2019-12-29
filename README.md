@@ -106,6 +106,7 @@ Fish config with awesome flexible prompt, unicode symbols, better fzf integratio
 # [config/kitty/kitty.conf](https://github.com/dmi3/bin/blob/master/config/kitty/kitty.conf)
 
 Config for [Kitty](https://sw.kovidgoyal.net/kitty/) with custom hotkeys, nicer color scheme and some useful tweaks
+Refer to [original documentation](https://sw.kovidgoyal.net/kitty/conf.html) for more options
 <hr/>
 
 # [config/lxterminal/lxterminal.conf](https://github.com/dmi3/bin/blob/master/config/lxterminal/lxterminal.conf)
@@ -328,6 +329,27 @@ Setups MUS (Minimal Usable System). Targets very slow machines with very broken 
 Usage
 -----
     /usr/bin/GET https://raw.githubusercontent.com/dmi3/bin/master/mus.sh > ~/mus.sh && chmod +x ~/mus.sh && ~/mus.sh
+<hr/>
+
+# [numbers.py](https://github.com/dmi3/bin/blob/master/numbers.py)
+
+
+Decription
+-----------
+Font especially designed to fit 6 digits to 20x8 screens
+For some reason [miniwi.flf](https://github.com/xero/figlet-fonts/blob/master/miniwi.flf) [figlet font](https://developer.run/26) is not working in tty
+Useful for [Raspberry Pi 2fa](https://developer.run/45)
+```
+    ▐ ██ ██ ▌▐ ██ ██
+    ▐  ▐  ▐ ▌▐ ▌  ▌
+    ▐ ██ ██ ██ ██ ██
+    ▐ ▌   ▐  ▐  ▐ ▌▐
+    ▐ ██ ██  ▐ ██ ██
+```
+
+Usage
+-----
+    python3 numbers.py 123456
 <hr/>
 
 # [poweroff](https://github.com/dmi3/bin/blob/master/poweroff)

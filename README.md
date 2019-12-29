@@ -95,6 +95,7 @@ Usage
 
 # [config/clipit/clipitrc](https://github.com/dmi3/bin/blob/master/config/clipit/clipitrc)
 
+Config for [ClipIt](https://github.com/CristianHenzel/ClipIt) with sane defaults and hotheys
 <hr/>
 
 # [config/fish/config.fish](https://github.com/dmi3/bin/blob/master/config/fish/config.fish)
@@ -104,10 +105,12 @@ Fish config with awesome flexible prompt, unicode symbols, better fzf integratio
 
 # [config/kitty/kitty.conf](https://github.com/dmi3/bin/blob/master/config/kitty/kitty.conf)
 
+Config for [Kitty](https://sw.kovidgoyal.net/kitty/) with custom hotkeys, nicer color scheme and some useful tweaks
 <hr/>
 
 # [config/lxterminal/lxterminal.conf](https://github.com/dmi3/bin/blob/master/config/lxterminal/lxterminal.conf)
 
+Config for [LXTerminal](https://wiki.lxde.org/en/LXTerminal) with copy/paste on Ctrl+C/V and nicer color theme
 <hr/>
 
 # [control-panel](https://github.com/dmi3/bin/blob/master/control-panel)

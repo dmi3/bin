@@ -1,3 +1,5 @@
+#  Config for [ClipIt](https://github.com/CristianHenzel/ClipIt) with sane defaults and hotheys
+
 [rc]
 use_copy=true
 use_primary=false

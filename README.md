@@ -102,6 +102,21 @@ Usage
 Fish config with awesome flexible prompt, unicode symbols, better fzf integration and tons of handy functions.
 <hr/>
 
+# [config/kitty/kitty.conf](https://github.com/dmi3/bin/blob/master/config/kitty/kitty.conf)
+
+The modifier keys to press when clicking with the mouse on URLs to open the URL
+Enable/disable the audio bell. Useful in environments that require silence.
+Draw only the minimum borders needed.
+The color for the border of the active window
+Fade the text in inactive windows by the specified amount
+Which edge to show the tab bar on, top or bottom
+The tab bar style, can be one of  fade or separator.
+The separator between tabs in the tab bar
+The console editor to use when editing the kitty config file or similar tasks. A value of . means to use the environment variable
+Allow other programs to control kitty.
+The value of the TERM environment variable to set. Set for compatibility
+<hr/>
+
 # [config/lxterminal/lxterminal.conf](https://github.com/dmi3/bin/blob/master/config/lxterminal/lxterminal.conf)
 
 <hr/>

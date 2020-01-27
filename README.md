@@ -89,6 +89,7 @@ Requirements
 Usage
 -----
 * `bookmarks -a http://github.com useful site`
+* `bookmarks -a %s $(zenity --entry)` Interactive
 * `bookmarks`
 * Bookmark currently copied link using [ClipIt](https://github.com/CristianHenzel/ClipIt) actions: `bookmarks -a %s $(zenity --entry)`
 <hr/>

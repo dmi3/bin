@@ -23,11 +23,12 @@ bash -c "$(echo '🖶  Printers         | system-config-printer
 🗔  Openbox          | subl ~/.config/openbox/lxde-rc.xml
 🗔  Openbox Config   | obconf
 🛠  DockbarX         | dbx_preference
-🔐 Passwords         | seahorse
+🔐 Passwords        | seahorse
 ↻  Openbox Restart  | openbox --reconfigure
 ↻  Session Restart  | sudo service lightdm restart
 👕 Look and Feel    | lxappearance
-🏁 Startup          | lxsession-default-apps
+🏁 Autostart        | lxsession-default-apps
+🏁 Autostart Txt    | xdg-open ~/.config/lxsession/LXDE/autostart
 🔄 Task Manager     | lxtask
 💻 Display Settings | lxrandr
 👥 Users            | users-admin
@@ -37,5 +38,5 @@ bash -c "$(echo '🖶  Printers         | system-config-printer
 💾 Filesystem       | xdg-open /etc/fstab
 💾 Disks            | gnome-disks
 💾 Disk Usage       | baobab
+👤 Profile          | xdg-open /etc/profile
 👤 User             | xdg-open /etc/rc.local' | fzf --no-sort --header="📋 Control Panel" | cut -d '|' -f 2)"
-

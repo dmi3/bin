@@ -1,3 +1,5 @@
+# Useful scripts for Linux users
+See my [Fish config](https://github.com/dmi3/fish) for more CLI awesomness
 
 # [SHASUMS](https://github.com/dmi3/bin/blob/master/SHASUMS)
 
@@ -210,7 +212,7 @@ Generates this readme
 
 Usage
 -----
-     echo -e "#!/bin/sh\necho \# Useful scripts for Linux users > README.md\ngenerate-readme.fish >> README.md\nshasum -a 256 * | grep -v 'SHASUMS\|config' > SHASUMS" > .git/hooks/pre-commit
+     echo -e "#!/bin/sh\necho \# Useful scripts for Linux users > README.md\necho \"See my [Fish config](https://github.com/dmi3/fish) for more CLI awesomness\" >> README.md\ngenerate-readme.fish >> README.md\nshasum -a 256 * | grep -v 'SHASUMS\|config' > SHASUMS" > .git/hooks/pre-commit
      chmod +x .git/hooks/pre-commit    
 <hr/>
 

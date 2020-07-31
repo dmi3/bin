@@ -1,3 +1,5 @@
+# Useful scripts for Linux users
+See my [Fish config](https://github.com/dmi3/fish) for more CLI awesomness
 
 # [SHASUMS](https://github.com/dmi3/bin/blob/master/SHASUMS)
 
@@ -96,6 +98,7 @@ Usage
 
 # [config/clipit/clipitrc](https://github.com/dmi3/bin/blob/master/config/clipit/clipitrc)
 
+Config for [ClipIt](https://github.com/CristianHenzel/ClipIt) with sane defaults and hotheys
 <hr/>
 
 # [config/fish/config.fish](https://github.com/dmi3/bin/blob/master/config/fish/config.fish)

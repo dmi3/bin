@@ -98,7 +98,6 @@ Usage
 
 # [config/clipit/clipitrc](https://github.com/dmi3/bin/blob/master/config/clipit/clipitrc)
 
-Config for [ClipIt](https://github.com/CristianHenzel/ClipIt) with sane defaults and hotheys
 <hr/>
 
 # [config/fish/config.fish](https://github.com/dmi3/bin/blob/master/config/fish/config.fish)
@@ -418,6 +417,7 @@ Usage
 -----
 * Bind script to hotkey in your DE, for example Shift+Tab.
 * Add new snippets after line 30, in format `s/SHORCUT$/REPLACEMENT/g;`
+* If you use this for emoji, it will work but make me sad.
 <hr/>
 
 # [sssh](https://github.com/dmi3/bin/blob/master/sssh)
@@ -516,6 +516,26 @@ Requirements
 Usage
 -----
 * Bind script to hotkey in your DE. After input wait couple of seconds for translation to appear.
+<hr/>
+
+# [tray-unread.sh](https://github.com/dmi3/bin/blob/master/tray-unread.sh)
+
+
+Decription
+----------
+Update tray icon depending on script result. Current example shows unread mail count for Evolution mail (for those poor souls who need exchange but don't have web client), but actually in can check and notify about literally anything!
+Read more:
+* <https://sourceforge.net/p/yad-dialog/wiki/NotificationIcon/>
+* <https://dset0x.github.io/mail-counting.html>
+
+Requirements
+----------
+1. `sudo apt-get install yad`
+2. For Evolution `sudo apt-get install sqlite3`
+
+Usage
+-----
+    tray-unread.sh
 <hr/>
 
 # [wa](https://github.com/dmi3/bin/blob/master/wa)

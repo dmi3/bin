@@ -1,5 +1,3 @@
-# Useful scripts for Linux users
-See my [Fish config](https://github.com/dmi3/fish) for more CLI awesomness
 
 # [SHASUMS](https://github.com/dmi3/bin/blob/master/SHASUMS)
 
@@ -417,7 +415,6 @@ Usage
 -----
 * Bind script to hotkey in your DE, for example Shift+Tab.
 * Add new snippets after line 30, in format `s/SHORCUT$/REPLACEMENT/g;`
-* If you use this for emoji, it will work but make me sad.
 <hr/>
 
 # [sssh](https://github.com/dmi3/bin/blob/master/sssh)
@@ -536,6 +533,7 @@ Requirements
 Usage
 -----
     tray-unread.sh
+* `on_exit() {
 <hr/>
 
 # [wa](https://github.com/dmi3/bin/blob/master/wa)

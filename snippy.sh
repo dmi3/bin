@@ -27,7 +27,6 @@
 #  -----
 #  * Bind script to hotkey in your DE, for example Shift+Tab.
 #  * Add new snippets after line 30, in format `s/SHORCUT$/REPLACEMENT/g;`
-#  * If you use this for emoji, it will work but make me sad.
 
 snippets="
 s/<->$/⇄/g;

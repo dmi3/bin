@@ -1,0 +1,40 @@
+#!/bin/bash
+
+#  Description
+#  ----------
+#  Interactive (un)mount of hotplug devices (USB drives) from console using FZF!
+
+#  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
+
+#  Requirements
+#  ----------
+#  1. `sudo apt-get install jq fzf udisks2`
+
+#  Usage
+#  -----
+#      $ plug
+#      >         ACRONIS_MED     DataTraveler_2.0        sdb1     
+#                DATA            DataTraveler_3.0        sdc1
+#      Mounted /dev/sdb1 at /media/dmi3/ACRONIS_MED.
+#
+#      $ plug -u
+#      > /media/dmi3/ACRONIS_MED ACRONIS_MED     DataTraveler_2.0                sdb1                                                                                                                          
+#        /                       workbuntu2020   Samsung_SSD_860_EVO_M.2_500GB   sda2                                                                                                                                  
+#        /media/dmi3/ElTorito    ElTorito        Samsung_SSD_860_EVO_M.2_500GB   sda1 
+#      Unmounted /dev/sdb1 
+#
+#      alias unplug='plug -u'
+
+if [[ $1 == "-u" ]]; then
+  filter="!="
+else
+  filter="=="
+fi
+
+DEVICE=$(lsblk -J -o HOTPLUG,NAME,LABEL,MODEL,MOUNTPOINT | jq -r ".blockdevices | .[] | . as \$p | .children | flatten | .[] | select( .hotplug == true and .mountpoint $filter null ) | [.mountpoint,.label,\$p.model,.name] | @tsv" | fzf -d$'\t' | cut -d$'\t' -f4)
+
+if [[ $1 == "-u" ]]; then
+  udisksctl unmount --force -b "/dev/$DEVICE"
+else
+  udisksctl mount -b "/dev/$DEVICE"
+fi

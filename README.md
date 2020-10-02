@@ -355,6 +355,31 @@ Usage
     python3 numbers.py 123456
 <hr/>
 
+# [plug](https://github.com/dmi3/bin/blob/master/plug)
+
+
+Description
+----------
+Interactive (un)mount of hotplug devices (USB drives) from console using FZF!
+
+Requirements
+----------
+1. `sudo apt-get install jq fzf udisks2`
+
+Usage
+-----
+    $ plug
+    >         ACRONIS_MED     DataTraveler_2.0        sdb1     
+              DATA            DataTraveler_3.0        sdc1
+    Mounted /dev/sdb1 at /media/dmi3/ACRONIS_MED.
+    $ plug -u
+    > /media/dmi3/ACRONIS_MED ACRONIS_MED     DataTraveler_2.0                sdb1                                                                                                                          
+      /                       workbuntu2020   Samsung_SSD_860_EVO_M.2_500GB   sda2                                                                                                                                  
+      /media/dmi3/ElTorito    ElTorito        Samsung_SSD_860_EVO_M.2_500GB   sda1 
+    Unmounted /dev/sdb1 
+    alias unplug='plug -u'
+<hr/>
+
 # [poweroff](https://github.com/dmi3/bin/blob/master/poweroff)
 
 
@@ -460,6 +485,50 @@ Usage
 See [sssh](https://github.com/dmi3/bin/blob/master/sssh)
 <hr/>
 
+# [timer](https://github.com/dmi3/bin/blob/master/timer)
+
+
+Decription
+-----------
+Simple timer with sound and dialog window notification. To remind you to turn stove off :). 
+Replace pc_up.wav to any available audiofile. 
+
+Requirements
+------------
+    sudo apt-get install dunst aplay
+
+Usage
+-----
+    timer 6 # i.e. notify after 6 minutes
+<hr/>
+
+# [todo](https://github.com/dmi3/bin/blob/master/todo)
+
+Wunderlist CLI for adding todos
+===============================
+
+Decription
+----------
+Wrapper for [wl](https://github.com/robdimsdale/wl/releases) for adding todos with more convenient syntax
+[Read More](http://developer.run/15)
+
+Instalation
+-----------
+1. ⚠ Make sure [Fish shell](http://fishshell.com/#platform_tabs) > 2.3.0
+2. `curl https://raw.githubusercontent.com/dmi3/bin/master/todo --create-dirs -o ~/bin/todo`
+3. `curl https://raw.githubusercontent.com/dmi3/bin/master/config/fish/completions/todo.fish --create-dirs -o ~/.config/fish/completions/todo.fish`
+4. <https://developer.wunderlist.com/apps>
+5. `[CREATE APP]` (Put https://wunderlist.com to both `APP URL` and `AUTH CALLBACK URL`)
+6. Set enviroment variables in this script ↓ (line 31)
+7. Add more list shortcuts ↓ (line 39)
+
+Usage
+-----
+     todo buy stuff --life --on next monday
+     todo resolve issue --work --star
+     todo --work meet customer --on jan 7
+<hr/>
+
 # [tomatych.py](https://github.com/dmi3/bin/blob/master/tomatych.py)
 
 <img src="http://developer.run/pic/tomatych.png"/>
@@ -537,6 +606,22 @@ Usage
 -----
     tray-unread.sh
 * `on_exit() {
+<hr/>
+
+# [volume](https://github.com/dmi3/bin/blob/master/volume)
+
+
+Decription
+-----------
+Script to control audio volume from console, hotkeys, e.t.c. Also shows nice Notify OSD buble with current volume value
+
+Requirements
+------------
+    sudo apt-get install pulseaudio notify-osd
+
+Usage
+-----
+    volume (up|down|mute)
 <hr/>
 
 # [wa](https://github.com/dmi3/bin/blob/master/wa)

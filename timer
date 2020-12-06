@@ -13,6 +13,7 @@
 #  -----
 #      timer 6 # i.e. notify after 6 minutes
 
+echo "Will notify you in $1 minutes!"
 sleep $1m && (notify-send -u critical "Timer done $1" & aplay ~/gitstuff/documents/sounds/pc_up.wav) &
 
 # Alternative approach - show popup instead of notification

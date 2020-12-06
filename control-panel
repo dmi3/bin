@@ -31,6 +31,7 @@ bash -c "$(echo '🖶  Printers         | system-config-printer
 🏁 Autostart Txt    | xdg-open ~/.config/lxsession/LXDE/autostart
 🔄 Task Manager     | lxtask
 💻 Display Settings | lxrandr
+💻 Screensaver | xscreensaver-command -prefs
 👥 Users            | users-admin
 🎴 Wallpapers       | xdg-open /usr/share/lubuntu/wallpapers/
 🗔  Qt Configuration | qtconfig-qt4

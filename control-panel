@@ -3,7 +3,7 @@
 
 #  Description
 #  -----------
-#  GUI LXDE Settings menu
+#  GUI LXQT Settings menu
 
 
 #  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
@@ -20,18 +20,17 @@
 bash -c "$(echo '🖶  Printers         | system-config-printer
 🖶  HP Printers      | hp-toolbox
 🖶  CUPS             | xdg-open http://localhost:631/
-🗔  Openbox          | subl ~/.config/openbox/lxde-rc.xml
+🗔  Openbox          | subl ~/.config/openbox/lxqt-rc.xml
 🗔  Openbox Config   | obconf
 🛠  DockbarX         | dbx_preference
 🔐 Passwords        | seahorse
 ↻  Openbox Restart  | openbox --reconfigure
 ↻  Session Restart  | sudo service lightdm restart
-👕 Look and Feel    | lxappearance
-🏁 Autostart        | lxsession-default-apps
-🏁 Autostart Txt    | xdg-open ~/.config/lxsession/LXDE/autostart
-🔄 Task Manager     | lxtask
-💻 Display Settings | lxrandr
-💻 Screensaver | xscreensaver-command -prefs
+👕 Look and Feel    | lxqt-config-appearance
+🏁 Autostart        | lxqt-config-session
+🔄 Task Manager     | qps
+💻 Display Settings | lxqt-config-monitor
+💻 Screensaver      | xscreensaver-command -prefs
 👥 Users            | users-admin
 🎴 Wallpapers       | xdg-open /usr/share/lubuntu/wallpapers/
 🗔  Qt Configuration | qtconfig-qt4

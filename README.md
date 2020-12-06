@@ -122,7 +122,7 @@ Config for [LXTerminal](https://wiki.lxde.org/en/LXTerminal) with copy/paste on 
 
 Description
 -----------
-GUI LXDE Settings menu
+GUI LXQT Settings menu
 
 Requirements
 ------------

@@ -491,7 +491,7 @@ See [sssh](https://github.com/dmi3/bin/blob/master/sssh)
 Description
 -----------
 ![Status](https://developer.run/pic/status.png)
-CLI Status dashboard. Visualizes your GitHub and Twitter followers, and last 5000 blog hits. Works well with [headlines.sh](https://github.com/dmi3/bin) and `newsbeuter -x reload -x print-unread 2> /dev/null` [Read more](https://developer.run/51)
+CLI Status dashboard. Visualizes GitHub and Twitter followers, and last 500 blog hits. Works well in addition to [headlines.sh](https://github.com/dmi3/bin) and `newsbeuter -x reload -x print-unread 2> /dev/null` [Read more](https://developer.run/51)
 
 Requirements
 ------------
@@ -502,7 +502,6 @@ Requirements
 Usage
 ------------
 * `status.sh`
-curl -s "https://cdn.syndication.twimg.com/widgets/followbutton/info.json?screen_names=dmi0x3" | jq -r ".[] .formatted_followers_count"
 <hr/>
 
 # [timer](https://github.com/dmi3/bin/blob/master/timer)

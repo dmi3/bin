@@ -1,5 +1,3 @@
-# Useful scripts for Linux users
-See my [Fish config](https://github.com/dmi3/fish) for more CLI awesomness
 
 # [SHASUMS](https://github.com/dmi3/bin/blob/master/SHASUMS)
 
@@ -98,7 +96,6 @@ Usage
 
 # [config/clipit/clipitrc](https://github.com/dmi3/bin/blob/master/config/clipit/clipitrc)
 
-Config for [ClipIt](https://github.com/CristianHenzel/ClipIt) with sane defaults and hotheys
 <hr/>
 
 # [config/fish/config.fish](https://github.com/dmi3/bin/blob/master/config/fish/config.fish)
@@ -491,13 +488,13 @@ See [sssh](https://github.com/dmi3/bin/blob/master/sssh)
 Description
 -----------
 ![Status](https://developer.run/pic/status.png)
+
 CLI Status dashboard. Visualizes GitHub and Twitter followers, and last 500 blog hits. Works well in addition to [headlines.sh](https://github.com/dmi3/bin) and `newsbeuter -x reload -x print-unread 2> /dev/null` [Read more](https://developer.run/51)
 
 Requirements
 ------------
 * [spark](https://github.com/holman/spark)
 * sudo apt-get install jq
-    # install 
 
 Usage
 ------------

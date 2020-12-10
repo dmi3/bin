@@ -3,6 +3,7 @@
 #  Description
 #  -----------
 #  ![Status](https://developer.run/pic/status.png)
+#  
 #  CLI Status dashboard. Visualizes GitHub and Twitter followers, and last 500 blog hits. Works well in addition to [headlines.sh](https://github.com/dmi3/bin) and `newsbeuter -x reload -x print-unread 2> /dev/null` [Read more](https://developer.run/51)
 
   
@@ -10,7 +11,6 @@
 #  ------------
 #  * [spark](https://github.com/holman/spark)
 #  * sudo apt-get install jq
-#      # install 
 
 #  Usage
 #  ------------

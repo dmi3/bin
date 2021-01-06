@@ -14,8 +14,7 @@
 #  -----
 #      volume (up|down|mute)
 
-DEVICE="hdmi"
-DEVICE_ID=$(pactl list short sinks | grep hdmi | cut -f1)
+DEVICE_ID=$(cat ~/.config/pulse/*default-sink)
 
 icon=notification-audio-volume-medium
 if [[ $* == "down" ]]; then

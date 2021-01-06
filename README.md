@@ -611,6 +611,7 @@ Usage
 
 Decription
 ----------
+
 Update tray icon depending on script result. Current example shows unread mail count for Evolution mail (for those poor souls who need exchange but don't have web client), but actually in can check and notify about literally anything!
 Read more:
 * <https://sourceforge.net/p/yad-dialog/wiki/NotificationIcon/>

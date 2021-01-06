@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# <img src="https://developer.run/pic/tray-unread.gif"/>
+#
 #  Decription
 #  ----------
+#  
 #  Update tray icon depending on script result. Current example shows unread mail count for Evolution mail (for those poor souls who need exchange but don't have web client), but actually in can check and notify about literally anything!
 #  Read more:
 #  * <https://sourceforge.net/p/yad-dialog/wiki/NotificationIcon/>
@@ -32,6 +35,8 @@ function on_exit() {
 }
 trap on_exit EXIT
 
+CHECKTIME=10
+
 # Start tray monitoring the fifo
 yad --notification --listen --command="wmctrl -a evolution" <&3 &
 
@@ -44,7 +49,19 @@ do
     done | awk '{ SUM += $1} END { print SUM }')
 
     # Set icon depending $UNREAD = 0
-    ICON=$(test $UNREAD = 0 && echo "internet-mail" || echo "info")
+    if [ "$UNREAD" == $((0)) ]; then
+      ICON="mail-read-symbolic"
+      CHECKTIME=10
+    else
+      # Blink icon to get attention  
+      if [ "$ICON" == "mail-unread-symbolic" ]; then
+        ICON="mail-read-symbolic"
+      else
+        ICON="mail-unread-symbolic"
+      fi
+      CHECKTIME=1
+    fi
+
     # In case Evolution is not running - show error icon
     pgrep -x evolution > /dev/null || ICON="error"
 
@@ -52,6 +69,6 @@ do
     echo "icon:$ICON" >&3
     echo "tooltip:Unread: $UNREAD" >&3
     
-    sleep 10
+    sleep $CHECKTIME
 done
 

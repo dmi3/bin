@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# <img src="https://developer.run/pic/tray-unread.gif"/>
+#  <img src="https://developer.run/pic/tray-unread.gif"/>
 #
 #  Decription
 #  ----------

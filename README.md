@@ -608,6 +608,7 @@ Usage
 
 # [tray-unread.sh](https://github.com/dmi3/bin/blob/master/tray-unread.sh)
 
+<img src="https://developer.run/pic/tray-unread.gif"/>
 
 Decription
 ----------

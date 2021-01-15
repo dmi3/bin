@@ -614,6 +614,9 @@ Decription
 ----------
 
 Update tray icon depending on script result. Current example shows unread mail count for Evolution mail (for those poor souls who need exchange but don't have web client), but actually in can check and notify about literally anything!
+
+On click simulates some keypresses to mark all mail as read.
+
 Read more:
 * <https://sourceforge.net/p/yad-dialog/wiki/NotificationIcon/>
 * <https://dset0x.github.io/mail-counting.html>
@@ -621,7 +624,7 @@ Read more:
 Requirements
 ----------
 1. `sudo apt-get install yad`
-2. For Evolution `sudo apt-get install sqlite3`
+2. For Evolution `sudo apt-get install sqlite3 wmctrl `
 
 Usage
 -----

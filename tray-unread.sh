@@ -6,6 +6,9 @@
 #  ----------
 #  
 #  Update tray icon depending on script result. Current example shows unread mail count for Evolution mail (for those poor souls who need exchange but don't have web client), but actually in can check and notify about literally anything!
+#  
+#  On click simulates some keypresses to mark all mail as read.
+#  
 #  Read more:
 #  * <https://sourceforge.net/p/yad-dialog/wiki/NotificationIcon/>
 #  * <https://dset0x.github.io/mail-counting.html>
@@ -15,7 +18,7 @@
 #  Requirements
 #  ----------
 #  1. `sudo apt-get install yad`
-#  2. For Evolution `sudo apt-get install sqlite3`
+#  2. For Evolution `sudo apt-get install sqlite3 wmctrl `
 
 #  Usage
 #  -----
@@ -36,9 +39,10 @@ function on_exit() {
 trap on_exit EXIT
 
 CHECKTIME=10
+MARK_AS_READ="bash -c 'wmctrl -a \" — Evolution\" && xdotool search --onlyvisible --class evolution windowfocus key ctrl+a key ctrl+k'"
 
 # Start tray monitoring the fifo
-yad --notification --listen --command="wmctrl -a evolution" <&3 &
+yad --notification --listen --command="$MARK_AS_READ" <&3 &
 
 while true
 do

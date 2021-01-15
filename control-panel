@@ -40,4 +40,5 @@ bash -c "$(echo '🖶  Printers         | system-config-printer
 💾 Disk Usage       | baobab
 🎧 Bluetooth        | blueman-manager
 👤 Profile          | xdg-open /etc/profile
-👤 User             | xdg-open /etc/rc.local' | fzf --no-sort --header="📋 Control Panel" | cut -d '|' -f 2)"
+👤 User             | xdg-open /etc/rc.local
+🗔  Panel            | xfce4-panel -p' | fzf --no-sort --header="📋 Control Panel" | cut -d '|' -f 2)"

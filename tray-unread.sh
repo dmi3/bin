@@ -18,7 +18,7 @@
 #  Requirements
 #  ----------
 #  1. `sudo apt-get install yad`
-#  2. For Evolution `sudo apt-get install sqlite3 wmctrl `
+#  2. For Evolution `sudo apt-get install sqlite3 wmctrl xdotool`
 
 #  Usage
 #  -----

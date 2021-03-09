@@ -47,7 +47,7 @@ alias fs=\"df -h -x squashfs -x tmpfs -x devtmpfs\"
 alias myip=\"curl ifconfig.co\"
 alias getmicro=\"curl https://getmic.ro | bash && sudo mv ./micro /usr/local/bin/\"
 alias micro=\"micro -mouse false \"
-alias temp=\"sudo vcgencmd measure_temp\"
+alias temp=\"watch sudo vcgencmd measure_temp\"
 run() {
   chmod +x \"\$1\"
   exec \"./\$1\" &

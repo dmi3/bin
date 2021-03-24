@@ -12,10 +12,12 @@
 
 #SIZE=wget --spider https://cdimage.debian.org/debian-cd/current-live/amd64/iso-hybrid/debian-live-10.0.0-amd64-lxde.iso 2>&1 | grep Length | cut -d ' ' -f 2
 #SIZE=stat -c '%s' imagename.iso 
-SIZE=2349416448
+SIZE=2986344448
 
 #MD5SUM=curl -s https://cdimage.debian.org/debian-cd/current-live/amd64/bt-hybrid/MD5SUMS | grep lxde.iso | cut -d ' ' -f 1
-MD5SUME="bd025c7ac8556055d7766be8cab5b479  -"
+#MD5SUME="bd025c7ac8556055d7766be8cab5b479  -"
+#MD5SUM=curl -s https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/10.8.0-live+nonfree/amd64/iso-hybrid/MD5SUMS | grep lxde+nonfree.iso | cut -d ' ' -f 1
+MD5SUME="a1eb37782ef6f3537132a80c49b91d93  -"
 
 #lsblk | grep RM=1
 echo "Checking image md5sum"

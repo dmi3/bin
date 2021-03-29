@@ -27,25 +27,28 @@ test "$MD5SUME" = "$MD5SUMA" && echo "ok" || echo "Not ok. Expected '$MD5SUME' G
 read -p "Continue? (or Ctrl+C)"
 
 sudo apt-get update
-sudo apt-get install curl wget bash-completion firefox-esr encfs 
+sudo apt-get install curl wget bash-completion firefox-esr encfs keepassxc
 sudo apt-get install hplip
 
 killall clipit
 wget -q --show-progress https://raw.githubusercontent.com/dmi3/bin/master/config/clipit/clipitrc -O ~/.config/clipit/clipitrc
 nohup clipit&
 
+#wget -q --show-progress https://github.com/keepassxreboot/keepassxc/releases/download/2.4.3/KeePassXC-2.4.3-x86_64.AppImage
+#wget -q --show-progress https://github.com/keepassxreboot/keepassxc/releases/download/2.4.3/KeePassXC-2.4.3-x86_64.AppImage.DIGEST -O ->> /tmp/SHASUMS
+#chmod +x KeePassXC-*-x86_64.AppImage
+
 wget -q --show-progress https://raw.githubusercontent.com/dmi3/bin/master/config/lxterminal/lxterminal.conf -O ~/.config/lxterminal/lxterminal.conf
 wget -q --show-progress https://raw.githubusercontent.com/dmi3/bin/master/aliases.bash -O ~/aliases.bash
 wget -q --show-progress https://raw.githubusercontent.com/dmi3/bin/master/layoutset -O ~/layoutset
-wget -q --show-progress https://github.com/keepassxreboot/keepassxc/releases/download/2.4.3/KeePassXC-2.4.3-x86_64.AppImage
 
 wget -q --show-progress https://raw.githubusercontent.com/dmi3/bin/master/MD5SUMS -O /tmp/SHASUMS
-wget -q --show-progress https://github.com/keepassxreboot/keepassxc/releases/download/2.4.3/KeePassXC-2.4.3-x86_64.AppImage.DIGEST -O ->> /tmp/SHASUMS
 sha256sum -c --ignore-missing /tmp/SHASUMS
 read -p "Continue? (or Ctrl+C)"
 
 echo "source ~/aliases.bash" >> ~/.bashrc
-chmod +x KeePassXC-*-x86_64.AppImage
+
+
 
 ~/layoutset
 

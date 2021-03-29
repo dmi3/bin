@@ -397,6 +397,18 @@ Requirements
 1. `sudo apt-get install wmctrl`
 <hr/>
 
+# [rundesktop](https://github.com/dmi3/bin/blob/master/rundesktop)
+
+
+Decription
+-----------
+Execute `.desktop` file from terminal
+
+Usage
+-----
+rundesktop /usr/share/applications/firefox.desktop
+<hr/>
+
 # [skypenotify](https://github.com/dmi3/bin/blob/master/skypenotify)
 
 

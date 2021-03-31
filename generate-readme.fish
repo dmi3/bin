@@ -11,7 +11,7 @@
 
     
 
-for f in (git ls-files "*[^.md|^.txt]")
+for f in (git ls-files "*[^.md|^.txt]" | tac)
     echo -e "\n# [$f](https://github.com/dmi3/"(basename (pwd))"/blob/master/$f)\n"    
     grep -h -e "#\s\s" $f | grep -v "Author\|Source" | string sub -s 4 | string replace -ar "(?=Usage|Requirements|Instalation|Decription|Description)" "\n"
     cat $f | grep -e "^function" | string replace 'function ' '* `' | string replace ' --description' '`'

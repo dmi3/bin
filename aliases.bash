@@ -1,6 +1,8 @@
 #  Decription
 #  -----------
-#  Some handy bash aliases and settings
+#  Some handy bash aliases and settings.
+#
+#  You may find more useful in [Fish shell aliases](https://github.com/dmi3/fish#aliasesfish) (which is easily portable to Bash)
 
 #  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 

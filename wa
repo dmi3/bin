@@ -36,10 +36,11 @@
 #      ➤ # many many more usages... https://www.wolframalpha.com/examples/
 
 
-APPID=$(cat ~/git/stuff/keys/wolfram_alpha) # Get one at https://products.wolframalpha.com/api/
-VIEWER="kitty +kitten icat"                 # Use `VIEWER="display"` from imagemagick if terminal does not support images
-BG="transparent"                            # Transparent background
-FG="white"                                  # Match color to your terminal
+APPID=$(cat ~/git/stuff/keys/wolfram_alpha 2>/dev/null) # Get one at https://products.wolframalpha.com/api/
+VIEWER="kitty +kitten icat"                             # Use `VIEWER="display"` from imagemagick if terminal does not support images
+BG="transparent"                                        # Transparent background
+FG="white"                                              # Match color to your terminal
+test "$APPID" == "" && echo "\$APPID not set in ${BASH_SOURCE[0]}"
 
 RESPONSE=$(curl -s "https://api.wolframalpha.com/v1/result?appid=$APPID&units=metric&" --data-urlencode "i=$*" | tee /dev/tty)
 

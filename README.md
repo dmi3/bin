@@ -74,7 +74,6 @@ Requirements
 Usage
 -----
     tray-unread.sh
-* `on_exit() {
 <hr/>
 
 # [translation-insert.sh](https://github.com/dmi3/bin/blob/master/translation-insert.sh)

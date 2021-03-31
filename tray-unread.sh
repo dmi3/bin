@@ -31,11 +31,11 @@ mkfifo $PIPE
 # attach a file descriptor to the file
 exec 3<> $PIPE
 
-function on_exit() {
+# add handler to manage process shutdown
+ function on_exit() {
     echo "quit" >&3
     rm -f $PIPE
-}
-# add handler to manage process shutdown
+ }
 trap on_exit EXIT
 
 CHECKTIME=10

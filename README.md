@@ -1,3 +1,5 @@
+# Useful scripts for Linux users
+See my [Fish config](https://github.com/dmi3/fish) for more CLI awesomness
 
 # [wa](https://github.com/dmi3/bin/blob/master/wa)
 

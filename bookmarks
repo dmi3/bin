@@ -5,7 +5,7 @@
 #  Script for quickly adding and accessing bookmarks. Browser independent.
 #  When you want to store bookmarks in plain format, use CLI, but don't want use [bm](https://github.com/tj/bm) 
 #  or [Buku](https://github.com/jarun/Buku)
-#  Useful when set by hotkeys or [ClipIt](https://github.com/CristianHenzel/ClipIt) actions.
+#  Useful when set by hotkeys or [clipboard manager](https://developer.run/25) actions.
 
 #  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 

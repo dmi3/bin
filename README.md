@@ -9,11 +9,11 @@ Description
 <img src="https://developer.run/pic/wa_full.png"/> 
 <img src="https://developer.run/pic/wa.png"/> 
 <img src="https://developer.run/pic/wa2.png"/> 
-Using Wolfram Alpha in command line. See <http://developer.run/37> for description and more ideas.
+Using Wolfram Alpha in command line. See [blog post](http://developer.run/37) for description and more ideas.
 
 Requirements
 ------------
-You can use text only api and **optionaly** use [terminal that supports images](https://sw.kovidgoyal.net/kitty/)
+You can use text only api and **optionaly** use [terminal that supports images](https://developer.run/40)
 **or** `sudo apt-get install imagemagick` to view images
 
 Usage
@@ -608,7 +608,7 @@ Decription
 Script for quickly adding and accessing bookmarks. Browser independent.
 When you want to store bookmarks in plain format, use CLI, but don't want use [bm](https://github.com/tj/bm) 
 or [Buku](https://github.com/jarun/Buku)
-Useful when set by hotkeys or [ClipIt](https://github.com/CristianHenzel/ClipIt) actions.
+Useful when set by hotkeys or [clipboard manager](https://developer.run/25) actions.
 
 Requirements
 ----------

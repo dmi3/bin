@@ -9,12 +9,16 @@ Description
 <img src="https://developer.run/pic/wa_full.png"/> 
 <img src="https://developer.run/pic/wa.png"/> 
 <img src="https://developer.run/pic/wa2.png"/> 
+
 Using Wolfram Alpha in command line. See [blog post](http://developer.run/37) for description and more ideas.
 
 Requirements
 ------------
-You can use text only api and **optionaly** use [terminal that supports images](https://developer.run/40)
-**or** `sudo apt-get install imagemagick` to view images
+* Make sure to configure variables in script
+* Put [api key](https://products.wolframalpha.com/api/) in `APPID`
+* For `VIEWER`, you can use text only api and **optionaly** use [terminal that supports images](https://developer.run/40)
+**or** `sudo apt-get install imagemagick` to view images.
+* Configure `BG` and `FG` variables depending on color scheme
 
 Usage
 ------------
@@ -394,7 +398,7 @@ Requirements
 Decription
 -----------
 Knocks to given ports with 0.5 second delay. Useful when default knockd delay
-is to short for server to react. Additionally displays Gun's N' Roses lyrics :)
+is to short for server to react. Additionally displays Bob Dylan's lyrics :)
 
 Requirements
 ------------

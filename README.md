@@ -309,6 +309,7 @@ rundesktop /usr/share/applications/firefox.desktop
 Decription
 ----------
 Gracefully closes all running X applications, then powers off the computer.
+Make sure to avoid conflicts with system `poweroff` is such exists.
 Useful to avoid issues when calling `poweroff` from console:
 * "The database you are trying to open is locked by another instance of KeePassXC.",
 * "Well, this is embarrassing. Firefox is having trouble recovering your windows and tabs."

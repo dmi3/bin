@@ -195,11 +195,12 @@ CLI Status dashboard. Visualizes GitHub and Twitter followers, and last 500 blog
 
 Requirements
 ------------
-* [spark](https://github.com/holman/spark)
+* [spark](https://github.com/holman/spark) (the other spark, not the huge one)
 * sudo apt-get install jq
 
 Usage
 ------------
+* Set `PARSE_APP_ID` and `PARSE_MASTER_KEY` variables
 * `status.sh`
 <hr/>
 

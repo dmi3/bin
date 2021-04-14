@@ -191,16 +191,17 @@ Description
 -----------
 ![Status](https://developer.run/pic/status.png)
 
-CLI Status dashboard. Visualizes GitHub and Twitter followers, and last 500 blog hits. Works well in addition to [headlines.sh](https://github.com/dmi3/bin) and `newsbeuter -x reload -x print-unread 2> /dev/null` [Read more](https://developer.run/51)
+CLI web stats dashboard. Visualizes GitHub and Twitter followers, top GitHub repos and last 500 blog hits
+with top pages and refferers. Works well in addition to [headlines.sh](https://github.com/dmi3/bin/blob/master/headlines.sh) and `newsbeuter -x reload -x print-unread 2> /dev/null` [Read more](https://developer.run/51)
 
 Requirements
 ------------
-* [spark](https://github.com/holman/spark) (the other spark, not the huge one)
-* sudo apt-get install jq
+* [spark](https://github.com/holman/spark) (the other spark, not the behemoth one)
+* `sudo apt-get install jq`
 
 Usage
 ------------
-* Set `PARSE_APP_ID` and `PARSE_MASTER_KEY` variables
+* Set `URL`, `GITHUB_ID, `TWITTER_ID`, `PARSE_APP_ID` and `PARSE_MASTER_KEY` variables
 * `status.sh`
 <hr/>
 

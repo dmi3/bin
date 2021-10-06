@@ -144,5 +144,8 @@ HISTCONTROL="erasedups:ignoreboth"
 PROMPT_COMMAND='history -a'
 export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 
+# Use FZF if installed
+test -e /usr/share/doc/fzf/examples/key-bindings.bash && source /usr/share/doc/fzf/examples/key-bindings.bash
+
 
 

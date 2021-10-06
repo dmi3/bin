@@ -3,12 +3,18 @@
 #  Description
 #  ----------
 #  Interactive (un)mount of hotplug devices (USB drives) from console using FZF!
+#  Outputs path to mounted device so could be used in alias to actomatically
+#  `cd` to mounted directory.
 
 #  Author: [Dmitry](http://dmi3.net) [Source](https://github.com/dmi3/bin)
 
 #  Requirements
 #  ----------
 #  1. `sudo apt-get install jq fzf udisks2`
+#  2. `alias unplug='plug -u'`
+#  3. `cd` to mounted directory:
+#    - Fish shell: `alias plug='cd (command plug)'`
+#    - Bash shell: `alias plug='cd $(command plug)'`
 
 #  Usage
 #  -----
@@ -22,8 +28,7 @@
 #        /                       workbuntu2020   Samsung_SSD_860_EVO_M.2_500GB   sda2                                                                                                                                  
 #        /media/dmi3/ElTorito    ElTorito        Samsung_SSD_860_EVO_M.2_500GB   sda1 
 #      Unmounted /dev/sdb1 
-#
-#      alias unplug='plug -u'
+
 
 if [[ $1 == "-u" ]]; then
   filter="!="
@@ -34,7 +39,9 @@ fi
 DEVICE=$(lsblk -J -o HOTPLUG,NAME,LABEL,MODEL,MOUNTPOINT | jq -r ".blockdevices | .[] | . as \$p | .children | flatten | .[] | select( .hotplug == true and .mountpoint $filter null ) | [.mountpoint,.label,\$p.model,.name] | @tsv" | fzf -d$'\t' | cut -d$'\t' -f4)
 
 if [[ $1 == "-u" ]]; then
+  sync
   udisksctl unmount --force -b "/dev/$DEVICE"
 else
-  udisksctl mount -b "/dev/$DEVICE"
+  udisksctl mount -b "/dev/$DEVICE" > /dev/null
+  echo $(lsblk -o MOUNTPOINT -n "/dev/$DEVICE")
 fi

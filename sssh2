@@ -62,6 +62,7 @@ bak () {
 shopt -s histappend
 export HISTCONTROL=ignoreboth
 export PROMPT_COMMAND=\"history -a; PS1=\\\"$CUSTOM_PS1\\\"\"
+test -e /usr/share/doc/fzf/examples/key-bindings.bash && source /usr/share/doc/fzf/examples/key-bindings.bash
 echo -e \"\033]0;$CUSTOM_TITLE\a\"
 "
 PREV_TITLE=`xdotool getwindowfocus getwindowname`

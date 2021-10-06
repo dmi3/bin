@@ -329,10 +329,16 @@ Requirements
 Description
 ----------
 Interactive (un)mount of hotplug devices (USB drives) from console using FZF!
+Outputs path to mounted device so could be used in alias to actomatically
+`cd` to mounted directory.
 
 Requirements
 ----------
 1. `sudo apt-get install jq fzf udisks2`
+2. `alias unplug='plug -u'`
+3. `cd` to mounted directory:
+  - Fish shell: `alias plug='cd (command plug)'`
+  - Bash shell: `alias plug='cd $(command plug)'`
 
 Usage
 -----
@@ -345,7 +351,6 @@ Usage
       /                       workbuntu2020   Samsung_SSD_860_EVO_M.2_500GB   sda2                                                                                                                                  
       /media/dmi3/ElTorito    ElTorito        Samsung_SSD_860_EVO_M.2_500GB   sda1 
     Unmounted /dev/sdb1 
-    alias unplug='plug -u'
 <hr/>
 
 # [numbers.py](https://github.com/dmi3/bin/blob/master/numbers.py)

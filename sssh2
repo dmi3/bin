@@ -46,6 +46,7 @@ alias sizeof=\"du -hs\"
 alias fs=\"df -h -x squashfs -x tmpfs -x devtmpfs\"
 alias myip=\"curl ifconfig.co\"
 alias getmicro=\"curl https://getmic.ro | bash && sudo mv ./micro /usr/local/bin/\"
+alias getsssh2=\"wget https://raw.githubusercontent.com/dmi3/bin/master/sssh2 && chmod +x sssh2 && sudo mv ./sssh2 /usr/local/bin/\"
 alias micro=\"micro -mouse false \"
 alias temp=\"watch sudo vcgencmd measure_temp\"
 run() {
@@ -63,6 +64,7 @@ shopt -s histappend
 export HISTCONTROL=ignoreboth
 export PROMPT_COMMAND=\"history -a; PS1=\\\"$CUSTOM_PS1\\\"\"
 test -e /usr/share/doc/fzf/examples/key-bindings.bash && source /usr/share/doc/fzf/examples/key-bindings.bash
+type sssh2 &> /dev/null && alias ssh=sssh2
 echo -e \"\033]0;$CUSTOM_TITLE\a\"
 "
 PREV_TITLE=`xdotool getwindowfocus getwindowname`

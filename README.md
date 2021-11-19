@@ -307,6 +307,14 @@ Usage
 rundesktop /usr/share/applications/firefox.desktop
 <hr/>
 
+# [reboot](https://github.com/dmi3/bin/blob/master/reboot)
+
+
+Decription
+----------
+See <https://github.com/dmi3/bin/blob/master/poweroff>
+<hr/>
+
 # [poweroff](https://github.com/dmi3/bin/blob/master/poweroff)
 
 
@@ -376,6 +384,18 @@ Usage
     python3 numbers.py 123456
 <hr/>
 
+# [notify-append](https://github.com/dmi3/bin/blob/master/notify-append)
+
+
+Decription
+-----------
+Script to run append Notify OSD messages as shown on http://thexnews.com/uploads/notify.gif
+Since x-canonical-append is broken in notify-send for example in Skype you will wait forever untill all messages are shown
+This script makes new messages shown in same notification window bellow the already shown
+Created as addition to notify-send. Use notify-send when you want to send notification and notify-append when you want append or replace it.
+[Readme in russian](http://thexnews.com/p/554)
+<hr/>
+
 # [mus.sh](https://github.com/dmi3/bin/blob/master/mus.sh)
 
 
@@ -400,6 +420,18 @@ Works best with [indicator-sysmonitor](https://github.com/fossfreedom/indicator-
 Requirements
 ----------
 1. `sudo apt-get install notify-send `
+<hr/>
+
+# [layoutset](https://github.com/dmi3/bin/blob/master/layoutset)
+
+
+Decription
+-----------
+Script to set keyboard layout depending if its Apple or regular keyboard + some settings
+
+Usage
+-----
+`layoutset`
 <hr/>
 
 # [knok](https://github.com/dmi3/bin/blob/master/knok)
@@ -577,6 +609,24 @@ Add path to this script to `run-script-after` in job `Configuration` → `Option
 On Windows you will need to create `.bat` file containing path to this script, and add path to `.bat` file to `run-script-after`
 <hr/>
 
+# [doom](https://github.com/dmi3/bin/blob/master/doom)
+
+
+Decription
+----------
+Script to run gzdoom with various configurations/wads. Selectable via dmenu
+
+Requirements
+------------
+1. [Get latest Gzdoom](http://debian.drdteam.org/)
+2. `sudo apt-get install gzdoom dmenu python3 python3-setuptools
+3. `sudo easy_install3 sh`
+
+Usage
+-----
+doom
+<hr/>
+
 # [control-panel](https://github.com/dmi3/bin/blob/master/control-panel)
 
 
@@ -705,8 +755,4 @@ Usage
 2. `echo "source ~/bin/aliases.bash" >> ~/.bashrc`
 3. To make bash more usable you probably want to install https://github.com/mrzool/bash-sensible
 4. To make this work across remote machines, you also may want to install https://github.com/Russell91/sshrc 
-<hr/>
-
-# [SHASUMS](https://github.com/dmi3/bin/blob/master/SHASUMS)
-
 <hr/>

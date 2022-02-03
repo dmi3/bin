@@ -5,7 +5,9 @@
 #  Decription
 #  ----------
 #  
-#  Update tray icon depending on script result. Current example shows unread mail count for Evolution mail (for those poor souls who need exchange but don't have web client), but actually in can check and notify about literally anything!
+#  Update tray icon depending on script result. Current example shows unread mail count for Evolution mail (for those poor souls who need exchange but don't have web client), but actually it can check and notify about literally anything!
+#
+#  Another example [shows Git repository status](https://github.com/dmi3/bin#tray-git-statussh).
 #  
 #  On click simulates some keypresses to mark all mail as read.
 #  
@@ -39,7 +41,7 @@ exec 3<> $PIPE
 trap on_exit EXIT
 
 CHECKTIME=10
-MARK_AS_READ="bash -c 'wmctrl -a \" — Evolution\" && xdotool search --onlyvisible --class evolution windowfocus key ctrl+a key ctrl+k'"
+MARK_AS_READ="bash -c 'wmctrl -a \" — Evolution\" && xdotool search --onlyvisible --class evolution windowfocus key ctrl+1 sleep 1 key ctrl+a key ctrl+k'"
 
 # Start tray monitoring the fifo
 yad --notification --listen --command="$MARK_AS_READ" <&3 &

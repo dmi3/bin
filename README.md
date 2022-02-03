@@ -64,7 +64,8 @@ Usage
 Decription
 ----------
 
-Update tray icon depending on script result. Current example shows unread mail count for Evolution mail (for those poor souls who need exchange but don't have web client), but actually in can check and notify about literally anything!
+Update tray icon depending on script result. Current example shows unread mail count for Evolution mail (for those poor souls who need exchange but don't have web client), but actually it can check and notify about literally anything!
+Another example [shows Git repository status](https://github.com/dmi3/bin#tray-git-statussh).
 
 On click simulates some keypresses to mark all mail as read.
 
@@ -80,6 +81,28 @@ Requirements
 Usage
 -----
     tray-unread.sh
+<hr/>
+
+# [tray-git-status.sh](https://github.com/dmi3/bin/blob/master/tray-git-status.sh)
+
+
+Decription
+----------
+
+Update tray icon depending if there are changes in Git repository.
+⚠ Note that it does not show any icon if repository is in sync
+Check for new changes every 10 minutes.
+See also [git-sync](https://github.com/dmi3/bin#git-sync)
+
+See https://stackoverflow.com/a/3278427/18078777
+
+Requirements
+----------
+1. `sudo apt-get install yad git`
+
+Usage
+-----
+    tray-git.sh
 <hr/>
 
 # [translation-insert.sh](https://github.com/dmi3/bin/blob/master/translation-insert.sh)

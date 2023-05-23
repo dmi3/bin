@@ -724,6 +724,26 @@ Usage
     tray-unread.sh
 <hr/>
 
+# [vlc-now.sh](https://github.com/dmi3/bin/blob/master/vlc-now.sh)
+
+
+Description
+-----------
+Show file or stream currently playing in VLC. See `playerctl -h` for another players
+
+Requirements
+------------
+* `sudo apt-get install vlc playerctl`
+
+Usage
+------------
+* `vlc-now`
+* `cutExt() {
+* `wrapInBrackets() {
+* `basename() {
+* `urlDecode() {
+<hr/>
+
 # [volume](https://github.com/dmi3/bin/blob/master/volume)
 
 

@@ -3,7 +3,7 @@
 
 #  Description
 #  -----------
-#  Show file or stream currently playing in VLC. See `playerctl -h` for another players
+#  Show file or stream currently playing in VLC. Shows artist and title on hover (with xfce4-genmon-plugin). See `playerctl -h` for another players.
   
 #  Requirements
 #  ------------
@@ -14,12 +14,14 @@
    
 #  * `vlc-now`
 
+#  **Includes useful functions**
+
 function cutExt() {
     cut -d. -f1
 }
 
 function wrapInBrackets() {
-    xargs -I % echo [%]
+    xargs -I % echo "<txt>["%"]</txt>"
 }
 
 function basename() {
@@ -31,3 +33,4 @@ function urlDecode() {
 }
 
 url=$(playerctl -p vlc metadata xesam:url 2>/dev/null) && echo "$url" | urlDecode | basename | cutExt | wrapInBrackets || echo ""
+playerctl -p vlc metadata --format '<tool>{{xesam:artist}} — {{xesam:title}}</tool>'

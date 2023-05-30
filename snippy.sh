@@ -73,6 +73,7 @@ s/sim$/simultaneously/g;
 s/unf$/unfortunately/g;
 s/env$/environment/g;
 s/suc$/successful/g;
+s/misc$/miscellaneous/g;
 s/thx$/Thank you\./g;
 s/br$/Regards,\nDmitry/g;
 s/bus$/business/g;

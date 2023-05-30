@@ -729,7 +729,7 @@ Usage
 
 Description
 -----------
-Show file or stream currently playing in VLC. Shows artist and title on hover (with xfce4-genmon-plugin). See `playerctl -h` for another players.
+Show file or stream currently playing in VLC. Works well with (with xfce4-genmon-plugin). See `playerctl -h` for another players.
 
 Requirements
 ------------

@@ -21,17 +21,25 @@ if [[ $* == "down" ]]; then
   #amixer set PCM 5%-
   #amixer -q set Master 5- unmute
   pactl -- set-sink-volume $DEVICE_ID "-2%" &
-  volume=$(pactl list sinks | grep Volume | grep -oe "[0-9]*%" | head -1)
+
+  # First string containing `Volume` after string containing $DEVICE_ID. Since PulseAudio 15 can be replaced by `pactl get-sink-volume $DEVICE_ID`
+  volume=$(pactl list sinks | grep $DEVICE_ID -a10 | grep Volume | grep -oe "[0-9]*%" | head -1)
 elif [[ $* == "up" ]]; then
   #amixer set PCM 5%+
   #amixer -q set Master 5+ unmute
   pactl -- set-sink-volume $DEVICE_ID "+2%" &
-  volume=$(pactl list sinks | grep Volume | grep -oe "[0-9]*%" | head -1)
+  volume=$(pactl list sinks | grep $DEVICE_ID -a10 | grep Volume | grep -oe "[0-9]*%" | head -1)
 elif [[ $* == "mute" ]]; then
   pactl set-sink-mute $DEVICE_ID toggle
   icon=notification-audio-volume-muted
   volume=0
 fi
 
-notify-send --hint string:x-canonical-private-synchronous:true "Volume" -i $icon -h int:value:$volume
+notify-send --hint string:x-canonical-private-synchronous:true "Volume $volume" -i $icon -h int:value:$volume
+
+# https://github.com/dmi3/qmk_firmware/blob/master/keyboards/handwired/onekey/kb2040/kbecho.py
+if type "kbecho.py" > /dev/null; then
+  # $volume without trailing %
+  kbecho.py p ${volume%?}
+fi
 

@@ -599,6 +599,22 @@ Usage
      chmod +x .git/hooks/pre-commit    
 <hr/>
 
+# [game-screenshot.sh](https://github.com/dmi3/bin/blob/master/game-screenshot.sh)
+
+
+Description
+-----------
+Saves full screen screenshot with current window name and date to predefined folder and plays sound if successful.
+
+Requirements
+------------
+* `sudo apt-get install scrot xdotool`
+
+Usage
+------------
+* Bind a hotkey to `game-screenshot.sh /path/to/folder`
+<hr/>
+
 # [ex-spotify-playlist.sh](https://github.com/dmi3/bin/blob/master/ex-spotify-playlist.sh)
 
 Export playlists from Spotify without giving credentials to shady sites (to avoid your Spotify credentials be stolen and resold to someone in different timezone)

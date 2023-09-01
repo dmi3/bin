@@ -59,8 +59,10 @@ if (p.image):
         path = os.path.expanduser(d + "/" + filename)
         open(path, 'wb').write(r.content)
         image = "\n![](%s)" % path
+    except requests.exceptions.RequestException:
+        image = " Unable to fetch image: " + u
     except:
-        image = " Unable to fetch image:" + u
+        image = " Unable to save image (check that name and path is correct): " + path
 
 descr = ""
 if (p.description):

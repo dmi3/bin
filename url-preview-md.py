@@ -23,7 +23,7 @@
 import os
 import sys
 import requests
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urljoin
 from datetime import datetime
 from webpreview import webpreview
 
@@ -45,16 +45,22 @@ if p.title == None and p.description == None and p.image == None:
 
 image = ""
 if (p.image):
-    r = requests.get(p.image, allow_redirects=True)
-    a = urlparse(url)
-    i = urlparse(p.image)
-    filename = "_".join([datetime.now().strftime("%Y_%m_%d"), a.netloc, os.path.basename(i.path)])
-    if os.path.splitext(i.path)[1] == "":
-        filename = filename + ".png"
+    try:
+        u = p.image
+        if not u.startswith("http"):
+            u = urljoin(url, p.image)
+        r = requests.get(u, allow_redirects=True)
+        a = urlparse(url)
+        i = urlparse(u)
+        filename = "_".join([datetime.now().strftime("%Y_%m_%d"), a.netloc, os.path.basename(i.path)])
+        if os.path.splitext(i.path)[1] == "":
+            filename = filename + ".png"
 
-    path = os.path.expanduser(d + "/" + filename)
-    open(path, 'wb').write(r.content)
-    image = "\n![](%s)" % path
+        path = os.path.expanduser(d + "/" + filename)
+        open(path, 'wb').write(r.content)
+        image = "\n![](%s)" % path
+    except:
+        image = " Unable to fetch image:" + u
 
 descr = ""
 if (p.description):

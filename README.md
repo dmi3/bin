@@ -390,10 +390,6 @@ Created as addition to notify-send. Use notify-send when you want to send notifi
 [Readme in russian](http://thexnews.com/p/554)
 <hr/>
 
-# [numbers.py](https://github.com/dmi3/bin/blob/master/numbers.py)
-
-<hr/>
-
 # [plug](https://github.com/dmi3/bin/blob/master/plug)
 
 

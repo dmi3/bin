@@ -36,11 +36,14 @@ except:
     print("Unable to fetch url:" + url)
     exit()
 
+headers = {"Accept": "*/*", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"}
+
 # If link is image - use it
 if p.title == None and p.description == None and p.image == None:
-    h = requests.head(url)
+    h = requests.head(url, allow_redirects=True, headers = headers)
+
     content_type = h.headers.get('content-type')
-    if content_type.startswith('image/'):
+    if content_type != None and content_type.startswith('image/'):
         p.image = url
 
 image = ""
@@ -49,7 +52,7 @@ if (p.image):
         u = p.image
         if not u.startswith("http"):
             u = urljoin(url, p.image)
-        r = requests.get(u, allow_redirects=True)
+        r = requests.get(u, allow_redirects=True, headers = headers)
         a = urlparse(url)
         i = urlparse(u)
         filename = "_".join([datetime.now().strftime("%Y_%m_%d"), a.netloc, os.path.basename(i.path)])

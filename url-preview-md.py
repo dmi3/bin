@@ -27,7 +27,9 @@ from urllib.parse import urlparse, urljoin
 from datetime import datetime
 from webpreview import webpreview
 
-d = sys.argv[1]
+d = os.path.expanduser(sys.argv[1])
+os.makedirs(d, exist_ok = True)
+
 url = sys.argv[2]
 
 try:
@@ -56,10 +58,17 @@ if (p.image):
         a = urlparse(url)
         i = urlparse(u)
         filename = "_".join([datetime.now().strftime("%Y_%m_%d"), a.netloc, os.path.basename(i.path)])
-        if os.path.splitext(i.path)[1] == "":
-            filename = filename + ".png"
+        filename, ext = os.path.splitext(filename.lstrip("/"))
+        if ext == "":
+            ext = ".png"
 
-        path = os.path.expanduser(d + "/" + filename)
+        path = os.path.join(d, filename + ext)
+        pcnt = 1
+
+        while os.path.exists(path):
+            path = os.path.join(d, "%s_%s%s" % (filename, pcnt, ext))
+            pcnt += 1
+
         open(path, 'wb').write(r.content)
         image = "\n![](%s)" % path
     except requests.exceptions.RequestException:

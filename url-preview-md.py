@@ -32,13 +32,14 @@ os.makedirs(d, exist_ok = True)
 
 url = sys.argv[2]
 
+headers = {"Accept": "*/*", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"}
+
 try:
-    p = webpreview(url)
+    p = webpreview(url, headers=headers)
 except:
     print("Unable to fetch url:" + url)
     exit()
 
-headers = {"Accept": "*/*", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"}
 
 # If link is image - use it
 if p.title == None and p.description == None and p.image == None:

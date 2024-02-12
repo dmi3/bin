@@ -86,10 +86,11 @@ s/fri$/$(date +'%a %d\/%m\/%y' --date='next fri')/g;
 s/sat$/$(date +'%a %d\/%m\/%y' --date='next sat')/g;
 s/sun$/$(date +'%a %d\/%m\/%y' --date='next sun')/g;"
 
-xdotool keyup --delay 5 Control_L Control_R Shift_L Shift_R Alt_L Alt_R 
-xdotool key   --delay 5 ctrl+shift+Left
-xdotool key   --delay 5 ctrl+x
+xdotool --clearmodifiers keyup Control_L Control_R Shift_L Shift_R Alt_L Alt_R 
+xdotool key ctrl+shift+Left
+sleep 0.05
+xdotool key ctrl+x
+sleep 0.05
 selection=`xsel -b`
 echo -n "$selection" | sed "$snippets" | xclip -sel clip
-xdotool key   --delay 5  ctrl+v
-xdotool keyup --delay 5 Control_L Control_R Shift_L Shift_R Alt_L Alt_R 
+xdotool key ctrl+v

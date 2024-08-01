@@ -761,6 +761,22 @@ Fish config with awesome flexible prompt, unicode symbols, better fzf integratio
 Config for [ClipIt](https://github.com/CristianHenzel/ClipIt) with sane defaults and hotheys
 <hr/>
 
+# [center-mouse-active-window.py](https://github.com/dmi3/bin/blob/master/center-mouse-active-window.py)
+
+
+Decription
+-----------
+Moves mouse in the center of active window.
+
+Requirements
+------------
+    sudo apt-get install gir1.2-wnck-3.0
+
+Usage
+-----
+center-mouse-active-window.py
+<hr/>
+
 # [bookmarks](https://github.com/dmi3/bin/blob/master/bookmarks)
 
 

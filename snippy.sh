@@ -86,7 +86,8 @@ s/fri$/$(date +'%a %d\/%m\/%y' --date='next fri')/g;
 s/sat$/$(date +'%a %d\/%m\/%y' --date='next sat')/g;
 s/sun$/$(date +'%a %d\/%m\/%y' --date='next sun')/g;"
 
-xdotool --clearmodifiers keyup Control_L Control_R Shift_L Shift_R Alt_L Alt_R 
+xdotool --clearmodifiers keyup Control_L Control_R Shift_L Shift_R Alt_L Alt_R
+sleep 0.1
 xdotool key ctrl+shift+Left
 sleep 0.05
 xdotool key ctrl+x

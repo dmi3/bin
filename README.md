@@ -274,7 +274,7 @@ Description
 -----------
 ![Status](https://developer.run/pic/status.png)
 
-CLI web stats dashboard. Visualizes GitHub and Twitter followers, top GitHub repos and last 500 blog hits
+CLI web stats dashboard. Visualizes GitHub followers, top GitHub repos and last 500 blog hits
 with top pages and refferers. Works well in addition to [headlines.sh](https://github.com/dmi3/bin/blob/master/headlines.sh) and `newsbeuter -x reload -x print-unread 2> /dev/null` [Read more](https://developer.run/51)
 
 Requirements
@@ -284,7 +284,7 @@ Requirements
 
 Usage
 ------------
-* Set `URL`, `GITHUB_ID, `TWITTER_ID`, `PARSE_APP_ID` and `PARSE_MASTER_KEY` variables
+* Set `URL`, `GITHUB_ID, `PARSE_APP_ID` and `PARSE_MASTER_KEY` variables
 * `status.sh`
 <hr/>
 

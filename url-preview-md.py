@@ -38,7 +38,7 @@ url = sys.argv[2]
 opengraph_api_key = sys.argv[3] if len(sys.argv) > 3 else None
 
 headers = {"Accept": "*/*", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"}
-exclusions = ["amazon.", "x.com", "twitter.com"]
+exclusions = ["amazon.", "x.com", "twitter.com", "youtube.com"]
 
 p = WebPreview(url, None, None, None)
 
@@ -62,7 +62,12 @@ try:
         # https://www.linkpreview.net might be an alternative
         response = requests.get('https://opengraph.io/api/1.1/site/%s?app_id=%s' % (quote_plus(url), opengraph_api_key))
         data = response.json()
-        p = WebPreview(url, data['hybridGraph'].get('title'), data['hybridGraph'].get('description'), data['hybridGraph'].get('image'))
+
+        img = data['hybridGraph'].get('image')
+        if img == None:
+            img = data['hybridGraph'].get('imageSecureUrl')
+
+        p = WebPreview(url, data['hybridGraph'].get('title'), data['hybridGraph'].get('description'), img)
 except:
     print("Unable to fetch url:" + url)
     exit()

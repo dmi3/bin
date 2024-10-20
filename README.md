@@ -84,7 +84,7 @@ Usage
 Decription
 -----------
 Wrapper around [webpreview](https://pypi.org/project/webpreview/). Takes url, downloads a preview image
-(From open Graph, Twitter, title or image iself, if url points to image) and returns formatted markdown with page title and description.
+(or image iself, if url points to image) and returns formatted markdown with page title and description.
 Useful with clipboard manager. [Read more](https://developer.run/70)
 
 Requirements
@@ -97,6 +97,8 @@ Usage
     $ url-preview-md.py ~/img http://developer.run/70
     [Markdown Url Preview](http://developer.run/70) Markdown Url Preview in text editor.
     ![](/home/dmi3/img/2023_09_01_developer.run_url-preview-md.png)
+    If you have OpenGraph.io api key, add it as last argument to try it if webpreview finds nothing useful
+    $ url-preview-md.py ~/img http://developer.run/70 e2b0e47c-8a03-11ef-b1b2-13950b80fc62
 <hr/>
 
 # [tray-unread.sh](https://github.com/dmi3/bin/blob/master/tray-unread.sh)
@@ -770,7 +772,7 @@ Moves mouse in the center of active window.
 
 Requirements
 ------------
-    sudo apt-get install gir1.2-wnck-3.0
+    sudo apt-get install xdotool python3-sh gir1.2-wnck-3.0
 
 Usage
 -----

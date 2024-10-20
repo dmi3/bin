@@ -8,7 +8,7 @@
 
 #  Requirements
 #  ------------
-#      sudo apt-get install gir1.2-wnck-3.0
+#      sudo apt-get install xdotool python3-sh gir1.2-wnck-3.0
 
 #  Usage
 #  -----

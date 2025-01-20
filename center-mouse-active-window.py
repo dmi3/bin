@@ -26,3 +26,5 @@ active_window = screen.get_active_window()
 g = active_window.get_geometry()
 
 xdotool("mousemove", int(g.xp + g.widthp/2), int(g.yp +g.heightp/2))
+# workaround for https://gitlab.freedesktop.org/xorg/xserver/-/issues/633
+xdotool("mousemove_relative", 1, 1)

@@ -67,7 +67,7 @@ try:
         if img == None:
             img = data['hybridGraph'].get('imageSecureUrl')
 
-        p = WebPreview(url, data['hybridGraph'].get('title'), data['hybridGraph'].get('description'), img)
+        p = WebPreview(url, data['hybridGraph'].get('title'), data['hybridGraph'].get('description')[:400], img)
 except:
     print("Unable to fetch url:" + url)
     exit()

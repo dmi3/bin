@@ -398,6 +398,25 @@ Decription
 See <https://github.com/dmi3/bin/blob/master/poweroff>
 <hr/>
 
+# [random-wallpaper.sh](https://github.com/dmi3/bin/blob/master/random-wallpaper.sh)
+
+
+Decription
+----------
+Sets the wallpaper, randomly selecting one from a folder. If the wallpaper is smaller than the screen, it also changes the surrounding area to a color that matches the wallpaper's palette.
+
+Instalation
+-----------
+    sudo apt-get install nitrogen coreutils
+
+Usage
+-----
+* Put some nice pictures in ~/wallpapers/
+* Call this script by cron, on boot or login
+* If you want fixed background color - put one in ~/wallpapers/bg_color
+* You may want to change `--set-centered` to `--set-auto` depending on how picture should be scaled.
+<hr/>
+
 # [print-numbers.py](https://github.com/dmi3/bin/blob/master/print-numbers.py)
 
 

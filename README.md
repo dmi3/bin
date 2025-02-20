@@ -412,7 +412,7 @@ Instalation
 Usage
 -----
 * Put some nice pictures in ~/wallpapers/
-* Call this script by cron, on boot or login
+* Call this script by cron, on login or unlock
 * If you want fixed background color - put one in ~/wallpapers/bg_color
 * You may want to change `--set-centered` to `--set-auto` depending on how picture should be scaled.
 <hr/>

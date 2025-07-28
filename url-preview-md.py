@@ -25,6 +25,7 @@
 
 import os
 import sys
+import shutil
 import requests
 from urllib.parse import urlparse, urljoin, quote_plus
 from datetime import datetime
@@ -39,6 +40,14 @@ opengraph_api_key = sys.argv[3] if len(sys.argv) > 3 else None
 
 headers = {"Accept": "*/*", "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"}
 exclusions = ["amazon.", "x.com", "twitter.com", "youtube.com"]
+
+if url.startswith("file://"):
+    file_path = url[7:]
+    file_name = os.path.basename(file_path)
+    path = os.path.join(d, file_name)
+    shutil.copy(file_path, path)
+    print("\n![](%s)" % path)
+    exit()
 
 p = WebPreview(url, None, None, None)
 

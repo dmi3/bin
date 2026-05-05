@@ -40,4 +40,4 @@ echo
 echo "$BLOG_STATS" | jq -r '.results | [ group_by(.title)[] | {kw: .[0].title, count: length }] | sort_by(.count) | reverse [] | [.kw[0:50], .count] | @csv' | head -5 | column -s, -t
 # Top 5 refferers
 echo
-echo "$BLOG_STATS" | jq -r ".results | [ .[] | select( .ref != \"\" ) | select( .ref | contains (\"$URL\") | not ) ] | [ group_by(.ref)[] | {kw: .[0].ref, count: length }] | sort_by(.count) | reverse [] | [.kw, .count] | @csv" | head -5 | column -s, -t
+echo "$BLOG_STATS" | jq -r ".results | [ .[] | select(.ref != null) | select( .ref != \"\" ) | select( .ref | contains (\"$URL\") | not ) ] | [ group_by(.ref)[] | {kw: .[0].ref, count: length }] | sort_by(.count) | reverse [] | [.kw, .count] | @csv" | head -5 | column -s, -t

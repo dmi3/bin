@@ -14,7 +14,7 @@
 #  -----
 #      volume (up|down|mute)
 
-DEVICE_ID=$(cat ~/.config/pulse/*default-sink)
+DEVICE_ID="@DEFAULT_SINK@"
 
 icon=notification-audio-volume-medium
 if [[ $1 == "down" ]]; then

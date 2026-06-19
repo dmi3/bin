@@ -39,16 +39,18 @@
 #      [...draws plot if supported]
 #      ➤ # many many more usages... https://www.wolframalpha.com/examples/
 
-
 APPID=$(cat ~/git/stuff/keys/wolfram_alpha 2>/dev/null) # Get one at https://products.wolframalpha.com/api/
 VIEWER="kitty +kitten icat"                             # Use `VIEWER="display"` from imagemagick if terminal does not support images
 BG="transparent"                                        # Transparent background
 FG="white"                                              # Match color to your terminal
-test "$APPID" == "" && echo "\$APPID not set in ${BASH_SOURCE[0]}"
 
-RESPONSE=$(curl -s "https://api.wolframalpha.com/v1/result?appid=$APPID&units=metric&" --data-urlencode "i=$*" | tee /dev/tty)
+[[ -z "$APPID" ]] && { echo "\$APPID not set in ${BASH_SOURCE[0]}"; exit 1; }
 
-# Remove next if you are fine with text only api, and don't want to see any images
-test "No short answer available" = "$RESPONSE"\
-     && echo ", downloading full answer..."\
-     && curl -s "https://api.wolframalpha.com/v1/simple?appid=$APPID&units=metric&foreground=$FG&background=$BG" --data-urlencode "i=$*" | $VIEWER || exit 0
+RESPONSE=$(curl -s -G "https://api.wolframalpha.com/v1/result?appid=$APPID&units=metric" \
+  --data-urlencode "i=$*" | tee /dev/tty)
+
+if [[ "$RESPONSE" == *"No short answer available"* ]]; then
+    echo ", downloading full answer..."
+    curl -s -G "https://api.wolframalpha.com/v1/simple?appid=$APPID&units=metric&foreground=$FG&background=$BG" \
+      --data-urlencode "i=$*" | $VIEWER
+fi
